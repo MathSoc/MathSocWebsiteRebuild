@@ -1,15 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-
-# Create your models here.
 import os
+
+
+def upload_file_to(self, filename):
+    return os.path.join(
+        "documents", "{name}".format(name=self.name), filename)
+
+
+def meeting_upload_file_path(self, filename, classification='unknown'):
+    return os.path.join("{org_name}", classification,
+                        "{number}-{date}".format(org_name=self.organization.name,
+                                                 number=self.number,
+                                                 date=self.date.isoformat()),
+                        filename)
 
 
 class Announcement(models.Model):
     title = models.CharField(max_length=256)
     author = models.ForeignKey(User)
-    author_position = models.ForeignKey(Position)
+    author_position = models.ForeignKey('Position')
     date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField()
@@ -29,7 +39,7 @@ class Organization(models.Model):
         ('COUNCIL', 'MathSoc Council'),
         ('OFFICE', 'MathSoc Office')
     ), max_length=8)
-    positions = models.ManyToManyField(Position)
+    positions = models.ManyToManyField('Position')
 
     # of variable relevancy depending on classification
     member_count = models.IntegerField()
@@ -37,7 +47,7 @@ class Organization(models.Model):
     office = models.CharField(max_length=32)
 
     website = models.URLField()
-    documents = models.ManyToManyField(OrganizationDocument)
+    documents = models.ManyToManyField('OrganizationDocument')
 
 
 class OrganizationDocument(models.Model):
@@ -47,20 +57,15 @@ class OrganizationDocument(models.Model):
     last_modified = models.DateField(auto_now=True)
 
     # TODO if document is .tex generate pdf
-    file = models.FileField(upload_to=organization_upload_file_to)
-
-
-def organization_upload_file_to(instance, filename):
-    return os.path.join(
-        "documents", "{name}".format(name=instance.name), filename)
+    file = models.FileField(upload_to=upload_file_to)
 
 
 class Position(models.Model):
     title = models.CharField(max_length=256)
     start_date = models.DateField()
     end_date = models.DateField()
-    key_holder = models.BooleanField()
-    has_key = models.BooleanField()
+    key_holder = models.BooleanField(default=False)
+    has_key = models.BooleanField(default=False)
 
     occupied_by = models.ForeignKey(User)
 
@@ -74,23 +79,15 @@ class Scholarships(models.Model):
 
 
 class Meeting(models.Model):
-    organization = models.ForeignKey(Organization)
+    organization = models.ForeignKey('Organization')
     number = models.IntegerField()
     date = models.DateField()
     term = models.CharField(choices=(
         ('W', 'Winter'),
         ('S', 'Spring'),
         ('F', 'Fall')
-    ))
+    ), max_length=2)
     general = models.BooleanField(default=False)
 
-    agenda = models.FileField(upload_to=meeting_upload_file_path(classification='agenda'))
-    minutes = models.FileField(upload_to=meeting_upload_file_path(classification='minutes'))
-
-
-def meeting_upload_file_path(classification='unknown'):
-    return lambda instance, filename: \
-        os.path.join(
-            "{org_name}", classification, "{number}-{date}").format(org_name=instance.organization.name,
-                                                                    number=instance.number,
-                                                                    date=instance.date.isoformat())
+    agenda = models.FileField(upload_to=meeting_upload_file_path)
+    minutes = models.FileField(upload_to=meeting_upload_file_path)
