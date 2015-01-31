@@ -40,11 +40,11 @@ class Exam(models.Model):
     subject = models.CharField(max_length=10)
     semester = models.IntegerField(max_length=4)
 
-    file = models.FileField()
+    file = models.FileField(upload_to='exams')
 
 
-class CourseEvaluations(models.Model):
+class CourseEvaluation(models.Model):
     # TODO Parse course evaluations and store info for each prof
     semester = models.IntegerField(max_length=4)
 
-    file = models.FileField()
+    file = models.FileField(upload_to='course_evaluations')
