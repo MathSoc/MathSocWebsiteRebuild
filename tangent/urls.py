@@ -5,4 +5,3 @@ urlpatterns = patterns('',
     # url(r'^$', 'mathsocwebsite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 )
-
