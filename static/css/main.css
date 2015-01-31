@@ -1,0 +1,23 @@
+.navbar a {
+    color: #FFFFFF;
+    cursor: pointer;
+
+    transition: all .2s ease-out;
+    /*
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    */
+}
+
+.navbar a:hover,.navbar a:focus {
+    color: #E0249A;
+    background-color: #FFFFFF !important;
+    cursor: pointer;
+}
+
+.navbar {
+    border-radius: 0px;
+    border: 0px;
+    background-color: #E0249A;
+    margin-bottom: 0px;
+}
