@@ -21,6 +21,7 @@
         <!-- <script src="{{ STATIC_URL }}libs/modernizr/2.6.2/modernizr-2.6.2.min.js"></script> -->
     </head>
     <body>
+    {% block navbar %}
     <div class="navbar">
       <div class="container">
         <div class="navbar-header">
@@ -52,6 +53,7 @@
         </div>
       </div>
     </div>
+    {% endblock %}
 
     {% block content %}{% endblock %}
 

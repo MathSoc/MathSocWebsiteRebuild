@@ -1,7 +1,9 @@
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('',
+urlpatterns = patterns('tangent.views',
     # Examples:
-    # url(r'^$', 'mathsocwebsite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+
+    url(r'^$', 'home', name='tangent_home'),
+
 )

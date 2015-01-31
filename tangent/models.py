@@ -70,7 +70,7 @@ class Position(models.Model):
     occupied_by = models.ForeignKey(User)
 
 
-class Scholarships(models.Model):
+class Scholarship(models.Model):
     name = models.CharField(max_length=256)
     organization = models.CharField(max_length=256)
     amount = models.IntegerField()
