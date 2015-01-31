@@ -25,3 +25,7 @@
 hr{
     border-top: 1px solid deeppink;
 }
+
+.container.content {
+    margin-top: 20px;
+}
