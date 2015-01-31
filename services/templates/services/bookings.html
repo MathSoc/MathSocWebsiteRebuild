@@ -1,2 +1,29 @@
 {% extends 'base.html' %}
 
+{% block content %}
+
+<form id="booking_form" method="post" action="javascript:console.log('Booking completed')">
+<input type='hidden' name='csrfmiddlewaretoken' value='A03eAgJ37HtDhIVxpXl0TJkELm41yCEb' />
+<div class"input-group input-group-lg">
+  Room:<select id="room" name="room" class="btn">
+           <option value="cnd" name="Coffee and Donut shop">Coffee & Donut Shop</option>
+           <option value="comfy" name="Comfy Lounge">Comfy Lounge</option>
+           <option value="hallway" name="Third floor hallway">3rd Floor Hallway</option>
+           <option value="newprojector" name="New Projector">Projector (new)</option>
+           <option value="oldprojector" name="Old Projector">Projector (old)</option>
+           <option value="speakers" name="Speakers">Speakers</option>
+           <option value="karaoke" name="Karaoke Machine">Karaoke Machine</option>
+       </select><br />
+  Start Date:<input type="text" id="datepicker"><br />
+  Start time:<input type="text" id="start_time" name="start time"></input>
+  End time:<input type="text" id="end_time" name="end time"></input>
+  <input type="submit" id="book"></div>
+</div>
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/bookings.js"></script>
+{% endblock %}

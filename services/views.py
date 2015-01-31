@@ -15,4 +15,4 @@ def lockers(request):
 
 
 def bookings(request):
-    return render(request, 'services/bookings')
+    return render(request, 'services/bookings.html')
