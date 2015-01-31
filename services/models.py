@@ -38,5 +38,13 @@ class Exam(models.Model):
     name = models.CharField(max_length=256)
     course_number = models.IntegerField(max_length=3)
     subject = models.CharField(max_length=10)
+    semester = models.IntegerField(max_length=4)
+
+    file = models.FileField()
+
+
+class CourseEvaluations(models.Model):
+    # TODO Parse course evaluations and store info for each prof
+    semester = models.IntegerField(max_length=4)
 
     file = models.FileField()
