@@ -5,7 +5,7 @@ urlpatterns = patterns('services.views',
     # url(r'^$', 'mathsocwebsite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'index', name='services_home'),
+    url(r'^$', 'home', name='services_home'),
     url(r'exambank/', 'exambank'),
     url(r'lockers/', 'lockers'),
     url(r'bookings/', 'bookings')
