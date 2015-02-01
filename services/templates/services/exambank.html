@@ -1,1 +1,30 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header_files %}
+    <link rel="stylesheet" href="{% static 'services/css/exambank.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container text-content">
+
+    <h2>Exam Bookings</h2>
+
+    <div class="row" style="max-width: 300px;">
+        <div class="col-xs-7">
+            <select id="subject-selection" onchange="subjectChange(this.value)" class="form-control">
+            </select>
+        </div>
+
+        <div class="col-xs-5">
+            <select id="code-selection" onchange="codeChange(this.value)" class="form-control">
+            </select>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static  'services/js/exambank.js' %}"></script>
+{% endblock %}
