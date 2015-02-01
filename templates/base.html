@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{% static 'libs/bootstrap-3.3.2/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'libs/bootstrap-3.3.2/css/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/font-awesome-4.3.0/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     {% block header_files %}
@@ -50,13 +51,59 @@
 
 {% block content %}{% endblock %}
 
-<footer>
-</footer>
+<div class="footer">
+    <a id="contact" name="contact"></a>
+    <div>
+        <p class="back-to-top">
+            <a class="hover-text" onclick="$.scrollTo('.navbar', 300)"> 
+                Back To Top 
+            </a>
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="col-md-4">
+             <div class="widget" style="margin:0 auto; width:300px">
+                <h2 class="widget-title">Contact info</h2>
+                <div class="row">
+                    <div class="col-xs-1"><i class="fa fa-2x fa-location-arrow"></i></div>
+                    <div class="col-xs-11">(519) 888-4567 x32324</div>
+                </div>
+                 <ul class="widget-contact" style="list-style-type:none">
+                        <li class="widget-contact-phone"></li>
+                        <li class="widget-contact-mail"><a href="mailto:mathsoc@mathsoc.uwaterloo.ca">mathsoc@mathsoc.uwaterloo.ca</a></li>
+                        <li class="widget-contact-address">Mathematics Society<br>University of Waterloo<br>200 University Avenue West <br>Waterloo, Ontario, Canada<br>N2L 3G1</li>    
+                        <li class="widget-contact-address">MC 3038 (Main Office)<br>MC 3039 (Executive Office)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-md-4 widget">
+            <div class="widget" style="margin:0 auto; width:300px">
+                  <h2 class="widget-title">Office Hours</h2>
+              <ul style="font-size:14px; color:#fff; line-height:1.5em; font-weight:700; list-style-type:none; text-align:center">
+                <li>Monday-Friday: 9:00am - 5:00pm</li>
+                <li>Saturday-Sunday: Closed</li>
+              </ul>
+            </div>                
+        </div>
+        
+        <div class="col-md-4">
+            <div class="widget" style="margin:0 auto; width:300px">
+                <h2 class="widget-title">Follow us</h2>
+                <ul class="widget-follow-us" style="list-style-type:none">
+                    <li><a class="widget-follow-us-facebook" href="https://www.facebook.com/mathsoc">Facebook</a></li>
+                    <li><a class="widget-follow-us-twitter" href="https://twitter.com/mathsoc">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{% static 'libs/jquery-1.11.2/jquery-1.11.2.min.js' %}"><\/script>')</script>
-
 <script src="{% static 'libs/bootstrap-3.3.2/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'libs/jquery.scrollTo-1.4.14/jquery.scrollTo.min.js' %}"></script>
 
 <!-- <script src="{% static 'js/main.js' %}"></script> -->
 

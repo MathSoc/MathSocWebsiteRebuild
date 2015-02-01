@@ -28,4 +28,160 @@ hr{
 
 .container.content {
     margin-top: 20px;
+    background-color: #eee;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
+
+
+.hover-text {
+    color: #FFF;
+}
+
+.hover-text:hover {
+    color: #E0249A;
+    text-decoration: none;
+}
+
+
+/**
+ * FOOTER CONTENT
+ */
+.footer {
+    margin-top: 40px;
+    background-color: #111;
+}
+
+.back-to-top {
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 30px;
+}
+
+.back-to-top > a {
+    text-align: center;
+    cursor: pointer
+}
+.widget .widget-title {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 1.5em;
+    color: #FFF;
+    text-transform: uppercase;
+}
+/* ===== START FOLLOW US ====== */
+.widget-follow-us li {
+    margin-bottom: 20px;
+    color: #fff;
+}
+.widget-follow-us li a {
+    display: block;
+    height: 40px;
+    padding-top: 12px;
+    font-size: 14px;
+    line-height: 1em;
+    padding-left: 60px;
+    color: #fff;
+    background: url('/img/socials-sprite.png') no-repeat 0px 0px;
+}
+.widget-follow-us li a:hover {
+    padding-left: 65px;
+}
+.widget-follow-us li a.widget-follow-us-youtube {
+    background-position: 0px 0px;
+}
+.widget-follow-us li a.widget-follow-us-twitter {
+    background-position: 0px -40px;
+}
+.widget-follow-us li a.widget-follow-us-rss {
+    background-position: 0px -80px;
+}
+.widget-follow-us li a.widget-follow-us-pinterest {
+    background-position: 0px -120px;
+}
+.widget-follow-us li a.widget-follow-us-linkedin {
+    background-position: 0px -160px;
+}
+.widget-follow-us li a.widget-follow-us-google {
+    background-position: 0px -200px;
+}
+.widget-follow-us li a.widget-follow-us-flickr {
+    background-position: 0px -240px;
+}
+.widget-follow-us li a.widget-follow-us-facebook {
+    background-position: 0px -280px;
+}
+.widget-follow-us li a.widget-follow-us-dribbble {
+    background-position: 0px -320px;
+}
+.widget-follow-us li a.widget-follow-us-behance {
+    background-position: 0px -360px;
+}
+/* ===== END FOLLOW US ====== */
+
+/* ===== START CONTACT INFO ====== */
+.sidebar .widget-contact ul {
+    border: 0px;
+}
+.sidebar .widget-contact .widget-title {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 1.5em;
+    color: #111;
+    text-transform: uppercase;
+    padding: 0px;
+    background: none;
+    border: 0px;
+}
+.sidebar .widget-contact ul li {
+    margin-bottom: 20px;
+    color: #111;
+    font-size: 14px;
+    line-height: 1.5em;
+    min-height: 24px;
+    font-weight: 700;
+    padding-left: 40px;
+    background: url('../img/Footer/contact-sprite.png') no-repeat 0px 0px;
+}
+.sidebar .widget-contact ul li a {
+    color: #111;    
+    font-size: 14px;    
+    padding: 0px;
+    border: 0px;
+}
+.sidebar .widget-contact li.widget-contact-phone {
+    background-position: 0px 0px;
+}
+.sidebar .widget-contact li.widget-contact-mail {
+    background-position: 0px -47px;
+}
+.sidebar .widget-contact li.widget-contact-address {
+    background-position: 0px -97px;
+}
+.footer .widget-contact li {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5em;
+    min-height: 24px;
+    font-weight: 700;
+    padding-left: 40px;
+    background: url('../img/Footer/contact-sprite.png') no-repeat 0px 0px;
+}
+.footer .widget-contact li a {
+    color: #fff;    
+    font-size: 14px;    
+}
+.widget-contact li.widget-contact-phone {
+    background-position: 0px 0px;
+}
+.widget-contact li.widget-contact-mail {
+    background-position: 0px -47px;
+}
+.widget-contact li.widget-contact-address {
+    background-position: 0px -97px;
+}
+/* ===== END CONTACT INFO ====== */
