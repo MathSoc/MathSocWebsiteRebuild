@@ -111,9 +111,27 @@ function validate_input() {
         end_day.setDate(end_day.getDate() + 1);
     }
 
+    var calendar_id = $("#calendar_id").val();
+    var calender_code;
+    if (calendar_id === "cnd") {
+        calender_code = "qppn4tv70id73d9ib9gj3t7iio@group.calendar.google.com";
+    }
+    else if (calender_id === "comfy") {
+        calender_code = "uo9gqhdmiain37s82pa7n7dsck@group.calendar.google.com";
+    }
+    else if (calender_id === "hallway") {
+        calender_code = "ccrmlglti2hug3dg7c732kflbs@group.calendar.google.com";
+    }
+    else if (calender_id === "new-proj") {
+        calender_code = "t6jk1rnneup9pkg8kifs3ccl8k@group.calendar.google.com";
+    }
+    else if (calender_id === "karaoke") {
+        calender_code = "k0ki15rfeu4sq4cpb9ion6npdo@group.calendar.google.com";
+    }
+
     return {'start': day.toISOString(),
         'end': end_day.toISOString(),
-        'calendar_id': $("#calendar_id").val(),
+        'calendar_id': calender_code,
         'eventname': $("#eventname").val(),
         'contactname': $("#contactname").val(),
         'contactemail': $("#contactemail").val(),

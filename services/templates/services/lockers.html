@@ -2,32 +2,30 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div class="container text-content">
+<div class="container text-content">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h1 class="text-center"> Book a Locker </h1>
 
+            {% if lockers %}
+            <form id="locker_form" method="POST" action="{% url 'resources_lockers' %}">
 
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <h1 class="text-center"> Book a Locker </h1>
+                {% csrf_token %}
 
-                {% if lockers %}
-                <form id="locker_form" method="POST" action="{% url 'resources_lockers' %}">
-
-                    {% csrf_token %}
-
-                    The button below will submit your user info to our server. You will be issued a locker number and
-                    combination by email to {{ user.email }}.
-                    <br>
-                    <br>
-                    <input class="btn btn-primary btn-lg"
-                           type="submit" name="submit" value="Book Locker!"/>
-                </form>
-                {% else %}
-                    Unfortunately all lockers are currently booked. Please come back next term.
-                    <br> Sad face :(
-                {% endif %}
-            </div>
+                The button below will submit your user info to our server. You will be issued a locker number and
+                combination by email to {{ user.email }}.
+                <br>
+                <br>
+                <input class="btn btn-default btn-lg"
+                       type="submit" name="submit" value="Book Locker!"/>
+            </form>
+            {% else %}
+                Unfortunately all lockers are currently booked. Please come back next term.
+                <br> Sad face :(
+            {% endif %}
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block scripts %}

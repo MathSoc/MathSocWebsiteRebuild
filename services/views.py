@@ -61,7 +61,7 @@ def get_exams(request):
     """
     subject = request.GET['subject']
     code = int(request.GET['course'])
-    exams = Exam.objects.get(subject=subject, course_number=code)
+    exams = list(Exam.objects.filter(subject=subject, course_number=code))
 
     if not isinstance(exams, list):
         exams = [exams]

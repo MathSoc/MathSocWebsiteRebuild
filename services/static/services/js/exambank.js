@@ -36,6 +36,7 @@ function subjectChange(changed_to) {
         var course_codes = getCodes(changed_to);
         $("#code-selection").children().remove();
         populateSelect("#code-selection", course_codes);
+        codeChange(course_codes[0]);
     }
 }
 
