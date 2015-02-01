@@ -20,3 +20,10 @@
 .spacer{
     margin: 40px 0;
 }
+
+.nav > li > a:hover,
+.nav > li > a:focus,
+.navbar-brand:hover,
+.navbar-brand:focus {
+    background-color: #eee;
+}
