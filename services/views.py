@@ -35,12 +35,12 @@ def get_courses(request):
     exams = Exam.objects.all()
     for exam in exams:
         if exam.subject not in exam_aggr:
-            exam_aggr[subject] = []
-        exam_aggr[subject].append(exam.course_number)
+            exam_aggr[exam.subject] = []
+        exam_aggr[exam.subject].append(exam.course_number)
 
     # note:
     # list(set(arr)) removes duplicate entries in a list
-    ret = [{'code': code, 'courses': list(set(courses))} for (code, courses) in exam_aggr]
+    ret = [{'code': code, 'courses': list(set(courses))} for (code, courses) in exam_aggr.iteritems()]
 
     response = HttpResponse(json.dumps(ret), content_type='application/json')
     return response
@@ -59,16 +59,19 @@ def get_exams(request):
            'semester': SEMESTER}
           ...]
     """
-    subject = request.params['subject']
-    code = int(request.params['code'])
-    exams = list(Exam.objects.get(subject=subject, code=code))
+    subject = request.GET['subject']
+    code = int(request.GET['course'])
+    exams = Exam.objects.get(subject=subject, course_number=code)
+
+    if not isinstance(exams, list):
+        exams = [exams]
     ret = [{'name': exam.name, 'semester': exam.semester} for exam in exams]
 
     response = HttpResponse(json.dumps(ret), content_type='application/json')
     return response
 
 
-def get_exam(request):
+def get_exam(request, subject, course):
     """
     @summary: Serve the file for an exam
 
@@ -81,14 +84,13 @@ def get_exam(request):
         the exam PDF {Binary Data}
         attachment; => saves automatically
     """
-    subject = request.params['subject']
-    code = int(request.params['code'])
-    semester = int(request.params['semester'])
-    exam = Exam.objects.get(subject=subject, code=code, semester=semester).first()
+    code = int(course)
+    name = request.GET['name']
+    exam = Exam.objects.get(subject=subject, course_number=code, name=name)
 
     response = HttpResponse(exam.file, content_type='application/pdf')
-    # response['Content-Disposition'] = 'attachment; filename="{0}_{0}_{0}.pdf"'.format(subject, code, semester)
-    response['Content-Disposition'] = 'filename="{0}_{0}_{0}.pdf"'.format(subject, code, semester)
+    # response['Content-Disposition'] = 'attachment; filename="{0}_{0}_{0}.pdf"'.format(subject, code, name)
+    response['Content-Disposition'] = 'filename="{0}_{0}_{0}.pdf"'.format(subject, code, name)
     return response
 
 
