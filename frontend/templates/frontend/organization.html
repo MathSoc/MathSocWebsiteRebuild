@@ -1,4 +1,4 @@
-{% extends 'tangent/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -22,8 +22,9 @@
             <div class="col-md-12">
                 Positions:
                 <ul>
-                    {% for pos in org.positions.all %}
-                        <li>{{ pos.title }} ({{ pos.occupied_by.first_name }} {{ pos.occupied_by.last_name }})</li>
+                    {% for pos in org.position_set.all %}
+                        <li>{{ pos.title }} ({{ pos.occupied_by.user.first_name }} {{ pos.occupied_by.user.last_name }})
+                        </li>
                     {% endfor %}
                 </ul>
                 <a href="#">Edit Positions</a>

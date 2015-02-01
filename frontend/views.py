@@ -1,11 +1,27 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from tangent.models import Position, Member, Organization
 
 
 def index(request):
     return render(request, 'frontend/index.html')
 
+
 def governance(request):
-    return render(request, 'frontend/governance.html')
+    gov = Organization.objects.filter(classification__icontains="math")
+    context_dict = {'orgs': gov}
+    print gov
+    return render(request, 'frontend/governance.html', context_dict)
+
+
+def organization(request, org_id):
+    org = Organization.objects.get(id=org_id)
+    context_dict = {
+        'org' : org
+    }
+    return render(request,
+                  'frontend/organization.html',
+                  context_dict)
 
 
 def office(request):
