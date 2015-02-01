@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form id="faculties_form" method="post" action="{% url 'faculties' %}">
+        {% csrf_token %}
+        <textarea class="FormElement" name="faculties" id="faculty_input" cols="40" rows="4"></textarea>
+        <input type="submit" id="faculty">
+    </form>
+    <form id="student_form" method="post" action="{% url 'students' %}">
+        {% csrf_token %} 
+        <textarea class="FormElement" name="Students" id="student_input" cols="40" rows="4"></textarea>
+        <input type="submit" id="student">
+    </form>
+
+{% endblock %}
