@@ -27,19 +27,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="display: inline;" href="{% url 'home' %}">
+                <a class="navbar-brand" style="display: inline;" href="{% url 'frontend_home' %}">
                     <img style="display: inline; height: 30px; width: auto;" src="{% static 'img/mathsoclogo.png' %}" alt="Mathsoc Logo of a pink tie"/>
                     MATHSOC
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'resources' %}">Resources</a></li>
-                    <li><a href="{% url 'governance' %}">Governance</a></li>
-                    <li><a href="{% url 'office' %}">Office</a></li>
-                    <li><a href="{% url 'volunteers' %}">Volunteers</a></li>
-                    <li><a href="{% url 'clubs' %}">Clubs</a></li>
-                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    <li><a href="{% url 'resources_home' %}">Resources</a></li>
+                    <li><a href="{% url 'frontend_governance' %}">Governance</a></li>
+                    <li><a href="{% url 'frontend_office' %}">Office</a></li>
+                    <li><a href="{% url 'frontend_volunteers' %}">Volunteers</a></li>
+                    <li><a href="{% url 'frontend_clubs' %}">Clubs</a></li>
+                    <li><a href="{% url 'frontend_contact' %}">Contact Us</a></li>
                     {% if user.is_authenticated and user.is_staff %}
                         <li><a href="{% url 'tangent_home' %}">Tangent</a></li>
                     {% endif %}

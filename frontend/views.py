@@ -4,11 +4,6 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'frontend/index.html')
 
-
-def resources(request):
-    return render(request, 'frontend/resources.html')
-
-
 def governance(request):
     return render(request, 'frontend/governance.html')
 

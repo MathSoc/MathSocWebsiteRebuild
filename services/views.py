@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from oauth2client.client import SignedJwtAssertionCredentials
 from httplib2 import Http
@@ -12,14 +13,16 @@ def home(request):
     return render(request, 'services/index.html')
 
 
+@login_required
 def exambank(request):
     return render(request, 'services/exambank.html')
 
-
+@login_required()
 def lockers(request):
     return render(request, 'services/lockers.html')
 
 
+@login_required()
 def bookings(request):
     if request.method == "POST":
         calendar_id = request.POST['calendar_id']
