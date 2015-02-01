@@ -9,7 +9,7 @@ import json
 
 
 # Create your views here.
-from services.models import Locker
+from services.models import Locker, Exam
 from tangent.models import Member
 
 
@@ -20,6 +20,76 @@ def home(request):
 # @login_required()
 def exambank(request):
     return render(request, 'services/exambank.html')
+
+
+def get_courses(request):
+    """
+    @summary: Gets a list of all courses aggregated by subject code
+
+    @returns:
+        [{'code': SUBJECT_CODE,
+          'courses': [COURSE_NUMBER, ...]},
+          ...]
+    """
+    exam_aggr = {}
+    exams = Exam.objects.all()
+    for exam in exams:
+        if exam.subject not in exam_aggr:
+            exam_aggr[subject] = []
+        exam_aggr[subject].append(exam.course_number)
+
+    # note:
+    # list(set(arr)) removes duplicate entries in a list
+    ret = [{'code': code, 'courses': list(set(courses))} for (code, courses) in exam_aggr]
+
+    response = HttpResponse(json.dumps(ret), content_type='application/json')
+    return response
+
+
+def get_exams(request):
+    """
+    @summary: Gets a list of all exams for a single course
+
+    @args:
+        subject [String]: of the course
+        code [Integer]: of the course
+
+    @returns:
+        [ {'name': EXAM_NAME,
+           'semester': SEMESTER}
+          ...]
+    """
+    subject = request.params['subject']
+    code = int(request.params['code'])
+    exams = list(Exam.objects.get(subject=subject, code=code))
+    ret = [{'name': exam.name, 'semester': exam.semester} for exam in exams]
+
+    response = HttpResponse(json.dumps(ret), content_type='application/json')
+    return response
+
+
+def get_exam(request):
+    """
+    @summary: Serve the file for an exam
+
+    @args:
+        subject [String]: of the course of the exam
+        code [Integer]: of the course of the exam
+        semester [Integer]: of the exam
+
+    @returns:
+        the exam PDF {Binary Data}
+        attachment; => saves automatically
+    """
+    subject = request.params['subject']
+    code = int(request.params['code'])
+    semester = int(request.params['semester'])
+    exam = Exam.objects.get(subject=subject, code=code, semester=semester).first()
+
+    response = HttpResponse(exam.file, content_type='application/pdf')
+    # response['Content-Disposition'] = 'attachment; filename="{0}_{0}_{0}.pdf"'.format(subject, code, semester)
+    response['Content-Disposition'] = 'filename="{0}_{0}_{0}.pdf"'.format(subject, code, semester)
+    return response
 
 
 @login_required()
@@ -41,10 +111,12 @@ def lockers(request):
             member.used_resources = True
             locker.save()
             member.save()
-            return HttpResponse(json.dumps({'result': "Your locker has been reserved. You will recieve an email "
-                                                      "soon with details."}), content_type='application/json')
+            ret = {'result': "Your locker has been reserved. You will recieve an email "
+                             "soon with details."}
         else:
-            return HttpResponse(json.dumps({'result': "You already have a locker"}), content_type='application/json')
+            ret = {'result': "You already have a locker"}
+
+        return HttpResponse(json.dumps(ret), content_type='application/json')
 
     else:  # not a post request
         return render(request, 'services/lockers.html')
@@ -55,7 +127,7 @@ def evaluations(request):
     return render(request, 'services/evaluations.html')
 
 
-# @login_required()
+@login_required()
 def bookings(request):
     if request.method == "POST":
         calendar_id = request.POST['calendar_id']
