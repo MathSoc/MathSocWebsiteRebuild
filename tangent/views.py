@@ -11,10 +11,13 @@ def home(request):
 
 
 def organization(request, org_id):
-
+    org = Organization.objects.get(id=org_id)
+    context_dict = {
+        'org' : org
+    }
     return render(request,
                   'tangent/organization.html',
-                  {})
+                  context_dict)
 
 @login_required
 def log(request):

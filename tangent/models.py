@@ -30,15 +30,15 @@ class Organization(models.Model):
     description = models.TextField(default="", blank=True, null=True)
     affiliations = models.CharField(max_length=256, blank=True, null=True)
     classification = models.CharField(choices=(
-        ('CLUB', 'Club'),
-        ('SIC', 'Special Interest Coordinator'),
-        ('AFF', 'Affiliate'),
-        ('FAC', 'Faculty'),
-        ('ECOM', 'External'),
-        ('MATHSOC', 'Mathematics Society'),
-        ('COUNCIL', 'MathSoc Council'),
-        ('OFFICE', 'MathSoc Office')
-    ), max_length=8)
+        ('Club', 'Club'),
+        ('Special Interest Coordinator', 'Special Interest Coordinator'),
+        ('Affiliate', 'Affiliate'),
+        ('Faculty', 'Faculty'),
+        ('External', 'External'),
+        ('Mathematics Society', 'Mathematics Society'),
+        ('MathSoc Council', 'MathSoc Council'),
+        ('MathSoc Office', 'MathSoc Office')
+    ), max_length=32)
 
     positions = models.ManyToManyField('Position', related_name='position')
     admin = models.ManyToManyField('Position', related_name='admin')
@@ -48,7 +48,6 @@ class Organization(models.Model):
     member_count = models.IntegerField(default=0)
     fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
-
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
     documents = models.ManyToManyField('OrganizationDocument', blank=True, null=True)
 
@@ -83,6 +82,7 @@ class Scholarship(models.Model):
 
 class Meeting(models.Model):
     date = models.DateField()
+    location = models.CharField(max_length=256, default="Comfy Lounge")
     term = models.CharField(choices=(
         ('W', 'Winter'),
         ('S', 'Spring'),
@@ -93,6 +93,10 @@ class Meeting(models.Model):
 
     agenda = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
     minutes = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
+    budget_file = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
+
+    class Meta:
+        ordering = ['-date']
 
 
 class Log(models.Model):
