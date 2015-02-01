@@ -110,7 +110,7 @@ def lockers(request):
             member.used_resources = True
             locker.save()
             member.save()
-            ret = {'result': "Your locker has been reserved. You will recieve an email "
+            ret = {'result': "Your locker has been reserved. You will receive an email "
                              "soon with details."}
         else:
             ret = {'result': "You already have a locker"}
@@ -118,7 +118,9 @@ def lockers(request):
         return HttpResponse(json.dumps(ret), content_type='application/json')
 
     else:  # not a post request
-        return render(request, 'services/lockers.html')
+        lockers = True if Locker.objects.filter(owner=None) else False
+        contect_dict = {'lockers': lockers}
+        return render(request, 'services/lockers.html', contect_dict)
 
 
 @login_required()

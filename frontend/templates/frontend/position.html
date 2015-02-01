@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container text-content">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1>{{ pos.title }}</h1>
+                <hr>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>
+                    <a href="{% url 'frontend_organization' org_id=pos.organization.id %}">
+                    {{ pos.organization.name }}
+                    </a>
+                </h2>
+                <h3>{{ pos.organization.description }}</h3>
+                <h2>Responsibilities</h2>
+                <h3>
+                    {{ pos.responsibilities }}
+                </h3>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

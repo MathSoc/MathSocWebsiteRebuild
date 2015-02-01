@@ -43,6 +43,13 @@ def volunteers(request):
                     'occupied_positions': occupied_positions}
     return render(request, 'frontend/volunteers.html', context_dict)
 
+def position(request, pos_id):
+    pos = Position.objects.get(id=pos_id)
+    context_dict = {
+        'pos': pos
+    }
+    return render(request, 'frontend/position.html', context_dict)
+
 
 def clubs(request):
     c = Organization.objects.filter(classification__icontains="club")
