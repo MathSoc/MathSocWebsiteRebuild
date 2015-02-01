@@ -28,9 +28,6 @@ def lockers(request):
     #   is a boolean
     member = Member.objects.get_or_create(user=request.user)[0]
 
-    has_locker = member.has_locker
-    context_dict = {'has_locker': has_locker}
-
     if request.method == 'POST':
         # Return JSON object which will be parsed
         if not member.has_locker:
@@ -41,7 +38,7 @@ def lockers(request):
             member.used_resources = True
             locker.save()
             member.save()
-            return HttpResponse(json.dumps({'result': "Your locker has been reserved. You will recieve an email "
+            return HttpResponse(json.dumps({'result': "Your locker has been reserved. You will receive an email "
                                                       "soon with details."}), content_type='application/json')
         else:
             return HttpResponse(json.dumps({'result': "You already have a locker"}), content_type='application/json')
@@ -70,7 +67,7 @@ def bookings(request):
 
         events = service.events().list(calendarId=calendar_id, pageToken=None, timeMax=str(request.POST['end']),
                                        timeMin=str(request.POST['start'])).execute()
-        if (not events[u'items']):
+        if not events[u'items']:
             print "here now"
             event = {
                 'summary': str(request.POST['eventname']) + " - " + str(request.POST['organisation']),

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.models import User
 from tangent.models import Position, Member, Organization
 
@@ -24,11 +24,22 @@ def organization(request, org_id):
 
 
 def office(request):
-    return render(request, 'frontend/office.html')
+    org = None
+    try:
+        org = Organization.objects.get(name="MathSoc Office")
+    except Organization.DoesNotExist:
+        print "org DNE"
+
+    context_dict = {
+        'org': org
+    }
+    return render(request, 'frontend/office.html', context_dict)
 
 
 def volunteers(request):
-    return render(request, 'frontend/volunteers.html')
+    free_positions = Position.objects.filter(occupied_by=None)
+    context_dict = {'free_positions': free_positions}
+    return render(request, 'frontend/volunteers.html', context_dict)
 
 
 def clubs(request):

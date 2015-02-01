@@ -58,8 +58,7 @@ class Organization(models.Model):
         ('Faculty', 'Faculty'),
         ('External', 'External'),
         ('Mathematics Society', 'Mathematics Society'),
-        ('MathSoc Council', 'MathSoc Council'),
-        ('MathSoc Office', 'MathSoc Office')
+        ('MathSoc Council', 'MathSoc Council')
     ), max_length=32)
 
     # of variable relevancy depending on classification

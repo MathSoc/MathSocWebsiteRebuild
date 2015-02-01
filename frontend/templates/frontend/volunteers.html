@@ -3,6 +3,35 @@
 
 {% block content %}
     <div class="container text-content">
-        Sign your soul form: ALWAYS
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1>Volunteers</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Free Positions</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>
+                    {% if free_positions %}
+                        We need you! If any unclaimed positions on this list interest you, click to apply!
+                    {% else %}
+                        Sorry, there are no free positions right now. If there is something you think we are missing,
+                        please email us at a;lkdbfn;adlksjfa; skdf asfsda.
+                    {% endif %}
+                </h3>
+            </div>
+        </div>
+        {% for pos in free_positions %}
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ pos.title }}
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
