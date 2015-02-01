@@ -87,6 +87,7 @@ class OrganizationDocument(models.Model):
 
 class Position(models.Model):
     title = models.CharField(max_length=256)
+    responsibilities = models.TextField(blank=True, null=True)
     organization = models.ForeignKey('Organization')
     is_admin = models.BooleanField(default=False)
     start_date = models.DateField(blank=True, null=True)

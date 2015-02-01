@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div class="container">
+    <div class="container text-content">
 
         <div class="row">
             <div class="col-xs-12">
@@ -27,39 +27,27 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <a href="#">Edit Positions</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+                {% if org.meeting_set.all %}
                 Meetings:
-                <ul>
-                    {% for meeting in org.meeting_set.all reversed %}
-                        <li>
-                            {{ meeting.date }} - {{ meeting.location }}
-                            {% if meeting.general %} : General {% endif %}:
-                            {% if meeting.budget %} <a href="#">Budget</a> {% endif %}
-                            {% if meeting.agenda %} <a href="#">Agenda</a> {% endif %}
-                            {% if meeting.minutes %} <a href="#">Minutes</a> {% endif %}
-                        </li>
-                    {% endfor %}
-                    <li><a href="#">Add Meeting</a></li>
-                </ul>
+                    <ul>
+                        {% for meeting in org.meeting_set.all reversed %}
+                            <li>
+                                {{ meeting.date }} - {{ meeting.location }}
+                                {% if meeting.general %} : General {% endif %}:
+                                {% if meeting.budget %} <a href="#">Budget</a> {% endif %}
+                                {% if meeting.agenda %} <a href="#">Agenda</a> {% endif %}
+                                {% if meeting.minutes %} <a href="#">Minutes</a> {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
                 Member count: {{ org.member_count }}<br>
                 Fee: ${{ org.fee }}<br>
                 Office: {{ org.office }}<br>
                 Website: <a href="{{ org.website }}">{{ org.website }}</a><br>
-            </div>
-        </div>
-        {% if org.documents.all %}
-            <div class="row">
-                <div class="col-md-12">
-                    Documents:
+                {% if org.documents.all %}
+                Documents:
                     {% for doc in org.documents.all %}
                         <a href="{{ doc.file }}">
                             <div>
@@ -71,12 +59,9 @@
                             </div>
                         </a>
                     {% endfor %}
-
-                </div>
+                {% endif %}
             </div>
-        {% endif %}
-
-        <a href="#">Upload File</a>
+        </div>
     </div>
 
 {% endblock %}
