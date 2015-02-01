@@ -17,11 +17,11 @@ function populatePage() {
 }
 
 /**
- * Swap the calender which is currently being viewed
+ * Swap the calendar which is currently being viewed
  */
 function change_cal(cal) {
-    $(".calenders > iframe").removeClass("active-calender");
-    $("#" + cal).addClass("active-calender");
+    $(".calendars > iframe").removeClass("active-calendar");
+    $("#" + cal).addClass("active-calendar");
 }
 
 /**
