@@ -2,25 +2,32 @@
 {% load staticfiles %}
 
 {% block content %}
-    <h1 class="text-center"> Book a Locker </h1>
+    <div class="container text-content">
 
-    <div class="row">
-        <div class="col-xs-12 text-center">
-            <form id="locker_form" method="POST" action="{% url 'resources_lockers' %}">
 
-                {% csrf_token %}
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1 class="text-center"> Book a Locker </h1>
 
-                The button below will submit your user info to our server. You will be issued a locker and emailed at
-                your
-                @uwaterloo email address ({{ user.email }}).
-                <br>
-                <br>
-                <input class="btn btn-primary btn-lg"
-                       type="submit" name="submit" value="Book Locker!"/>
-            </form>
+                {% if lockers %}
+                <form id="locker_form" method="POST" action="{% url 'resources_lockers' %}">
+
+                    {% csrf_token %}
+
+                    The button below will submit your user info to our server. You will be issued a locker number and
+                    combination by email to {{ user.email }}.
+                    <br>
+                    <br>
+                    <input class="btn btn-primary btn-lg"
+                           type="submit" name="submit" value="Book Locker!"/>
+                </form>
+                {% else %}
+                    Unfortunately all lockers are currently booked. Please come back next term.
+                    <br> Sad face :(
+                {% endif %}
+            </div>
         </div>
     </div>
-
 {% endblock %}
 
 {% block scripts %}
