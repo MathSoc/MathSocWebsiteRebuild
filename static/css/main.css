@@ -33,7 +33,11 @@ hr {
 }
 
 .container.text-content {
-    margin-top: 30px;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 3px 3px 30px #eee;
 }
 
 
