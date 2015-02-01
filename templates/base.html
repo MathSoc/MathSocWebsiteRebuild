@@ -28,7 +28,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" style="display: inline;" href="{% url 'frontend_home' %}">
-                    <img style="display: inline; height: 30px; width: auto;" src="{% static 'img/mathsoclogo.png' %}" alt="Mathsoc Logo of a pink tie"/>
+                    <img style="display: inline; height: 30px; width: auto;" src="{% static 'img/mathsoclogo.png' %}"
+                         alt="Mathsoc Logo of a pink tie"/>
                     MATHSOC
                 </a>
             </div>
@@ -40,6 +41,7 @@
                     <li><a href="{% url 'frontend_volunteers' %}">Volunteers</a></li>
                     <li><a href="{% url 'frontend_clubs' %}">Clubs</a></li>
                     <li><a href="{% url 'frontend_contact' %}">Contact Us</a></li>
+                    <li><a onclick="$.scrollTo('#contact', 300)">Contact Us</a></li>
                     {% if user.is_authenticated and user.is_staff %}
                         <li><a href="{% url 'tangent_home' %}">Tangent</a></li>
                     {% endif %}
@@ -53,47 +55,54 @@
 
 <div class="footer">
     <a id="contact" name="contact"></a>
+
     <div>
         <p class="back-to-top">
-            <a class="hover-text" onclick="$.scrollTo('.navbar', 300)"> 
-                Back To Top 
+            <a class="hover-text" onclick="$.scrollTo('.navbar', 300)"> Back To Top
             </a>
         </p>
     </div>
 
     <div class="container">
         <div class="col-md-4">
-             <div class="widget" style="margin:0 auto; width:300px">
-                <h2 class="widget-title">Contact info</h2>
+            <div class="widget contact-info">
+                <h2 class="title">Contact info</h2>
+
                 <div class="row">
-                    <div class="col-xs-1"><i class="fa fa-2x fa-location-arrow"></i></div>
-                    <div class="col-xs-11">(519) 888-4567 x32324</div>
+                    <div class="col-xs-2"><i class="fa fa-lg fa-phone"></i></div>
+                    <div class="col-xs-10">(519) 888-4567 x32324</div>
                 </div>
-                 <ul class="widget-contact" style="list-style-type:none">
-                        <li class="widget-contact-phone"></li>
-                        <li class="widget-contact-mail"><a href="mailto:mathsoc@mathsoc.uwaterloo.ca">mathsoc@mathsoc.uwaterloo.ca</a></li>
-                        <li class="widget-contact-address">Mathematics Society<br>University of Waterloo<br>200 University Avenue West <br>Waterloo, Ontario, Canada<br>N2L 3G1</li>    
-                        <li class="widget-contact-address">MC 3038 (Main Office)<br>MC 3039 (Executive Office)</li>
+                <div class="row">
+                    <div class="col-xs-2"><i class="fa fa-lg fa-envelope"></i></div>
+                    <div class="col-xs-10"><a
+                            href="mailto:mathsoc@mathsoc.uwaterloo.ca">mathsoc@mathsoc.uwaterloo.ca</a></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2"><i class="fa fa-lg fa-location-arrow"></i></div>
+                    <div class="col-xs-10">
+                        MC 3038 <i>(Main Office)</i>,<br/> MC 3039 <i>(Executive Office)</i><br/>University of
+                        Waterloo<br/>200 University Avenue West <br/>Waterloo, Ontario, Canada <br/>N2L 3G1
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="widget">
+                <h2 class="title">Office Hours</h2>
+                <ul class="hours-list">
+                    <li>Monday-Friday: 9:00am - 5:00pm</li>
+                    <li>Saturday-Sunday: Closed</li>
                 </ul>
             </div>
         </div>
-        
-        <div class="col-md-4 widget">
-            <div class="widget" style="margin:0 auto; width:300px">
-                  <h2 class="widget-title">Office Hours</h2>
-              <ul style="font-size:14px; color:#fff; line-height:1.5em; font-weight:700; list-style-type:none; text-align:center">
-                <li>Monday-Friday: 9:00am - 5:00pm</li>
-                <li>Saturday-Sunday: Closed</li>
-              </ul>
-            </div>                
-        </div>
-        
+
         <div class="col-md-4">
-            <div class="widget" style="margin:0 auto; width:300px">
-                <h2 class="widget-title">Follow us</h2>
-                <ul class="widget-follow-us" style="list-style-type:none">
-                    <li><a class="widget-follow-us-facebook" href="https://www.facebook.com/mathsoc">Facebook</a></li>
-                    <li><a class="widget-follow-us-twitter" href="https://twitter.com/mathsoc">Twitter</a></li>
+            <div class="widget">
+                <h2 class="title">Follow us</h2>
+                <ul class="follow-us">
+                    <li><a href="https://www.facebook.com/mathsoc">Facebook</a></li>
+                    <li><a href="https://twitter.com/mathsoc">Twitter</a></li>
                 </ul>
             </div>
         </div>
