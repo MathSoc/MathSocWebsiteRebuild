@@ -1,3 +1,11 @@
+body {
+    background-color: #333;
+}
+
+.bg-cover {
+    background-color: #FFF;
+}
+
 .navbar a {
     color: #FFFFFF;
     cursor: pointer;
