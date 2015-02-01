@@ -2,7 +2,40 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div class="container content">
-        We rule yo.
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1>Governance</h1>
+            </div>
+        </div>
+        <hr>
+        {% for org in orgs %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2><a href="{% url 'frontend_organization' org_id=org.id %}">{{ org.name }}</a></h2>
+
+                    <h3>{{ org.description }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Members</h2>
+                </div>
+            </div>
+            {% for pos in org.position_set.all %}
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img src="{% static 'img/mathsoclogo.png' %}" height="200px">
+                    </div>
+                    <div class="col-sm-10">
+                        <h3>{{ pos.title }}:
+                            {{ pos.occupied_by.user.first_name }}
+                            {{ pos.occupied_by.user.last_name }}</h3>
+
+                        <p>{{ pos.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
     </div>
 {% endblock %}

@@ -16,13 +16,35 @@ def meeting_upload_file_path(self, filename, classification='unknown'):
                         filename)
 
 
+class Member(models.Model):
+    user = models.OneToOneField(User)
+
+    #this is redundant but meh
+    has_locker = models.BooleanField(default=False)
+    requested_refund = models.BooleanField(default=False)
+    is_volunteer = models.BooleanField(default=False)
+    used_resources = models.BooleanField(default=False)
+
+    bio = models.TextField(default="", blank=True, null=True)
+    picture = models.ImageField(blank=True, null=True, upload_to='profile_pictures')
+    interested_in = models.ManyToManyField('Position', blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+    resume = models.FileField(upload_to='resumes', blank=True, null=True)
+
+    def __unicode__(self):
+        return self.user.username
+
+
 class Announcement(models.Model):
     title = models.CharField(max_length=256)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(Member)
     author_position = models.ForeignKey('Position')
     date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.title
 
 
 class Organization(models.Model):
@@ -40,16 +62,15 @@ class Organization(models.Model):
         ('MathSoc Office', 'MathSoc Office')
     ), max_length=32)
 
-    positions = models.ManyToManyField('Position', related_name='position')
-    admin = models.ManyToManyField('Position', related_name='admin')
-    meetings = models.ManyToManyField('Meeting', blank=True, null=True)
-
     # of variable relevancy depending on classification
     member_count = models.IntegerField(default=0)
     fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
     documents = models.ManyToManyField('OrganizationDocument', blank=True, null=True)
+
+    def __unicode__(self):
+        return self.name
 
 
 class OrganizationDocument(models.Model):
@@ -61,15 +82,23 @@ class OrganizationDocument(models.Model):
     # TODO if document is .tex generate pdf
     file = models.FileField(upload_to=upload_file_to)
 
+    def __unicode__(self):
+        return self.name
+
 
 class Position(models.Model):
     title = models.CharField(max_length=256)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    organization = models.ForeignKey('Organization')
+    is_admin = models.BooleanField(default=False)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
     key_holder = models.BooleanField(default=False)
     has_key = models.BooleanField(default=False)
 
-    occupied_by = models.ForeignKey(User)
+    occupied_by = models.ForeignKey(Member, blank=True, null=True)
+
+    def __unicode__(self):
+        return self.title
 
 
 class Scholarship(models.Model):
@@ -79,10 +108,14 @@ class Scholarship(models.Model):
     description = models.TextField(default="")
     website = models.URLField(default="")
 
+    def __unicode__(self):
+        return self.name
+
 
 class Meeting(models.Model):
     date = models.DateField()
     location = models.CharField(max_length=256, default="Comfy Lounge")
+    organization = models.ForeignKey('Organization')
     term = models.CharField(choices=(
         ('W', 'Winter'),
         ('S', 'Spring'),
@@ -98,9 +131,15 @@ class Meeting(models.Model):
     class Meta:
         ordering = ['-date']
 
+    def __unicode__(self):
+        return self.date.isoformat()
+
 
 class Log(models.Model):
     title = models.CharField(max_length=128)
     datetime = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(Member)
+
+    def __unicode__(self):
+        return self.title

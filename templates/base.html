@@ -40,7 +40,6 @@
                     <li><a href="{% url 'frontend_office' %}">Office</a></li>
                     <li><a href="{% url 'frontend_volunteers' %}">Volunteers</a></li>
                     <li><a href="{% url 'frontend_clubs' %}">Clubs</a></li>
-                    <li><a href="{% url 'frontend_contact' %}">Contact Us</a></li>
                     <li><a onclick="$.scrollTo('#contact', 300)">Contact Us</a></li>
                     {% if user.is_authenticated and user.is_staff %}
                         <li><a href="{% url 'tangent_home' %}">Tangent</a></li>
@@ -74,8 +73,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-2"><i class="fa fa-lg fa-envelope"></i></div>
-                    <div class="col-xs-10"><a
-                            href="mailto:mathsoc@mathsoc.uwaterloo.ca">mathsoc@mathsoc.uwaterloo.ca</a></div>
+                    <div class="col-xs-10"><a class="hover-text" href="mailto:mathsoc@mathsoc.uwaterloo.ca">mathsoc@mathsoc.uwaterloo.ca</a></div>
                 </div>
                 <div class="row">
                     <div class="col-xs-2"><i class="fa fa-lg fa-location-arrow"></i></div>
@@ -113,6 +111,7 @@
 <script>window.jQuery || document.write('<script src="{% static 'libs/jquery-1.11.2/jquery-1.11.2.min.js' %}"><\/script>')</script>
 <script src="{% static 'libs/bootstrap-3.3.2/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'libs/jquery.scrollTo-1.4.14/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'js/csrf_ajax.js' %}"></script>
 
 <!-- <script src="{% static 'js/main.js' %}"></script> -->
 

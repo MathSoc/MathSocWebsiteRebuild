@@ -1,12 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 
-# Create your models here.
 class Locker(models.Model):
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey('tangent.Member', blank=True, null=True)
 
-    locker_number = models.IntegerField(unique=True)
+    locker_number = models.IntegerField(unique=True, primary_key=True)
     current_combo = models.CharField(max_length=6)
     combo_number = models.IntegerField()
 
@@ -33,6 +31,10 @@ class Locker(models.Model):
         else:  # num == 4 or more
             self.combo_number = self.combo4
 
+    def __unicode__(self):
+        owner = self.owner.__unicode__() if self.owner else ""
+        return str(self.locker_number) + "  " + owner
+
 
 class Exam(models.Model):
     name = models.CharField(max_length=256)
@@ -42,9 +44,15 @@ class Exam(models.Model):
 
     file = models.FileField(upload_to='exams')
 
+    def __unicode__(self):
+        return self.name
+
 
 class CourseEvaluation(models.Model):
     # TODO Parse course evaluations and store info for each prof
     semester = models.IntegerField(max_length=4)
 
     file = models.FileField(upload_to='course_evaluations')
+
+    def __unicode__(self):
+        return self.semester
