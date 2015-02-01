@@ -13,6 +13,8 @@
 #action-item{
     background-color: deeppink;
     line-height: 2em;
+    border-radius: 5px;
+    color: #fff;
 }
 
 .spacer{
