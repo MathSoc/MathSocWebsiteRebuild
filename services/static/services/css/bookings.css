@@ -1,0 +1,40 @@
+.calenders > iframe {
+    display: none;
+    border: 0; 
+}
+
+.calenders > iframe.active-calender {
+    display: block !important;
+}
+
+/**
+ * Some CSS to make calenders more usable on mobile
+ * http://answers.squarespace.com/questions/50460/how-to-embed-a-google-calendar-in-a-responsive-way
+ */
+@media (max-width: 550px) {
+    .big-container {
+        display: none;
+    }
+}
+@media (min-width: 550px) {
+    .small-container {
+        display: none;
+    }
+}
+/* Responsive iFrame */
+.responsive-iframe-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+.responsive-iframe-container iframe,   
+.vresponsive-iframe-container object,  
+.vresponsive-iframe-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

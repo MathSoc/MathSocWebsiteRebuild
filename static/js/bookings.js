@@ -39,7 +39,8 @@ function populatePage() {
 }
 
 function draw_cal(cal) {
-  
+    $(".calenders > iframe").removeClass("active-calender");
+    $("#" + cal).addClass("active-calender");
 }
 
 function was_booking(data) {
