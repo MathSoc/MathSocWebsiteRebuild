@@ -3,6 +3,58 @@
 
 {% block content %}
     <div class="container text-content">
-        Sign your soul form: ALWAYS
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1>Volunteers</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Free Positions</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>
+                    {% if free_positions %}
+                        We need you! If any unclaimed positions on this list interest you, click to apply!
+                    {% else %}
+                        Sorry, there are no free positions right now. If there is something you think we are missing,
+                        please email us at a;lkdbfn;adlksjfa; skdf asfsda.
+                    {% endif %}
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    {% for pos in free_positions %}
+                        <li>{{ pos.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Current Positions</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    {% for pos in occupied_positions %}
+
+                        <li>{{ pos.title }}:
+                            {{ pos.occupied_by.user.first_name }}
+                            {{ pos.occupied_by.user.last_name }}</li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}
