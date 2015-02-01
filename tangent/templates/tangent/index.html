@@ -6,46 +6,40 @@
 {% endblock %}
 {% block content %}
 
-<div class="jumbotron">
+    <div class="jumbotron">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-8">
                     <div class="text-center">
                         <h2>
-                            MathSoc represents student interests and rights to the university administration,
-                            as well as providing oportunities and services to make make students lives easier and more
-                            fun.
-
-                            <hr>
-
-                            <div id="action-item">Vote now for your ActSci Rep!</div>
+                            Welcome to Tangent, the central management interface for the Mathematics Societies. This
+                            is currently in beta, so please report any bugs to vpo@mathsoc.uwaterloo.ca.
                         </h2>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <p>pretend im a pretty calender</p>
+                    <img src="{% static 'tangent/img/sincos.png' %}">
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
-    <hr class="spacer">
-        {% for i in '0123456789'|make_list %}
-        <div class="announcement">
-            <div class="row">
-                <div class="col-lg-7 content">
-                    <h2>{{ forloop.counter }}: I MET SOMEONE IMPORTANT</h2>
-
-                    <p>And here is the announcement</p>
+        <hr class="spacer">
+        <h1>Manage:</h1>
+        {% for org in organizations %}
+            <a href="{% url 'tangent_organization' org_id=org.id %}" class="feed-item">
+                <div class="row">
+                    <div class="col-lg-12 content">
+                        <h2>{{ org.name }}</h2>
+                        <p>
+                           {{ org.description }}
+                        </p>
+                    </div>
+                    <hr class="spacer">
                 </div>
-                <div class="col-lg-5">
-                    <img height='200' src="{% static 'img/mathsoclogo.png' %}">
-                </div>
-            </div>
-            <hr class="spacer">
-        </div>
-    {% endfor %}
+            </a>
+        {% endfor %}
     </div>
 
 {% endblock %}
