@@ -16,9 +16,22 @@ def meeting_upload_file_path(self, filename, classification='unknown'):
                         filename)
 
 
+class Member(models.Model):
+    user = models.OneToOneField(User)
+
+    has_locker = models.BooleanField(default=False)
+    requested_refund = models.BooleanField(default=False)
+    is_volunteer = models.BooleanField(default=False)
+
+    bio = models.TextField(default="")
+    interested_in = models.ManyToManyField('Position')
+    website = models.URLField(blank=True, null=True)
+    resume = models.FileField(upload_to='resumes')
+
+
 class Announcement(models.Model):
     title = models.CharField(max_length=256)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(Member)
     author_position = models.ForeignKey('Position')
     date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
@@ -69,7 +82,7 @@ class Position(models.Model):
     key_holder = models.BooleanField(default=False)
     has_key = models.BooleanField(default=False)
 
-    occupied_by = models.ForeignKey(User)
+    occupied_by = models.ForeignKey(Member)
 
 
 class Scholarship(models.Model):
@@ -103,4 +116,4 @@ class Log(models.Model):
     title = models.CharField(max_length=128)
     datetime = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(Member)

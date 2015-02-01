@@ -1,10 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 
-# Create your models here.
 class Locker(models.Model):
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey('tangent.Member')
+    empty = models.BooleanField(default=True)
 
     locker_number = models.IntegerField(unique=True)
     current_combo = models.CharField(max_length=6)

@@ -17,9 +17,22 @@ def home(request):
 def exambank(request):
     return render(request, 'services/exambank.html')
 
+
 @login_required()
 def lockers(request):
-    return render(request, 'services/lockers.html')
+    user = request.user
+
+    if request.method == 'POST':
+        Locker.objects.filter()
+        return home(request)  # TODO Change to a thank you/validate page
+
+    else:  # not a post request
+        return render(request, 'services/lockers.html')
+
+
+@login_required()
+def evaluations():
+    return render(request, 'services/evaluations.html')
 
 
 @login_required()
@@ -29,12 +42,14 @@ def bookings(request):
         client_email = '122929914589-ca1mb5s955gq0kg49khg6gqndj4v179p@developer.gserviceaccount.com'
         with open(os.path.join('services', 'google_keys', 'calendar_private_key.p12')) as f:
             private_key = f.read()
-        credentials = SignedJwtAssertionCredentials(client_email, private_key, 'https://www.googleapis.com/auth/calendar')
+        credentials = SignedJwtAssertionCredentials(client_email, private_key,
+                                                    'https://www.googleapis.com/auth/calendar')
         http_auth = credentials.authorize(Http())
 
         service = build('calendar', 'v3', http=http_auth)
 
-        events = service.events().list(calendarId=calendar_id, pageToken=None, timeMax=str(request.POST['end']), timeMin=str(request.POST['start'])).execute()
+        events = service.events().list(calendarId=calendar_id, pageToken=None, timeMax=str(request.POST['end']),
+                                       timeMin=str(request.POST['start'])).execute()
         if (not events[u'items']):
             print "here now"
             event = {
