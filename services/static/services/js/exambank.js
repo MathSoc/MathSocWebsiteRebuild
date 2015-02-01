@@ -29,7 +29,8 @@ function subjectChange(changed_to) {
     if (changed_to === "") {
         $("#code-selection").attr("disabled", true);
     }
-    else {
+    else if (current_subject !== changed_to) {
+        current_subject = changed_to;
         $("#code-selection").attr("disabled", false);
         
         var course_codes = getCodes(changed_to);
@@ -39,19 +40,30 @@ function subjectChange(changed_to) {
 }
 
 function codeChange(changed_to) {
-    displayExam(current_subject, current_course);
+    if (current_course !== changed_to) {
+        current_course = changed_to;
+        displayExams(current_subject, current_course);
+    }
 }
 
 
-function displayExam(subject, course) {
-    var fetch_promise = fetchExam(subject, course);
+function displayExams(subject, course) {
+    var fetch_promise = fetchExams(subject, course);
 
     fetch_promise.done(function (exam_data) {
+        var table_select = $(".exam-list");
+        table_select.children().remove();
+        exam_data.forEach(function(exam) {
+            var term = "<td>" + exam.semester + "</td>";
+            var name = "<td>" + exam.name + "</td>";
+            var download = "<td><a href='/resources/exambank/exam/" + current_subject + "/" + current_course + "?name=" + exam.name + "'>Download</a></td>";
+            table_select.append("<tr>" + term + name + download + "</tr>");
+        });
         // do stuff to display exam here
     });
 }
 
-function fetchExam(subject, course) {
+function fetchExams(subject, course) {
     var promise = $.ajax({
         'url': '/resources/exambank/exams',
         'method': 'GET',
@@ -81,7 +93,8 @@ function fetchCourseList() {
         var subject_list = subjects.map(function(subject) {
             return subject.code;
         });
-        populateSelect("#subject-list", subject_list);
+        populateSelect("#subject-selection", subject_list);
+        subjectChange(subject_list[0]);
     });
 }
 
