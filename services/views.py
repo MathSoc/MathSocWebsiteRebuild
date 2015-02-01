@@ -17,7 +17,7 @@ def home(request):
     return render(request, 'services/index.html')
 
 
-@login_required
+# @login_required()
 def exambank(request):
     return render(request, 'services/exambank.html')
 
@@ -55,7 +55,7 @@ def evaluations(request):
     return render(request, 'services/evaluations.html')
 
 
-@login_required()
+# @login_required()
 def bookings(request):
     if request.method == "POST":
         calendar_id = request.POST['calendar_id']

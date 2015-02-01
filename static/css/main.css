@@ -34,6 +34,10 @@ hr {
     border-radius: 10px;
 }
 
+.container.text-content {
+    margin-top: 30px;
+}
+
 
 .hover-text {
     color: #FFF;

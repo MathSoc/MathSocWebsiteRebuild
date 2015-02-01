@@ -1,9 +1,14 @@
+/**
+ * Initialize the jquery ui and pre-populate the time and date fields
+ */
 function populatePage() {
     var day = new Date();
     day.setDate(day.getDate() + 2);
 
     $(function () {
         $("#datepicker").datepicker();
+        $("#start_time").timepicker();
+        $("#end_time").timepicker();
     });
 
     $("#datepicker").val((day.getMonth() + 1).toString() + "/" + (day.getDay() + 1).toString() + "/" + (1900 + day.getYear()).toString());
@@ -11,10 +16,18 @@ function populatePage() {
     $("#end_time").val((day.getHours() + 2).toString() + ":00");
 }
 
-function draw_cal(cal) {
-
+/**
+ * Swap the calender which is currently being viewed
+ */
+function change_cal(cal) {
+    $(".calenders > iframe").removeClass("active-calender");
+    $("#" + cal).addClass("active-calender");
 }
 
+/**
+ * Alert the status of the booking
+ * e.g. if the returned AJAX doesn't return a result then the booking failed, likely due to user action
+ */
 function was_booking(data) {
     if (data['result']) {
         alert("The booking has been made.")
@@ -23,29 +36,33 @@ function was_booking(data) {
     }
 }
 
+/**
+ * validate the user input and returned it once it's been cleaned
+ *
+ * returns:
+ *      {Dict} of the form data, or False if invalid
+ */
 function validate_input() {
     var invalid_input = [];
     var today = new Date();
+    var time_regex = '^[0-2]?[0-9](:[0-5][0-9])?( )?([pPaA][mM])?$';
 
-    date_fields = $('#datepicker').val().split('/');
-    if (date_fields.length !== 3) {
-        return false;
-    }
-    if (!(Date.parse(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2]))) {
-        return false;
-    }
-    day = new Date(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2]);
-    end_day = new Date(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2]);
+    var date_fields = $('#datepicker').val().split('/');
+    var start_time = $('#start_time').val();
+    var end_time = $('#end_time').val();
 
-    start_time = $('#start_time').val()
-    if (!(start_time.match('^[0-2]?[0-9](:[0-5][0-9])?( )?([pPaA][mM])?$'))) {
+    // if the date field is incorrect or the start/end time are incorrect formats, fail
+    if (date_fields.length !== 3 || !(Date.parse(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2])) || !start_time.match(time_regex) || !end_time.match(time_regex)) {
         return false;
     }
-    start_time_suffix = start_time.substring(start_time.length - 2, start_time.length);
+    var day = new Date(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2]);
+    var end_day = new Date(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2]);
+
+    var start_time_suffix = start_time.substring(start_time.length - 2, start_time.length);
     if (start_time_suffix.match('[pPaA][mM]')) {
         start_time = start_time.substring(0, start_time.length - 2);
     }
-    start_time_components = start_time.split(":").map(Number);
+    var start_time_components = start_time.split(":").map(Number);
     if (start_time_suffix.match('[pPaA][mM]') && start_time_components[0] === 12) {
         start_time_components[0] = 0;
     }
@@ -62,16 +79,11 @@ function validate_input() {
     if (day - today < 172800000) {
         return false;
     } // booking earlier in advance than 48 hours
-
-    end_time = $('#end_time').val()
-    if (!(end_time.match('^[0-2]?[0-9](:[0-5][0-9])?( )?([pPaA][mM])?$'))) {
-        return false;
-    }
-    end_time_suffix = end_time.substring(end_time.length - 2, end_time.length);
+    var end_time_suffix = end_time.substring(end_time.length - 2, end_time.length);
     if (end_time_suffix.match('[pPaA][mM]')) {
         end_time = end_time.substring(0, end_time.length - 2);
     }
-    end_time_components = end_time.split(":").map(Number);
+    var end_time_components = end_time.split(":").map(Number);
     if (end_time_suffix.match('[pPaA][mM]') && end_time_components[0] === 12) {
         end_time_components[0] = 0;
     }
@@ -99,8 +111,13 @@ function validate_input() {
         end_day.setDate(end_day.getDate() + 1);
     }
 
-    return {start: day.toISOString(), end: end_day.toISOString(), calendar_id: $("#calendar_id").val(), eventname: $("#eventname").val(),
-        contactname: $("#contactname").val(), contactemail: $("#contactemail").val(), organisation: $("#organisation").val()
+    return {'start': day.toISOString(),
+        'end': end_day.toISOString(),
+        'calendar_id': $("#calendar_id").val(),
+        'eventname': $("#eventname").val(),
+        'contactname': $("#contactname").val(),
+        'contactemail': $("#contactemail").val(),
+        'organisation': $("#organisation").val()
     };
 }
 
@@ -108,7 +125,7 @@ populatePage();
 
 $("form").submit(function (event) {
     var validated_input = validate_input();
-    if (validated_input) {
+    if (validated_input !== false) {
         event.preventDefault();
         $.ajax({
             type: "POST",

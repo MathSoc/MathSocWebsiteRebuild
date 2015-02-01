@@ -1,42 +1,76 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block header_files %}
+    <link rel="stylesheet" href="{% static 'services/css/bookings.css' %}" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" /><!-- plis remove all unused components - its a big library :( -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.css" />
+{% endblock %}
+
 {% block content %}
+<div class="container text-content">
     <form id="booking_form" method="post" action="javascript:console.log('Booking failed')">
+        <div>
+            <label>Room:</label>
+            <select id="calendar_id" name="booking choices" class="form-control" onchange="change_cal(this.value)">
+                <option value="cnd" name="Coffee and Donut shop">Coffee & Donut Shop</option>
+                <option value="comfy" name="Comfy Lounge">Comfy Lounge</option>
+                <option value="hallway" name="Third floor hallway">3rd Floor Hallway </option>
+                <option value="new-proj" name="New Projector">Projector (new)</option>
+                <option value="old-proj" name="Old Projector">Projector (old)</option>
+                <option value="karaoke" name="Karaoke Machine">Karaoke Machine</option>
+            </select>
+        </div>
+
+        <div class="calenders">
+            <iframe src="https://www.google.com/calendar/embed?src=qppn4tv70id73d9ib9gj3t7iio%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="cnd" class="active-calender"></iframe>
+
+            <iframe src="https://www.google.com/calendar/embed?src=uo9gqhdmiain37s82pa7n7dsck%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="comfy"></iframe>
+
+            <iframe src="https://www.google.com/calendar/embed?src=ccrmlglti2hug3dg7c732kflbs%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="hallway"></iframe>
+
+            <iframe src="https://www.google.com/calendar/embed?src=2tn3orcd6obicm3hbauargm1g4%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="new-proj"></iframe>
+
+            <iframe src="https://www.google.com/calendar/embed?src=t6jk1rnneup9pkg8kifs3ccl8k%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="old-proj"></iframe>
+
+            <iframe src="https://www.google.com/calendar/embed?src=k0ki15rfeu4sq4cpb9ion6npdo%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="karaoke"></iframe>
+        </div>
+
         {% csrf_token %}
-        <div class="input-group input-group-lg">
-            Room:<select id="calendar_id" name="booking choices" class="btn" onchange="draw_cal(this.value)">
-            <option value="qppn4tv70id73d9ib9gj3t7iio@group.calendar.google.com" name="Coffee and Donut shop">Coffee &
-                Donut
-                Shop
-            </option>
-            <option value="uo9gqhdmiain37s82pa7n7dsck@group.calendar.google.com" name="Comfy Lounge">Comfy Lounge
-            </option>
-            <option value="ccrmlglti2hug3dg7c732kflbs@group.calendar.google.com" name="Third floor hallway">3rd Floor
-                Hallway
-            </option>
-            <option value="2tn3orcd6obicm3hbauargm1g4@group.calendar.google.com" name="New Projector">Projector (new)
-            </option>
-            <option value="t6jk1rnneup9pkg8kifs3ccl8k@group.calendar.google.com" name="Old Projector">Projector (old)
-            </option>
-            <option value="k0ki15rfeu4sq4cpb9ion6npdo@group.calendar.google.com" name="Karaoke Machine">Karaoke Machine
-            </option>
-        </select><br/>
-            Event Name:<input type="text" id="eventname"><br/>
-            Contact Name:<input type="text" id="contactname"><br/>
-            Contact Email:<input type="text" id="contactemail"><br/>
-            Organisation:<input type="text" id="organisation"><br/>
-            Start Date:<input type="text" id="datepicker"><br/>
-            Start Time:<input type="text" id="start_time" name="start time"> <br/>
-            End Time:<input type="text" id="end_time" name="end time"/>
-            <input type="submit" id="book">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h2>Contact Information</h2>
+                <div><label>Contact Name:</label><input class="form-control" type="text" id="contact-name" /></div>
+                <div><label>Contact Email:</label><input class="form-control" type="text" id="contact-email" /></div>
+                <div><label>Contact Phone:</label><input class="form-control" type="text" id="contact-phone" /></div>
+                <div><label>Organization:</label><input class="form-control" type="text" id="organization" /></div>
+            </div>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="col-xs-12 col-md-6">
+                <h2>Event Information</h2>
+                <div><label>Event Name:</label><input class="form-control" type="text" id="eventname" /></div>
+                <div class="row">
+                    <div class="col-xs-5"><label>Start Date:</label><input class="form-control" type="text" id="datepicker" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4"><label>Start Time:</label><input class="form-control" type="text" id="start_time" name="start time" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4"><label>End Time:</label><input class="form-control" type="text" id="end_time" name="end time" /></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-btn">
+            <input type="submit" class='btn btn-default' id="book" />
         </div>
     </form>
-
+</div>
 {% endblock %}
 
 {% block scripts %}
     <script type="text/javascript"> var post_url = "{% url 'resources_bookings' %}";</script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script><!-- plis remove all unused components - its a big library :( -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="{% static  'services/js/bookings.js' %}"></script>
 {% endblock %}
