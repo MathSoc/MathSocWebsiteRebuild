@@ -26,12 +26,35 @@
                 </h3>
             </div>
         </div>
-        {% for pos in free_positions %}
-            <div class="row">
-                <div class="col-xs-12">
-                    {{ pos.title }}
-                </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    {% for pos in free_positions %}
+                        <li>{{ pos.title }}</li>
+                    {% endfor %}
+                </ul>
             </div>
-        {% endfor %}
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Current Positions</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    {% for pos in occupied_positions %}
+
+                        <li>{{ pos.title }}:
+                            {{ pos.occupied_by.user.first_name }}
+                            {{ pos.occupied_by.user.last_name }}</li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -38,7 +38,9 @@ def office(request):
 
 def volunteers(request):
     free_positions = Position.objects.filter(occupied_by=None)
-    context_dict = {'free_positions': free_positions}
+    occupied_positions = Position.objects.exclude(occupied_by=None)
+    context_dict = {'free_positions': free_positions,
+                    'occupied_positions': occupied_positions}
     return render(request, 'frontend/volunteers.html', context_dict)
 
 
