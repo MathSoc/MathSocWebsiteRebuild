@@ -1,0 +1,81 @@
+{% extends 'tangent/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ org.name }}</h1>
+                {% if org.affiliations %}
+                    <h2>Affiliated with: {{ org.affiliations }}</h2>
+                {% endif %}
+                <h2>Classification: {{ org.classification }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{ org.description }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                Positions:
+                <ul>
+                    {% for pos in org.positions.all %}
+                        <li>{{ pos.title }} ({{ pos.occupied_by.first_name }} {{ pos.occupied_by.last_name }})</li>
+                    {% endfor %}
+                </ul>
+                <a href="#">Edit Positions</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                Meetings:
+                <ul>
+                    {% for meeting in org.meetings.all reversed %}
+                        <li>
+                            {{ meeting.date }} : {{ meeting.location }}
+                            {% if meeting.general %} : General {% endif %}:
+                            {% if meeting.budget %} <a href="#">Budget</a> {% endif %}
+                            {% if meeting.agenda %} <a href="#">Agenda</a> {% endif %}
+                            {% if meeting.minutes %} <a href="#">Minutes</a> {% endif %}
+                        </li>
+                    {% endfor %}
+                    <li><a href="#">Add Meeting</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                Member count: {{ org.member_count }}<br>
+                Fee: ${{ org.fee }}<br>
+                Office: {{ org.office }}<br>
+                Website: <a href="{{ org.website }}">{{ org.website }}</a><br>
+            </div>
+        </div>
+        {% if org.documents.all %}
+            <div class="row">
+                <div class="col-md-12">
+                    Documents:
+                    {% for doc in org.documents.all %}
+                        <a href="{{ doc.file }}">
+                            <div>
+                                <h4>{{ doc.name }}</h4>
+                                <h5>
+                                    {{ doc.date_added }} - {{ doc.date_modified }}<br>
+                                    {{ doc.description }}
+                                </h5>
+                            </div>
+                        </a>
+                    {% endfor %}
+
+                </div>
+            </div>
+        {% endif %}
+
+        <a href="#">Upload File</a>
+    </div>
+
+{% endblock %}

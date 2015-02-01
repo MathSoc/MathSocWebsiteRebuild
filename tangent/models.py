@@ -22,37 +22,39 @@ class Announcement(models.Model):
     author_position = models.ForeignKey('Position')
     date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(blank=True, null=True)
 
 
 class Organization(models.Model):
-    name = models.CharField(max_length=256)
-    affiliations = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, unique=True)
+    description = models.TextField(default="", blank=True, null=True)
+    affiliations = models.CharField(max_length=256, blank=True, null=True)
     classification = models.CharField(choices=(
-        ('CLUB', 'Club'),
-        ('SIC', 'Special Interest Coordinator'),
-        ('AFF', 'Affiliate'),
-        ('SCOM', 'Standing Committee'),
-        ('TCOM', 'Temporary Committee'),
-        ('ECOM', 'External Committee'),
-        ('MATHSOC', 'Mathematics Society'),
-        ('COUNCIL', 'MathSoc Council'),
-        ('OFFICE', 'MathSoc Office')
-    ), max_length=8)
-    positions = models.ManyToManyField('Position')
+        ('Club', 'Club'),
+        ('Special Interest Coordinator', 'Special Interest Coordinator'),
+        ('Affiliate', 'Affiliate'),
+        ('Faculty', 'Faculty'),
+        ('External', 'External'),
+        ('Mathematics Society', 'Mathematics Society'),
+        ('MathSoc Council', 'MathSoc Council'),
+        ('MathSoc Office', 'MathSoc Office')
+    ), max_length=32)
+
+    positions = models.ManyToManyField('Position', related_name='position')
+    admin = models.ManyToManyField('Position', related_name='admin')
+    meetings = models.ManyToManyField('Meeting', blank=True, null=True)
 
     # of variable relevancy depending on classification
-    member_count = models.IntegerField()
-    fee = models.IntegerField()
-    office = models.CharField(max_length=32)
-
-    website = models.URLField()
-    documents = models.ManyToManyField('OrganizationDocument')
+    member_count = models.IntegerField(default=0)
+    fee = models.IntegerField(default=0)
+    office = models.CharField(max_length=32, default="MC 3038")
+    website = models.URLField(default='http://mathsoc.uwaterloo.ca')
+    documents = models.ManyToManyField('OrganizationDocument', blank=True, null=True)
 
 
 class OrganizationDocument(models.Model):
     name = models.CharField(max_length=256)
-    description = models.TextField()
+    description = models.TextField(default="")
     date_added = models.DateField(auto_now_add=True)
     last_modified = models.DateField(auto_now=True)
 
@@ -74,20 +76,31 @@ class Scholarship(models.Model):
     name = models.CharField(max_length=256)
     organization = models.CharField(max_length=256)
     amount = models.IntegerField()
-    description = models.TextField()
-    website = models.URLField()
+    description = models.TextField(default="")
+    website = models.URLField(default="")
 
 
 class Meeting(models.Model):
-    organization = models.ForeignKey('Organization')
-    number = models.IntegerField()
     date = models.DateField()
+    location = models.CharField(max_length=256, default="Comfy Lounge")
     term = models.CharField(choices=(
         ('W', 'Winter'),
         ('S', 'Spring'),
         ('F', 'Fall')
     ), max_length=2)
     general = models.BooleanField(default=False)
+    budget = models.BooleanField(default=False)
 
-    agenda = models.FileField(upload_to=meeting_upload_file_path)
-    minutes = models.FileField(upload_to=meeting_upload_file_path)
+    agenda = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
+    minutes = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
+    budget_file = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
+
+    class Meta:
+        ordering = ['-date']
+
+
+class Log(models.Model):
+    title = models.CharField(max_length=128)
+    datetime = models.DateTimeField(auto_now_add=True)
+    body = models.TextField()
+    user = models.ForeignKey(User)
