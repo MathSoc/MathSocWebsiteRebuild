@@ -10,7 +10,6 @@ def index(request):
 def governance(request):
     gov = Organization.objects.filter(classification__icontains="math")
     context_dict = {'orgs': gov}
-    print gov
     return render(request, 'frontend/governance.html', context_dict)
 
 
@@ -33,7 +32,9 @@ def volunteers(request):
 
 
 def clubs(request):
-    return render(request, 'frontend/clubs.html')
+    c = Organization.objects.filter(classification__icontains="club")
+    context_dict = {'clubs': c}
+    return render(request, 'frontend/clubs.html', context_dict)
 
 
 def contact(request):
