@@ -7,8 +7,8 @@ function populatePage() {
 
     $(function () {
         $("#datepicker").datepicker();
-        $("#start_time").timepicker();
-        $("#end_time").timepicker();
+        $("#start_time").timepicker({'timeFormat': 'hh:mmtt'});
+        $("#end_time").timepicker({'timeFormat': 'hh:mmtt'});
     });
 
     $("#datepicker").val((day.getMonth() + 1).toString() + "/" + (day.getDay() + 1).toString() + "/" + (1900 + day.getYear()).toString());
@@ -29,10 +29,10 @@ function change_cal(cal) {
  * e.g. if the returned AJAX doesn't return a result then the booking failed, likely due to user action
  */
 function was_booking(data) {
-    if (data['result']) {
-        alert("The booking has been made.")
+    if (data.result) {
+        alert("The booking has been made.");
     } else {
-        alert("The booking failed either because it was already taken, or because you booked an unavailable time.")
+        alert("The booking failed either because it was already taken, or because you booked an unavailable time.");
     }
 }
 
