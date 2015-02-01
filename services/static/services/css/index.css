@@ -1,14 +1,25 @@
 .resource {
     padding: 10px 0;
-    margin:10px;
+    margin: 10px;
     background-color: black;
-    z-index:9999999999;
+    z-index: 9999999999;
     height: 100%;
+    border-radius: 5px;
+}
+
+.resource > p {
+    font-size: 45px;
 }
 
 a.resource {
     color: white;
+
+    transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
 }
-a:hover{
-    color: deeppink;
+
+a.resource:hover{
+    color: #E0249A;
+    text-decoration: none;
 }

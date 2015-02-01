@@ -3,10 +3,8 @@
     cursor: pointer;
 
     transition: all .2s ease-out;
-    /*
-    -moz-transition: opacity .25s ease-in-out;
-    -webkit-transition: opacity .25s ease-in-out;
-    */
+    -moz-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
 }
 
 .navbar a:hover,.navbar a:focus {
@@ -23,7 +21,7 @@
 }
 
 hr {
-    border-top: 1px solid deeppink;
+    border-top: 1px solid #E0249A;
 }
 
 .container.content {
