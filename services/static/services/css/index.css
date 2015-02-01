@@ -1,0 +1,14 @@
+.resource {
+    padding: 10px 0;
+    margin:10px;
+    background-color: black;
+    z-index:9999999999;
+    height: 100%;
+}
+
+a.resource {
+    color: white;
+}
+a:hover{
+    color: deeppink;
+}
