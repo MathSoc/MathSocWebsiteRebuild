@@ -26,6 +26,7 @@ class Member(models.Model):
     used_resources = models.BooleanField(default=False)
 
     bio = models.TextField(default="", blank=True, null=True)
+    picture = models.ImageField(blank=True, null=True, upload_to='profile_pictures')
     interested_in = models.ManyToManyField('Position', blank=True, null=True)
     website = models.URLField(blank=True, null=True)
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
@@ -61,10 +62,6 @@ class Organization(models.Model):
         ('MathSoc Office', 'MathSoc Office')
     ), max_length=32)
 
-    positions = models.ManyToManyField('Position', related_name='position')
-    admin = models.ManyToManyField('Position', related_name='admin')
-    meetings = models.ManyToManyField('Meeting', blank=True, null=True)
-
     # of variable relevancy depending on classification
     member_count = models.IntegerField(default=0)
     fee = models.IntegerField(default=0)
@@ -91,12 +88,14 @@ class OrganizationDocument(models.Model):
 
 class Position(models.Model):
     title = models.CharField(max_length=256)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    organization = models.ForeignKey('Organization')
+    is_admin = models.BooleanField(default=False)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
     key_holder = models.BooleanField(default=False)
     has_key = models.BooleanField(default=False)
 
-    occupied_by = models.ForeignKey(Member)
+    occupied_by = models.ForeignKey(Member, blank=True, null=True)
 
     def __unicode__(self):
         return self.title
@@ -116,6 +115,7 @@ class Scholarship(models.Model):
 class Meeting(models.Model):
     date = models.DateField()
     location = models.CharField(max_length=256, default="Comfy Lounge")
+    organization = models.ForeignKey('Organization')
     term = models.CharField(choices=(
         ('W', 'Winter'),
         ('S', 'Spring'),
