@@ -11,40 +11,25 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <h2>Free Positions</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
                 <h3>
                     {% if free_positions %}
+                        <h2>Free Positions</h2>
                         We need you! If any unclaimed positions on this list interest you, click to apply!
                     {% else %}
                         Sorry, there are no free positions right now. If there is something you think we are missing,
-                        please email us at a;lkdbfn;adlksjfa; skdf asfsda.
+                        or a way you want to help out, please email us at admin@admin.admin.
                     {% endif %}
                 </h3>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12">
                 <ul>
-                    {% for pos in free_positions %}
-                        <li>{{ pos.title }}</li>
+                    {% for pos in free_positions|dictsort:"organization" %}
+                        <h3>{{ pos.organization }}</h3>
+                        {{ pos.organization.description }}
+                        <li><a href="{% url "frontend_position" pos_id=pos.id %}"><div>{{ pos.title }}</div></a></li>
                     {% endfor %}
                 </ul>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-xs-12">
                 <h2>Current Positions</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
+
                 <ul>
                     {% for pos in occupied_positions %}
 
