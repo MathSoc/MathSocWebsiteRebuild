@@ -19,7 +19,7 @@ a.resource {
     -webkit-transition: all .2s ease-out;
 }
 
-a.resource:hover{
+a.resource:hover {
     color: deeppink;
     text-decoration: none;
 }

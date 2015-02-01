@@ -7,9 +7,12 @@
     -webkit-transition: all .2s ease-out;
 }
 
-.navbar a:hover,.navbar a:focus {
+.nav > li > a:hover,
+.nav > li > a:focus,
+.navbar-brand:hover,
+.navbar-brand:focus {
     color: deeppink;
-    background-color: #FFFFFF !important;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
 
