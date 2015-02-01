@@ -6,13 +6,7 @@ urlpatterns = patterns('services.views',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'home', name='services_home'),
-<<<<<<< HEAD
-    url(r'exambank/', 'exambank'),
-    url(r'lockers/', 'lockers'),
-    url(r'bookings/', 'bookings')
-=======
     url(r'exambank/', 'exambank', name='exambank'),
     url(r'lockers/', 'lockers', name='lockers'),
     url(r'bookings/', 'bookings', name='bookings')
->>>>>>> bookings
 )
