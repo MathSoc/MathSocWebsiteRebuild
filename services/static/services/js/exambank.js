@@ -36,6 +36,7 @@ function subjectChange(changed_to) {
         var course_codes = getCodes(changed_to);
         $("#code-selection").children().remove();
         populateSelect("#code-selection", course_codes);
+        codeChange(course_codes[0]);
     }
 }
 
@@ -94,7 +95,11 @@ function fetchCourseList() {
             return subject.code;
         });
         populateSelect("#subject-selection", subject_list);
+
+        // this crazy code allows a default course to be picked and exams show
         subjectChange(subject_list[0]);
+        var code = subjects[0].courses[0];
+        codeChange(code);
     });
 }
 
