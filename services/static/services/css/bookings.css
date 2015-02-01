@@ -4,7 +4,7 @@
 
 .calenders > iframe {
     display: none;
-    border: 0; 
+    border: 0;
 }
 
 .calenders > iframe.active-calender {
@@ -12,8 +12,8 @@
 }
 
 #calendar_id {
-     width: 198px;
-     display: inline-block;
+    width: 198px;
+    display: inline-block;
 }
 
 .submit-btn {
@@ -29,11 +29,11 @@
     margin-right: auto;
 }
 
-
 @media (min-width: 1000px) {
-#booking_form {
-    margin: 0px auto;
-    width: 75%;
+    #booking_form {
+        margin: 0px auto;
+        width: 75%;
+    }
 }
 
 /**
@@ -45,11 +45,13 @@
         display: none;
     }
 }
+
 @media (min-width: 550px) {
     .small-container {
         display: none;
     }
 }
+
 /* Responsive iFrame */
 .responsive-iframe-container {
     position: relative;
@@ -58,8 +60,9 @@
     height: 0;
     overflow: hidden;
 }
-.responsive-iframe-container iframe,   
-.vresponsive-iframe-container object,  
+
+.responsive-iframe-container iframe,
+.vresponsive-iframe-container object,
 .vresponsive-iframe-container embed {
     position: absolute;
     top: 0;

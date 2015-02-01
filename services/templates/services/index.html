@@ -1,13 +1,56 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block header_files %}
+    <link rel="stylesheet" href="{% static 'services/css/index.css' %}">
+{% endblock %}
+
 {% block content %}
-    <div class="container content">
+    <div class="container">
+        <div class="text-center"><h1>Resources</h1></div>
         <div class="row">
-            <div class="col-md-3">Bookings</div>
-            <div class="col-md-3">Lockers</div>
-            <div class="col-md-3">Exam Bank</div>
-            <div class="col-md-3">Course Evaluations</div>
+            <div class="col-xs-12 text-center">
+                <h4>These are some of the online services we offer, please direct and feedback to
+                    vpo@mathsoc.uwaterloo.ca</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <a class="resource" href="{% url 'resources_bookings' %}">
+                    <div class="text-center resource">
+                        <h3>Bookings</h3>
+
+                        <p style="font-size:45px" class="fa fa-calendar solo"></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 text-center">
+                <a class="resource" href="{% url 'resources_lockers' %}">
+                    <div class="resource">
+                        <h3>Lockers</h3>
+
+                        <p style="font-size:45px" class="fa fa-lock solo"></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 text-center">
+                <a class="resource" href="{% url 'resources_exambank' %}">
+                    <div class="resource">
+                        <h3>Exam Bank</h3>
+
+                        <p style="font-size:45px" class="fa fa-book solo"></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 text-center">
+                <a class="resource" href="{% url 'resources_evaluations' %}">
+                    <div class="resource">
+                        <h3>Evaluations</h3>
+
+                        <p style="font-size:45px" class="fa fa-users solo"></p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 {% endblock %}
