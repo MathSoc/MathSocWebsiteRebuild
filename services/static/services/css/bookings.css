@@ -1,13 +1,13 @@
-.calenders {
+.calendars {
     margin-top: 30px;
 }
 
-.calenders > iframe {
+.calendars > iframe {
     display: none;
     border: 0;
 }
 
-.calenders > iframe.active-calender {
+.calendars > iframe.active-calendar {
     display: block !important;
 }
 
@@ -37,7 +37,7 @@
 }
 
 /**
- * Some CSS to make calenders more usable on mobile
+ * Some CSS to make calendars more usable on mobile
  * http://answers.squarespace.com/questions/50460/how-to-embed-a-google-calendar-in-a-responsive-way
  */
 @media (max-width: 550px) {

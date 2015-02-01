@@ -3,14 +3,12 @@
     cursor: pointer;
 
     transition: all .2s ease-out;
-    /*
-    -moz-transition: opacity .25s ease-in-out;
-    -webkit-transition: opacity .25s ease-in-out;
-    */
+    -moz-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
 }
 
 .navbar a:hover,.navbar a:focus {
-    color: #E0249A;
+    color: deeppink;
     background-color: #FFFFFF !important;
     cursor: pointer;
 }
@@ -18,7 +16,7 @@
 .navbar {
     border-radius: 0px;
     border: 0px;
-    background-color: #E0249A;
+    background-color: deeppink;
     margin-bottom: 0px;
 }
 
@@ -35,7 +33,11 @@ hr {
 }
 
 .container.text-content {
-    margin-top: 30px;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 3px 3px 30px #eee;
 }
 
 
@@ -44,7 +46,7 @@ hr {
 }
 
 .hover-text:hover {
-    color: #E0249A;
+    color: deeppink;
     text-decoration: none;
 }
 
