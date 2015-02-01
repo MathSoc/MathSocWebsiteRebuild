@@ -5,7 +5,7 @@
  *  ...]
  */
 
-var exams = [];
+var subjects = [];
 
 var current_subject = "";
 var current_course = "";
@@ -53,7 +53,7 @@ function displayExam(subject, course) {
 
 function fetchExam(subject, course) {
     var promise = $.ajax({
-        'url': '/service/exam',
+        'url': '/resources/exambank/exams',
         'method': 'GET',
         'data': {
             'subject': subject,
@@ -64,23 +64,27 @@ function fetchExam(subject, course) {
 }
 
 function getCodes(subject) {
-    var subject_obj = exams.filter(function(sub) {
+    var subject_obj = subjects.filter(function(sub) {
         return sub.code === subject;
     })[0];
     return subject_obj.courses;
 }
 
-function fetchExamList() {
+function fetchCourseList() {
     var promise = $.ajax({
-        'url': '/service/exams',
-        'method': 'GET"'
+        'url': '/resources/exambank/courses',
+        'method': 'GET'
     });
 
     promise.done(function(data) {
-        exams = JSON.parse(data);
+        subjects = data;
+        var subject_list = subjects.map(function(subject) {
+            return subject.code;
+        });
+        populateSelect("#subject-list", subject_list);
     });
 }
 
 $(function() {
-    fetchExamList();
+    fetchCourseList();
 });
