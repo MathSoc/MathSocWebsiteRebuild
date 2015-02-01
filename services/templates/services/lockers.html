@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
     <h1 class="text-center"> Book a Locker </h1>
@@ -19,4 +20,13 @@
             </form>
         </div>
     </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        var post_url = "{% url 'resources_lockers' %}";
+    </script>
+    <script type="text/javascript" src="{% static 'services/js/lockers.js' %}"></script>
+
 {% endblock %}

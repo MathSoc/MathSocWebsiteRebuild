@@ -9,6 +9,10 @@ import json
 
 
 # Create your views here.
+from services.models import Locker
+from tangent.models import Member
+
+
 def home(request):
     return render(request, 'services/index.html')
 
@@ -20,18 +24,34 @@ def exambank(request):
 
 @login_required()
 def lockers(request):
-    user = request.user
+    # get_or_create returns a tuple (object, created) where created
+    #   is a boolean
+    member = Member.objects.get_or_create(user=request.user)[0]
+
+    has_locker = member.has_locker
+    context_dict = {'has_locker': has_locker}
 
     if request.method == 'POST':
-        Locker.objects.filter()
-        return home(request)  # TODO Change to a thank you/validate page
+        # Return JSON object which will be parsed
+        if not member.has_locker:
+            # give them a locker
+            locker = Locker.objects.filter(owner=None)[0]
+            locker.owner = member
+            member.has_locker = True
+            member.used_resources = True
+            locker.save()
+            member.save()
+            return HttpResponse(json.dumps({'result': "Your locker has been reserved. You will recieve an email "
+                                                      "soon with details."}), content_type='application/json')
+        else:
+            return HttpResponse(json.dumps({'result': "You already have a locker"}), content_type='application/json')
 
     else:  # not a post request
         return render(request, 'services/lockers.html')
 
 
 @login_required()
-def evaluations():
+def evaluations(request):
     return render(request, 'services/evaluations.html')
 
 

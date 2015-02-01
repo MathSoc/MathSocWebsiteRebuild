@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
     <form id="booking_form" method="post" action="javascript:console.log('Booking failed')">
@@ -37,5 +38,5 @@
 {% block scripts %}
     <script type="text/javascript"> var post_url = "{% url 'resources_bookings' %}";</script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/bookings.js"></script>
+    <script type="text/javascript" src="{% static  'services/js/bookings.js' %}"></script>
 {% endblock %}
