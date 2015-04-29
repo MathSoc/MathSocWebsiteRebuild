@@ -3,6 +3,7 @@ from external_api.models import Faculty, Student
 from django.shortcuts import render
 import json
 
+
 def students(request):
     if request.method == "POST":
         if 'student' in request.POST:
@@ -41,9 +42,10 @@ def students(request):
         return HttpResponse(json.dumps({'success': "All students deleted"}),
                             content_type='application/json')
 
+
 def student(request, quest_id):
     if request.method == "GET":
-        reponse = Student.objects.filter(quest_id=quest_id)
+        response = Student.objects.filter(quest_id=quest_id)
         if response:
             return HttpResponse(json.dumps({'student': response[0].as_json()}),
                                 content_type='application/json')
@@ -79,15 +81,17 @@ def faculties(request):
         return HttpResponse(json.dumps({'success': "All faculties deleted"}),
                             content_type='application/json')
 
+
 def faculty(request, faculty_id):
     if request.method == "GET":
-        reponse = Faculty.objects.filter(pk=faculty_id)
+        response = Faculty.objects.filter(pk=faculty_id)
         if response:
             return HttpResponse(json.dumps({'student': response[0].as_json()}),
                                 content_type='application/json')
         else:
             return HttpResponse(json.dumps({'error': "faculty not found"}),
                                 content_type='application/json')
+
 
 def interface(request):
     return render(request, 'external_api/interface.html')
