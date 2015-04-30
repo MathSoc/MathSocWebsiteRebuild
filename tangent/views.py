@@ -4,7 +4,7 @@ from tangent.models import Organization
 
 @login_required
 def home(request):
-    organizations = Organization.objects.filter(positions=request.user).order_by('name')
+    organizations = Organization.objects.filter(position=request.user).order_by('name')
     print organizations
     context_dict = {'organizations': organizations}
     return render(request, 'tangent/index.html', context_dict)

@@ -19,17 +19,24 @@ def meeting_upload_file_path(self, filename, classification='unknown'):
 class Member(models.Model):
     user = models.OneToOneField(User)
 
-    #this is redundant but meh
-    has_locker = models.BooleanField(default=False)
+    #Services
+    has_locker = models.BooleanField(default=False)  # redundant, repeated on Locker model (foreign key)
     requested_refund = models.BooleanField(default=False)
-    is_volunteer = models.BooleanField(default=False)
     used_resources = models.BooleanField(default=False)
 
+    # information about the member
     bio = models.TextField(default="", blank=True, null=True)
     picture = models.ImageField(blank=True, null=True, upload_to='profile_pictures')
-    interested_in = models.ManyToManyField('Position', blank=True, null=True)
     website = models.URLField(blank=True, null=True)
+    # the position title can be found by looking at the name on positions
+    is_volunteer = models.BooleanField(default=False)  # slightly redundant
+
+    # Will indicate interest for the current term, which will forward resume and cover letter
+    interested_in = models.ManyToManyField('Position', blank=True, null=True)
+
+    # for applications, and also so they have a place to host this stuff
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
+    cover_letter = models.TextField(default="", blank=True, null=True)
 
     def __unicode__(self):
         return self.user.username
@@ -62,6 +69,7 @@ class Organization(models.Model):
     ), max_length=32)
 
     # of variable relevancy depending on classification
+    #TODO this should maybe be a list of members
     member_count = models.IntegerField(default=0)
     fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
@@ -104,6 +112,7 @@ class Position(models.Model):
 class Scholarship(models.Model):
     name = models.CharField(max_length=256)
     organization = models.CharField(max_length=256)
+    #TODO amount should maybe be a char field for ranges
     amount = models.IntegerField()
     description = models.TextField(default="")
     website = models.URLField(default="")
@@ -135,6 +144,7 @@ class Meeting(models.Model):
         return self.date.isoformat()
 
 
+# TODO This may be unnecessary... However it makes me think of something else
 class Log(models.Model):
     title = models.CharField(max_length=128)
     datetime = models.DateTimeField(auto_now_add=True)
