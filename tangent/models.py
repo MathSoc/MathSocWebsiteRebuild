@@ -32,7 +32,7 @@ class Member(models.Model):
     is_volunteer = models.BooleanField(default=False)  # slightly redundant
 
     # Will indicate interest for the current term, which will forward resume and cover letter
-    interested_in = models.ManyToManyField('Position', blank=True, null=True)
+    interested_in = models.ManyToManyField('Position', blank=True)
 
     # for applications, and also so they have a place to host this stuff
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
@@ -74,7 +74,7 @@ class Organization(models.Model):
     fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
-    documents = models.ManyToManyField('OrganizationDocument', blank=True, null=True)
+    documents = models.ManyToManyField('OrganizationDocument', blank=True)
 
     def __unicode__(self):
         return self.name
