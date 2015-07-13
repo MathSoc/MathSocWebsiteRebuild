@@ -8,7 +8,7 @@ def index(request):
 
 
 def governance(request):
-    gov = Organization.objects.filter(classification__icontains="math")
+    gov = Organization.objects.filter(classification="MATH_GOV")
     context_dict = {'orgs': gov}
     return render(request, 'frontend/governance.html', context_dict)
 

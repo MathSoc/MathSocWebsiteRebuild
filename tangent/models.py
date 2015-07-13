@@ -43,12 +43,18 @@ class Member(models.Model):
 
 
 class Announcement(models.Model):
+    # determines what order posts appear on the page
+    # TODO order 0 means the header
+    order_key = models.IntegerField(unique=True)
     title = models.CharField(max_length=256)
     author = models.ForeignKey(Member)
     author_position = models.ForeignKey('Position')
     date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
+    # a link that will be used if people want more information or to act
+    # TODO implement
+    action = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
         return self.title
@@ -59,14 +65,16 @@ class Organization(models.Model):
     description = models.TextField(default="", blank=True, null=True)
     affiliations = models.CharField(max_length=256, blank=True, null=True)
     classification = models.CharField(choices=(
-        ('Club', 'Club'),
-        ('Special Interest Coordinator', 'Special Interest Coordinator'),
-        ('Affiliate', 'Affiliate'),
-        ('Faculty', 'Faculty'),
-        ('External', 'External'),
-        ('Mathematics Society', 'Mathematics Society'),
-        ('MathSoc Council', 'MathSoc Council')
+        ('CLUB', 'Club'),
+        ('SIC', 'Special Interest Coordinator'),
+        ('AFFL', 'Affiliate'),
+        ('FACL', 'Faculty'),
+        ('EXTL', 'External'),
+        ('MATH_MISC', 'Mathematics Society'),
+        ('MATH_GOV', 'MathSoc Governance'),
+        ('COMM', 'MathSoc Committee')
     ), max_length=32)
+    positions = models.ManyToManyField('Position')
 
     # of variable relevancy depending on classification
     #TODO this should maybe be a list of members
@@ -96,10 +104,11 @@ class OrganizationDocument(models.Model):
 class Position(models.Model):
     title = models.CharField(max_length=256)
     responsibilities = models.TextField(blank=True, null=True)
-    organization = models.ForeignKey('Organization')
     is_admin = models.BooleanField(default=False)
+
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
+
     key_holder = models.BooleanField(default=False)
     has_key = models.BooleanField(default=False)
 

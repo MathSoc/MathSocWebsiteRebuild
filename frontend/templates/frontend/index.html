@@ -18,7 +18,11 @@
 
                             <hr>
 
-                            <div id="action-item">Vote now for your ActSci Rep!</div>
+                            <a id="call-to-action" href="#">
+                                <div id="action-item">
+                                    Vote now for your ActSci Rep!
+                                </div>
+                            </a>
                         </h2>
                     </div>
                 </div>
@@ -32,19 +36,19 @@
     <div class="container">
         <hr>
         {% for i in '0123456789'|make_list %}
-        <div class="announcement">
-            <div class="row">
-                <div class="col-lg-7 content">
-                    <h2>{{ forloop.counter }}: I MET SOMEONE IMPORTANT</h2>
+            <div class="announcement">
+                <div class="row">
+                    <div class="col-lg-7 content">
+                        <h2>{{ forloop.counter }}: I MET SOMEONE IMPORTANT</h2>
 
-                    <p>And here is the announcement</p>
+                        <p>And here is the announcement</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <img height='200' src="{% static 'img/mathsoclogo.png' %}">
+                    </div>
                 </div>
-                <div class="col-lg-5">
-                    <img height='200' src="{% static 'img/mathsoclogo.png' %}">
-                </div>
+                <hr class="spacer">
             </div>
-            <hr class="spacer">
-        </div>
         {% endfor %}
     </div>
 {% endblock %}
