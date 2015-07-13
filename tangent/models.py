@@ -19,29 +19,42 @@ def meeting_upload_file_path(self, filename, classification='unknown'):
 class Member(models.Model):
     user = models.OneToOneField(User)
 
-    #this is redundant but meh
-    has_locker = models.BooleanField(default=False)
+    #Services
+    has_locker = models.BooleanField(default=False)  # redundant, repeated on Locker model (foreign key)
     requested_refund = models.BooleanField(default=False)
-    is_volunteer = models.BooleanField(default=False)
     used_resources = models.BooleanField(default=False)
 
+    # information about the member
     bio = models.TextField(default="", blank=True, null=True)
     picture = models.ImageField(blank=True, null=True, upload_to='profile_pictures')
-    interested_in = models.ManyToManyField('Position', blank=True, null=True)
     website = models.URLField(blank=True, null=True)
+    # the position title can be found by looking at the name on positions
+    is_volunteer = models.BooleanField(default=False)  # slightly redundant
+
+    # Will indicate interest for the current term, which will forward resume and cover letter
+    interested_in = models.ManyToManyField('Position', blank=True)
+
+    # for applications, and also so they have a place to host this stuff
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
+    cover_letter = models.TextField(default="", blank=True, null=True)
 
     def __unicode__(self):
         return self.user.username
 
 
 class Announcement(models.Model):
+    # determines what order posts appear on the page
+    # TODO order 0 means the header
+    order_key = models.IntegerField(unique=True)
     title = models.CharField(max_length=256)
     author = models.ForeignKey(Member)
     author_position = models.ForeignKey('Position')
     date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
+    # a link that will be used if people want more information or to act
+    # TODO implement
+    action = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
         return self.title
@@ -52,21 +65,24 @@ class Organization(models.Model):
     description = models.TextField(default="", blank=True, null=True)
     affiliations = models.CharField(max_length=256, blank=True, null=True)
     classification = models.CharField(choices=(
-        ('Club', 'Club'),
-        ('Special Interest Coordinator', 'Special Interest Coordinator'),
-        ('Affiliate', 'Affiliate'),
-        ('Faculty', 'Faculty'),
-        ('External', 'External'),
-        ('Mathematics Society', 'Mathematics Society'),
-        ('MathSoc Council', 'MathSoc Council')
+        ('CLUB', 'Club'),
+        ('SIC', 'Special Interest Coordinator'),
+        ('AFFL', 'Affiliate'),
+        ('FACL', 'Faculty'),
+        ('EXTL', 'External'),
+        ('MATH_MISC', 'Mathematics Society'),
+        ('MATH_GOV', 'MathSoc Governance'),
+        ('COMM', 'MathSoc Committee')
     ), max_length=32)
+    positions = models.ManyToManyField('Position')
 
     # of variable relevancy depending on classification
+    #TODO this should maybe be a list of members
     member_count = models.IntegerField(default=0)
     fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
-    documents = models.ManyToManyField('OrganizationDocument', blank=True, null=True)
+    documents = models.ManyToManyField('OrganizationDocument', blank=True)
 
     def __unicode__(self):
         return self.name
@@ -88,10 +104,11 @@ class OrganizationDocument(models.Model):
 class Position(models.Model):
     title = models.CharField(max_length=256)
     responsibilities = models.TextField(blank=True, null=True)
-    organization = models.ForeignKey('Organization')
     is_admin = models.BooleanField(default=False)
+
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
+
     key_holder = models.BooleanField(default=False)
     has_key = models.BooleanField(default=False)
 
@@ -104,6 +121,7 @@ class Position(models.Model):
 class Scholarship(models.Model):
     name = models.CharField(max_length=256)
     organization = models.CharField(max_length=256)
+    #TODO amount should maybe be a char field for ranges
     amount = models.IntegerField()
     description = models.TextField(default="")
     website = models.URLField(default="")
@@ -135,6 +153,7 @@ class Meeting(models.Model):
         return self.date.isoformat()
 
 
+# TODO This may be unnecessary... However it makes me think of something else
 class Log(models.Model):
     title = models.CharField(max_length=128)
     datetime = models.DateTimeField(auto_now_add=True)

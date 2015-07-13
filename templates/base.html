@@ -19,94 +19,109 @@
 </head>
 <body>
 <div class="bg-cover">
-{% block navbar %}
-    <div class="navbar">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" style="display: inline;" href="{% url 'frontend_home' %}">
-                    <img style="display: inline; height: 30px; width: auto;" src="{% static 'img/mathsoclogo.png' %}"
-                         alt="Mathsoc Logo of a pink tie"/>
-                    MATHSOC
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{% url 'resources_home' %}">Resources</a></li>
-                    <li><a href="{% url 'frontend_governance' %}">Governance</a></li>
-                    <li><a href="{% url 'frontend_office' %}">Office</a></li>
-                    <li><a href="{% url 'frontend_volunteers' %}">Volunteers</a></li>
-                    <li><a href="{% url 'frontend_clubs' %}">Clubs</a></li>
-                    <li><a onclick="$.scrollTo('#contact', 300)">Contact Us</a></li>
-                    {% if user.is_authenticated and user.is_staff %}
-                        <li><a href="{% url 'tangent_home' %}">Tangent</a></li>
-                    {% endif %}
-                </ul>
+    {% block navbar %}
+        <div class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="display: inline;" href="{% url 'frontend_home' %}">
+                        <img style="display: inline; height: 30px; width: auto;" src="{% static 'img/mathsoclogo.png' %}"
+                             alt="Mathsoc Logo of a pink tie"/>
+                        MATHSOC
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'resources_home' %}">Resources</a></li>
+                        <li><a href="{% url 'frontend_governance' %}">Governance</a></li>
+                        <li><a href="{% url 'frontend_office' %}">Office</a></li>
+                        <li><a href="{% url 'frontend_volunteers' %}">Volunteers</a></li>
+                        <li><a href="{% url 'frontend_clubs' %}">Clubs</a></li>
+                        <li><a onclick="$.scrollTo('#contact', 300)">Contact Us</a></li>
+                        {% if user.is_authenticated and user.is_staff %}
+                            <li><a href="{% url 'tangent_home' %}">Tangent</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}
 
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
-<div class="footer">
-    <a id="contact" name="contact"></a>
+    <div class="footer">
+        {#        Allows for link from nav to here TODO is this necessary? #}
+        <a id="contact" name="contact"></a>
 
-    <div>
-        <p class="back-to-top">
-            <a class="hover-text" onclick="$.scrollTo('.navbar', 300)"> Back To Top
-            </a>
-        </p>
-    </div>
-
-    <div class="container">
-        <div class="col-md-4">
-            <div class="widget contact-info">
-                <h2 class="title">Contact info</h2>
-
-                <div class="row">
-                    <div class="col-xs-2"><i class="fa fa-lg fa-phone"></i></div>
-                    <div class="col-xs-10">(519) 888-4567 x32324</div>
+        <div class="container">
+            {# TODO this isn't showing in Chrome for some reason..#}
+            <div class="row">
+                <div class="col-xs-12">
+                    <p id="back-to-top">
+                        <a class="hover-text">
+                            Back To Top
+                        </a>
+                    </p>
                 </div>
-                <div class="row">
-                    <div class="col-xs-2"><i class="fa fa-lg fa-envelope"></i></div>
-                    <div class="col-xs-10"><a class="hover-text" href="mailto:mathsoc@mathsoc.uwaterloo.ca">mathsoc@mathsoc.uwaterloo.ca</a></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="widget contact-info">
+                        <h2 class="title">Contact info</h2>
+
+                        <div class="row">
+                            <div class="col-xs-2"><i class="fa fa-lg fa-phone"></i></div>
+                            <div class="col-xs-10">(519) 888-4567 x32324</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><i class="fa fa-lg fa-envelope"></i></div>
+                            <div class="col-xs-10"><a class="hover-text" href="mailto:mathsoc@mathsoc.uwaterloo.ca">mathsoc@mathsoc.uwaterloo.ca</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><i class="fa fa-lg fa-location-arrow"></i></div>
+                            <div class="col-xs-10">
+                                MC 3038 <i>(Main Office)</i>,<br/> MC 3039 <i>(Executive Office)</i><br/>University of
+                                Waterloo<br/>200 University Avenue West <br/>Waterloo, Ontario, Canada <br/>N2L 3G1
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-2"><i class="fa fa-lg fa-location-arrow"></i></div>
-                    <div class="col-xs-10">
-                        MC 3038 <i>(Main Office)</i>,<br/> MC 3039 <i>(Executive Office)</i><br/>University of
-                        Waterloo<br/>200 University Avenue West <br/>Waterloo, Ontario, Canada <br/>N2L 3G1
+
+                <div class="col-md-4">
+                    <div class="widget">
+                        <h2 class="title">Office Hours</h2>
+                        <ul class="hours-list">
+                            <li>Monday-Friday: 9:00am - 5:00pm</li>
+                            <li>Saturday-Sunday: Closed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="widget">
+                        <h2 class="title">Follow us</h2>
+                        <ul class="follow-us">
+                            <li><a href="https://www.facebook.com/mathsoc">Facebook</a></li>
+                            <li><a href="https://twitter.com/mathsoc">Twitter</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="widget">
-                <h2 class="title">Office Hours</h2>
-                <ul class="hours-list">
-                    <li>Monday-Friday: 9:00am - 5:00pm</li>
-                    <li>Saturday-Sunday: Closed</li>
-                </ul>
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center">
+                    Created by <a href="https://github.com/drteepot">Tristan Potter</a>,
+                    <a href="https://github.com/kdparker">Keegan Parker</a>,
+                    and <a href="https://github.com/xLegoz">Joey Pereira</a>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="widget">
-                <h2 class="title">Follow us</h2>
-                <ul class="follow-us">
-                    <li><a href="https://www.facebook.com/mathsoc">Facebook</a></li>
-                    <li><a href="https://twitter.com/mathsoc">Twitter</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
-</div>
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -114,6 +129,11 @@
 <script src="{% static 'libs/bootstrap-3.3.2/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'libs/jquery.scrollTo-1.4.14/jquery.scrollTo.min.js' %}"></script>
 <script src="{% static 'js/csrf_ajax.js' %}"></script>
+<script>
+    $('#back-to-top').on('click', function (e) {
+        $.scrollTo('.navbar', 300);
+    })
+</script>
 
 <!-- <script src="{% static 'js/main.js' %}"></script> -->
 

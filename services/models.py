@@ -38,9 +38,9 @@ class Locker(models.Model):
 
 class Exam(models.Model):
     name = models.CharField(max_length=256)
-    course_number = models.IntegerField(max_length=3)
+    course_number = models.IntegerField() # TODO error check and make sure this is a 3 digit number
     subject = models.CharField(max_length=10)
-    semester = models.IntegerField(max_length=4)
+    semester = models.IntegerField() # TODO Error check and make sure this is a 4 digit integer
 
     file = models.FileField(upload_to='exams')
 
@@ -50,7 +50,7 @@ class Exam(models.Model):
 
 class CourseEvaluation(models.Model):
     # TODO Parse course evaluations and store info for each prof
-    semester = models.IntegerField(max_length=4)
+    semester = models.IntegerField() # TODO error check and make sure this is a 4 digit integer
 
     file = models.FileField(upload_to='course_evaluations')
 
