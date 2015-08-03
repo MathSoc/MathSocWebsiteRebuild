@@ -3,13 +3,11 @@
 
 {% block header_files %}
     <link rel="stylesheet" href="{% static 'services/css/bookings.css' %}" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" /><!-- plis remove all unused components - its a big library :( -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.css" />
 {% endblock %}
 
 {% block content %}
 <div class="container text-content">
-    <form id="booking_form" method="post" action="javascript:console.log('Booking failed')">
+    <form id="booking_form" method="post" action="{% url 'resources_bookings' %}">
         <div>
             <label>Room:</label>
             <select id="calendar_id" name="booking choices" class="form-control" onchange="change_cal(this.value)">
@@ -22,41 +20,29 @@
             </select>
         </div>
 
-        <div class="calendars">
-            <iframe src="https://www.google.com/calendar/embed?src=qppn4tv70id73d9ib9gj3t7iio%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="cnd" class="active-calendar"></iframe>
-
-            <iframe src="https://www.google.com/calendar/embed?src=uo9gqhdmiain37s82pa7n7dsck%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="comfy"></iframe>
-
-            <iframe src="https://www.google.com/calendar/embed?src=ccrmlglti2hug3dg7c732kflbs%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="hallway"></iframe>
-
-            <iframe src="https://www.google.com/calendar/embed?src=2tn3orcd6obicm3hbauargm1g4%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="new-proj"></iframe>
-
-            <iframe src="https://www.google.com/calendar/embed?src=t6jk1rnneup9pkg8kifs3ccl8k%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="old-proj"></iframe>
-
-            <iframe src="https://www.google.com/calendar/embed?src=k0ki15rfeu4sq4cpb9ion6npdo%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="karaoke"></iframe>
-        </div>
+        <iframe src="https://www.google.com/calendar/embed?src=qppn4tv70id73d9ib9gj3t7iio%40group.calendar.google.com&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="calendar" class="active-calendar"></iframe>
 
         {% csrf_token %}
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 <h2>Contact Information</h2>
-                <div><label>Contact Name:</label><input class="form-control" type="text" id="contact-name" /></div>
-                <div><label>Contact Email:</label><input class="form-control" type="text" id="contact-email" /></div>
-                <div><label>Contact Phone:</label><input class="form-control" type="text" id="contact-phone" /></div>
-                <div><label>Organization:</label><input class="form-control" type="text" id="organization" /></div>
+                <div><label>Contact Name:</label><input class="form-control" type="text" name="contact-name" id="contact-name" placeholder="e.g. John Smith" /></div>
+                <div><label>Contact Email:</label><input class="form-control" type="text" name="contact-email" id="contact-email" placeholder="e.g. jsmith37@uwaterloo.ca"/></div>
+                <div><label>Contact Phone:</label><input class="form-control" type="text" name="contact-phone" id="contact-phone" placeholder="e.g. (226)-555-1234"/></div>
+                <div><label>Organization:</label><input class="form-control" type="text" name="organisation" id="organization" placeholder="e.g. MathSoc" /></div>
             </div>
             <!-- <div class="col-md-1"></div> -->
             <div class="col-xs-12 col-md-6">
                 <h2>Event Information</h2>
-                <div><label>Event Name:</label><input class="form-control" type="text" id="eventname" /></div>
+                <div><label>Event Name:</label><input name="event-name" class="form-control" type="text" id="event-name" placeholder="e.g. End of Term event" /></div>
                 <div class="row">
-                    <div class="col-xs-5"><label>Start Date:</label><input class="form-control" type="text" id="datepicker" /></div>
+                    <div class="col-xs-5"><label>Start Date:</label><input name="date" class="form-control datepicker" type="text" id="date" placeholder="ISO (YYYY-MM-DD)" /></div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4"><label>Start Time:</label><input class="form-control" type="text" id="start_time" name="start time" /></div>
+                    <div class="col-xs-4"><label>Start Time:</label><input class="form-control timepicker" type="text" id="start-time" name="start-time" placeholder="e.g 1:30pm"/></div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4"><label>End Time:</label><input class="form-control" type="text" id="end_time" name="end time" /></div>
+                    <div class="col-xs-4"><label>End Time:</label><input class="form-control timepicker" type="text" id="end-time" name="end-time" placeholder="e.g 2:30pm"/></div>
                 </div>
             </div>
         </div>
@@ -69,8 +55,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript"> var post_url = "{% url 'resources_bookings' %}";</script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script><!-- plis remove all unused components - its a big library :( -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="{% static  'services/js/bookings.js' %}"></script>
 {% endblock %}
