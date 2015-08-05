@@ -36,7 +36,7 @@
                 <h2>Event Information</h2>
                 <div><label>Event Name:</label><input name="event-name" class="form-control" type="text" id="event-name" placeholder="e.g. End of Term event" /></div>
                 <div class="row">
-                    <div class="col-xs-5"><label>Start Date:</label><input name="date" class="form-control datepicker" type="text" id="date" placeholder="ISO (YYYY-MM-DD)" /></div>
+                    <div class="col-xs-5"><label>Start Date:</label><input name="date" class="form-control" type="text" id="datepicker"/></div>
                 </div>
                 <div class="row">
                     <div class="col-xs-4"><label>Start Time:</label><input class="form-control timepicker" type="text" id="start-time" name="start-time" placeholder="e.g 1:30pm"/></div>
@@ -55,5 +55,6 @@
 {% endblock %}
 
 {% block scripts %}
+    <script type="text/javascript" src="{% static  'services/js/pikaday.js' %}"></script>
     <script type="text/javascript" src="{% static  'services/js/bookings.js' %}"></script>
 {% endblock %}

@@ -15,14 +15,33 @@ function change_cal(cal) {
 }
 
 function check_input(input) {
+    var classes = input.classList;
     if (input.type === 'submit') return true;
     if (!input.value.length) {
         return false;
+    }
+    if (classes.contains("timepicker") > -1) {
+        
     }
     return true;
 }
 
 $().ready(function () {
+    function toShortISO(date) {
+        function pad(num) { return (num < 10) ? '0' + num : num};
+        return date.getFullYear() + "-" + 
+                pad(date.getMonth() + 1) + "-" + 
+                pad(date.getDate());
+    }
+
+    var picker = new Pikaday({ 
+        field: $('#datepicker')[0],
+        onSelect: function() {
+            $("#datepicker").val(toShortISO(picker.getDate()));
+        },
+        minDate: new Date()
+    });
+
     $("form").on('submit', function (event) {
         var form = $(this);
         event.preventDefault();
@@ -36,5 +55,9 @@ $().ready(function () {
             $("form").off('submit')
             form.submit();
         }
-    })
+    });
+
+    $("form input").on('change', function (event) {
+        check_input(event.target)
+    });
 });
