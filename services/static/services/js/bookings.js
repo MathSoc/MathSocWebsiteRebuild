@@ -14,14 +14,64 @@ function change_cal(cal) {
                                 calendar_codes[cal] + '&ctz=America/Toronto');
 }
 
+function parseTime(text) {
+    function pad_to_two_chars(number) {
+        return (number > 9) ? number : "0" + number;
+    }
+
+    var hour = 0;
+    var minutes = 0;
+
+    if (/\d{1,2}:\d{1,2}/.test(text)) {
+        var match = text.match(/(\d{1,2}):(\d{1,2})/);
+        if (!match) return false;
+        var hour = Number(match[1]);
+        var minutes = Number(match[2]);
+    } else if (/\d\d\d\d/.test(text)) {
+        var hour = Number(text[0] + text[1]);
+        var minutes = Number(text[2] + text[3]);
+    } else if (/\d\d\d/.test(text)) {
+        var hour = Number(text[0]);
+        var minutes = Number(text[1] + text[2]);
+    } else if (/\d\d/.test(text)) {
+        var hour = Number(text[0] + text[1]);
+    } else if (/\d/.test(text)) {
+        var hour = Number(text[0]);
+    }
+
+    if (/[pP][mM]/.test(text) || (!/[aA][mM]/.test(text) && (hour < 9))) {
+        if (hour != 12) hour += 12;
+    }
+
+    if (hour > 23 || hour < 0 || minutes < 0 || minutes > 59) return false;
+
+    if (hour > 11) {
+        if (hour != 12) hour -= 12;
+        return hour + ":" + pad_to_two_chars(minutes) + " PM";
+    } else if (hour === 0) {
+        return "12:" + pad_to_two_chars(minutes) + " AM";
+    } else {
+        return hour + ":" + pad_to_two_chars(minutes) + " AM";
+    }
+}
+
 function check_input(input) {
     var classes = input.classList;
     if (input.type === 'submit') return true;
+
     if (!input.value.length) {
         return false;
     }
+    
     if (classes.contains("timepicker") > -1) {
-        
+        var text = input.value;
+        if (/\d{1,2}:?\d{0,2} ?([pPaA][mM])?/.test(text)) {
+            var parsed = parseTime(text);
+            if (!parsed) return false;
+            input.value = parsed;
+        } else {
+            return false;
+        }
     }
     return true;
 }
