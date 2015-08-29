@@ -58,21 +58,36 @@ function parseTime(text) {
 function check_input(input) {
     var classes = input.classList;
     if (input.type === 'submit') return true;
-
-    if (!input.value.length) {
-        return false;
-    }
-    
-    if (classes.contains("timepicker") > -1) {
-        var text = input.value;
-        if (/\d{1,2}:?\d{0,2} ?([pPaA][mM])?/.test(text)) {
-            var parsed = parseTime(text);
-            if (!parsed) return false;
-            input.value = parsed;
+    if (input.type === 'checkbox') {
+        if ($(input).is(":checked")) {
+            $(input).removeClass('invalid');
+            return true;
         } else {
+            $(input).addClass('invalid');
             return false;
         }
     }
+
+    if (!input.value.length) {
+        $(input).addClass('invalid');
+        return false;
+    }
+    
+    if (classes.contains("timepicker")) {
+        var text = input.value;
+        if (/\d{1,2}:?\d{0,2} ?([pPaA][mM])?/.test(text)) {
+            var parsed = parseTime(text);
+            if (!parsed) {
+                $(input).addClass('invalid');
+                return false;
+            }
+            input.value = parsed;
+        } else {
+            $(input).addClass('invalid');
+            return false;
+        }
+    }
+    $(input).removeClass('invalid');
     return true;
 }
 

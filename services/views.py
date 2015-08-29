@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib import messages
 from django.shortcuts import render
 from oauth2client.client import SignedJwtAssertionCredentials
 from httplib2 import Http
@@ -6,10 +8,11 @@ from django.http import HttpResponse
 from apiclient.discovery import build
 import os
 import json
+import dateutil.parser
 
 
 # Create your views here.
-from services.models import Locker, Exam
+from services.models import Locker, Exam, BookingRequest
 from tangent.models import Member
 
 
@@ -127,42 +130,90 @@ def lockers(request):
 def evaluations(request):
     return render(request, 'services/evaluations.html')
 
-
 @login_required()
 def bookings(request):
     if request.method == "POST":
-        calendar_id = request.POST['calendar_id']
-        client_email = '122929914589-ca1mb5s955gq0kg49khg6gqndj4v179p@developer.gserviceaccount.com'
-        with open(os.path.join('services', 'google_keys', 'calendar_private_key.p12')) as f:
-            private_key = f.read()
-        credentials = SignedJwtAssertionCredentials(client_email, private_key,
-                                                    'https://www.googleapis.com/auth/calendar')
-        http_auth = credentials.authorize(Http())
+        calendar_ids = {
+            "cnd": "qppn4tv70id73d9ib9gj3t7iio@group.calendar.google.com",
+            "comfy": "uo9gqhdmiain37s82pa7n7dsck@group.calendar.google.com",
+            "hallway": "ccrmlglti2hug3dg7c732kflbs@group.calendar.google.com",
+            "new-proj": "t6jk1rnneup9pkg8kifs3ccl8k@group.calendar.google.com",
+            "karaoke": "k0ki15rfeu4sq4cpb9ion6npdo@group.calendar.google.com"
+        }
 
-        service = build('calendar', 'v3', http=http_auth)
+        invalid_input = False
 
-        events = service.events().list(calendarId=calendar_id, pageToken=None, timeMax=str(request.POST['end']),
-                                       timeMin=str(request.POST['start'])).execute()
-        if not events[u'items']:
-            print "here now"
-            event = {
-                'summary': str(request.POST['eventname']) + " - " + str(request.POST['organisation']),
-                'start': {
-                    'dateTime': str(request.POST['start'])
-                },
-                'end': {
-                    'dateTime': str(request.POST['end'])
-                },
-                'attendees': [
-                    {
-                        'email': str(request.POST.get('contactemail', 'mathsocbookings@gmail.com')),
-                        'displayName': str(request.POST.get('contactname', 'N/A')),
-                    }
-                ],
-            }
-            created_event = service.events().insert(calendarId=calendar_id, body=event).execute()
-            return HttpResponse(json.dumps({'result': True}), content_type='application/json')
-        else:
-            return HttpResponse(json.dumps({'result': False}), content_type='application/json')
+        def validate_input(type):
+            if not request.POST[type]:
+                messages.error("Invalid entry for: " + type.replace("-", " ").title())
+                invalid_input = True
+                return False
+            return True
+
+        validate_input("contact-name")
+        validate_input("contact-email")
+        validate_input("organisation")
+        validate_input("event-name")
+        validate_input("contact-phone")
+
+        if not invalid_input:
+            return render(request, 'services/bookings.html')
+
+        if request.POST['calendar_id'] not in calendar_ids:
+            messages.error("Invalid calendar selected")
+            return render(request, 'services/bookings.html')
+
+        if not re.match(r"\d{1,2}:\d\d [AP]M", request.POST['start-time']):
+            messages.error("Invalid format for starting time (correct example: 1:30 PM)")
+            return render(request, 'services/bookings.html')
+
+        if not re.match(r"\d{1,2}:\d\d [AP]M", request.POST['end-time']):
+            messages.error("Invalid format for end time (correct example: 1:30 PM)")
+            return render(request, 'services/bookings.html')
+
+        if not re.match(r"\d\d\d\d-\d\d-\d\d", request.POST['start-time']):
+            messages.error("Invalid date format (format is YYYY-MM-DD)")
+            return render(request, 'services/bookings.html')
+
+        # calendar_id = request.POST['calendar_id']
+        # client_email = '122929914589-ca1mb5s955gq0kg49khg6gqndj4v179p@developer.gserviceaccount.com'
+        # with open(os.path.join('services', 'google_keys', 'calendar_private_key.p12')) as f:
+        #     private_key = f.read()
+        # credentials = SignedJwtAssertionCredentials(client_email, private_key,
+        #                                             'https://www.googleapis.com/auth/calendar')
+        # http_auth = credentials.authorize(Http())
+
+        # service = build('calendar', 'v3', http=http_auth)
+
+        # events = service.events().list(calendarId=calendar_id, pageToken=None, timeMax=str(request.POST['end']),
+        #                                timeMin=str(request.POST['start'])).execute()
+        # if not events[u'items']:
+        #     print "here now"
+        #     event = {
+        #         'summary': str(request.POST['eventname']) + " - " + str(request.POST['organisation']),
+        #         'start': {
+        #             'dateTime': str(request.POST['start'])
+        #         },
+        #         'end': {
+        #             'dateTime': str(request.POST['end'])
+        #         },
+        #         'attendees': [
+        #             {
+        #                 'email': str(request.POST.get('contactemail', 'mathsocbookings@gmail.com')),
+        #                 'displayName': str(request.POST.get('contactname', 'N/A')),
+        #             }
+        #         ],
+        #     }
+        #     created_event = service.events().insert(calendarId=calendar_id, body=event).execute()
+        #     return HttpResponse(json.dumps({'result': True}), content_type='application/json')
+        # else:
+        #     return HttpResponse(json.dumps({'result': False}), content_type='application/json')
     else:
         return render(request, 'services/bookings.html')
+
+
+def equipment_booking_policy(request):
+    return render(request, 'services/equipmentbooking.html')
+
+def room_booking_policy(request):
+    return render(request, 'services/roombooking.html')

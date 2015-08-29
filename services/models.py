@@ -56,3 +56,17 @@ class CourseEvaluation(models.Model):
 
     def __unicode__(self):
         return self.semester
+
+class BookingRequest(models.Model):
+    calendar_id   = models.CharField(max_length=256)
+    requesting_id = models.CharField(max_length=16)
+    contact_name  = models.CharField(max_length=256)
+    contact_email = models.CharField(max_length=256)
+    contact_phone = models.CharField(max_length=256)
+    organisation  = models.CharField(max_length=256)
+    event_name    = models.CharField(max_length=256)
+    start         = models.DateTimeField()
+    end           = models.DateTimeField()
+
+    def __unicode__(self):
+        return self.event_name

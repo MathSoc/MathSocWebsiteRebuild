@@ -8,5 +8,7 @@ urlpatterns = patterns('services.views',
                        url(r'exambank/exam/(?P<subject>[a-zA-Z]{2,5})/(?P<course>\d{2,3})', 'get_exam',
                            name='get_exam'),
                        url(r'lockers/', 'lockers', name='resources_lockers'),
-                       url(r'bookings/', 'bookings', name='resources_bookings'),
+                       url(r'bookings/$', 'bookings', name='resources_bookings'),
+                       url(r'bookings/equipment', 'equipment_booking_policy', name='equipment_booking_policy'),
+                       url(r'bookings/rooms', 'room_booking_policy', name='room_booking_policy'),
                        url(r'evaluations/', 'evaluations', name='resources_evaluations'),)
