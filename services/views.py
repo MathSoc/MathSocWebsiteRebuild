@@ -5,8 +5,11 @@ from django.shortcuts import render
 from oauth2client.client import SignedJwtAssertionCredentials
 from httplib2 import Http
 from django.http import HttpResponse
+from django.contrib import messages
 from apiclient.discovery import build
+import datetime
 import os
+import re
 import json
 import dateutil.parser
 
@@ -130,6 +133,25 @@ def lockers(request):
 def evaluations(request):
     return render(request, 'services/evaluations.html')
 
+
+def get_time_from_string(request, timestr):
+    start_time = re.split(' |:', timestr);
+
+    hour = int(start_time[0])
+    minutes = int(start_time[1])
+
+    if hour < 1 or hour > 12 or minutes < 0 or minutes > 59:
+        messages.error(request, "Invalid time given for start time")
+        return render(request, 'services/bookings.html')
+
+    if hour == 12:
+        hour -= 12
+
+    if start_time[2] == "PM":
+        hour += 12
+
+    return datetime.time(hour, minutes)
+
 @login_required()
 def bookings(request):
     if request.method == "POST":
@@ -145,7 +167,7 @@ def bookings(request):
 
         def validate_input(type):
             if not request.POST[type]:
-                messages.error("Invalid entry for: " + type.replace("-", " ").title())
+                messages.error(request, "Invalid entry for: " + type.replace("-", " ").title())
                 invalid_input = True
                 return False
             return True
@@ -156,24 +178,46 @@ def bookings(request):
         validate_input("event-name")
         validate_input("contact-phone")
 
-        if not invalid_input:
+        if invalid_input:
             return render(request, 'services/bookings.html')
 
         if request.POST['calendar_id'] not in calendar_ids:
-            messages.error("Invalid calendar selected")
+            messages.error(request, "Invalid calendar selected")
             return render(request, 'services/bookings.html')
 
         if not re.match(r"\d{1,2}:\d\d [AP]M", request.POST['start-time']):
-            messages.error("Invalid format for starting time (correct example: 1:30 PM)")
+            messages.error(request, "Invalid format for starting time (correct example: 1:30 PM)")
             return render(request, 'services/bookings.html')
 
         if not re.match(r"\d{1,2}:\d\d [AP]M", request.POST['end-time']):
-            messages.error("Invalid format for end time (correct example: 1:30 PM)")
+            messages.error(request, "Invalid format for end time (correct example: 1:30 PM)")
             return render(request, 'services/bookings.html')
 
-        if not re.match(r"\d\d\d\d-\d\d-\d\d", request.POST['start-time']):
-            messages.error("Invalid date format (format is YYYY-MM-DD)")
+        if not re.match(r"\d\d\d\d-\d\d-\d\d", request.POST['date']):
+            messages.error(request, "Invalid date format (format is YYYY-MM-DD)")
             return render(request, 'services/bookings.html')
+
+        if not request.POST['agreement'] == "on":
+            messages.error(request, "Please agree to the Room and Equipment Booking Policy")
+            return render(request, 'services/bookings.html')
+
+        start = dateutil.parser.parse(request.POST['date'], yearfirst=True)
+        start_time = get_time_from_string(request, request.POST['start-time'])
+
+        start = datetime.datetime.combine(start.date(), start_time)
+
+        now = datetime.datetime.now()
+        if start < now:
+            messages.error(request, "Please select a start time in the future")
+            return render(request, 'services/bookings.html')
+
+        end = dateutil.parser.parse(request.POST['date'], yearfirst=True)
+        end_time = get_time_from_string(request, request.POST['end-time'])
+        if end_time < start_time:
+            end += datetime.timedelta(days=1)
+
+        end = datetime.datetime.combine(end.date(), end_time)
+
 
         # calendar_id = request.POST['calendar_id']
         # client_email = '122929914589-ca1mb5s955gq0kg49khg6gqndj4v179p@developer.gserviceaccount.com'
