@@ -1,0 +1,33 @@
+{% extends 'tangent/base.html' %}
+{% load staticfiles %}
+
+{% block header_files %}
+    <link rel="stylesheet" href="{% static 'tangent/css/index.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container text-content">
+        <table class="table">
+        <thead><tr>
+            <th>Event Name</th>
+            <th>Organisation</th>
+            <th>Student Name</th>
+            <th>Start Time</th>
+            <th>Calendar</th>
+            <th>Status</th>
+        </tr></thead>
+        <tbody>
+        {% for request in requests %}
+            <tr>
+                <td><a href="{% url 'tangent_booking' request.id %}">{{ request.event_name }}</a></td>
+                <td>{{ request.organisation }}</td>
+                <td>{{ request.contact_name }}</td>
+                <td>{{ request.start.date }}, {{ request.start.time }} - {{ request.end.time }}</td>
+                <td>{{ request.calendar }}</td>
+                <td>{{ request.get_status_display }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+{% endblock %}

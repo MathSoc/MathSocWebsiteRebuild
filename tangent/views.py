@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from tangent.models import Organization, Position
+from services.models import BookingRequest
+import datetime
 
 
 @login_required
@@ -44,3 +46,13 @@ def help(request):
 def website(request):
     return render(request, 'tangent/index.html')
 
+@login_required
+def bookings(request):
+    # TODO: ADD parameter that gets rid of filter
+    requests = BookingRequest.objects.filter(end__gte=datetime.datetime.today()).order_by('-start', 'status')
+    return render(request, 'tangent/bookings.html', {'requests': requests})
+
+@login_required
+def booking(request, booking_id):
+    booking = get_object_or_404(BookingRequest, id=booking_id)
+    return render(request, 'tangent/booking.html', {'booking': booking})

@@ -1,0 +1,32 @@
+{% extends 'tangent/base.html' %}
+{% load staticfiles %}
+
+{% block header_files %}
+    <link rel="stylesheet" href="{% static 'tangent/css/index.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container text-content">
+        <h2>Booking Request - {{ booking.organisation }} {{ booking.event_name }}</h2>
+        <strong>Contact Name: </strong>{{ booking.contact_name }}<br>
+        <strong>WatID: </strong>{{ booking.requesting_id }}<br>
+        <strong>Contact Email: </strong>{{ booking.contact_email }}<br>
+        <strong>Contact Phone: </strong>{{ booking.contact_phone }}<br>
+        <strong>Time: </strong>{{ booking.start.date }}, {{ booking.start.time }} - {{ booking.end.time }}<br>
+        <strong>Status: </strong>{{ booking.get_status_display }}<br><br>
+
+        <iframe src="https://www.google.com/calendar/embed?src={{ booking.calendar_id }}&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="calendar" class="active-calendar"></iframe>
+
+        {% if booking.status == 1 %}
+        <br><br>
+        <form action="{% url 'tangent_accept_booking' booking.id %}" method="post">
+            {% csrf_token %}
+            <button type="button" class="btn btn-lg btn-success">Approve Request</button>
+        </form> 
+        <form action="{% url 'tangent_reject_booking' booking.id %}" method="post">
+            {% csrf_token %}
+            <button type="button" class="btn btn-lg btn-danger">Reject Request</button>
+        </form> 
+        {% endif %}
+    </div>
+
+{% endblock %}

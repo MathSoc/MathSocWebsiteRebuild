@@ -183,7 +183,7 @@ def bookings(request):
 
         if request.POST['calendar_id'] not in calendar_ids:
             messages.error(request, "Invalid calendar selected")
-            return render(request, 'services/bookings.html')
+            return render(request, 'services/bookings.html')    
 
         if not re.match(r"\d{1,2}:\d\d [AP]M", request.POST['start-time']):
             messages.error(request, "Invalid format for starting time (correct example: 1:30 PM)")
@@ -213,11 +213,27 @@ def bookings(request):
 
         end = dateutil.parser.parse(request.POST['date'], yearfirst=True)
         end_time = get_time_from_string(request, request.POST['end-time'])
-        if end_time < start_time:
+        if end_time <= start_time:
             end += datetime.timedelta(days=1)
 
         end = datetime.datetime.combine(end.date(), end_time)
 
+        new_request = BookingRequest(
+            calendar_id=calendar_ids[request.POST['calendar_id']],
+            calendar=request.POST['calendar_id'],
+            requesting_id=request.user.username,
+            contact_name=request.POST['contact-name'],                                                                                                  
+            contact_email=request.POST['contact-email'],
+            contact_phone=request.POST['contact-phone'],
+            organisation=request.POST['organisation'],
+            event_name=request.POST['event-name'],                                                                                                          
+            start = start,
+            end = end)
+
+        new_request.save()
+        messages.success(request, "Booking request has been sucessfully submitted, you will be contacted (by e-mail) once it has been accepted.")
+
+        return render(request, 'services/bookings.html')
 
         # calendar_id = request.POST['calendar_id']
         # client_email = '122929914589-ca1mb5s955gq0kg49khg6gqndj4v179p@developer.gserviceaccount.com'
