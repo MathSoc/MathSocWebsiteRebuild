@@ -115,3 +115,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/login/'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mathsocbookings'
+try:
+    with open(os.path.join("keys_and_pws", "mathsocbookings-gmail-pw")) as f:
+        EMAIL_HOST_PASSWORD = f.read()
+except: 
+    print "Missing password for bookings email, won't be able to send emails to people after approving or rejecting a booking"
+EMAIL_PORT = 587

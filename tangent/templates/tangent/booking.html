@@ -20,11 +20,11 @@
         <br><br>
         <form action="{% url 'tangent_accept_booking' booking.id %}" method="post">
             {% csrf_token %}
-            <button type="button" class="btn btn-lg btn-success">Approve Request</button>
+            <button type="submit" class="btn btn-lg btn-success">Approve Request</button>
         </form> 
         <form action="{% url 'tangent_reject_booking' booking.id %}" method="post">
             {% csrf_token %}
-            <button type="button" class="btn btn-lg btn-danger">Reject Request</button>
+            <button type="submit" class="btn btn-lg btn-danger">Reject Request</button>
         </form> 
         {% endif %}
     </div>

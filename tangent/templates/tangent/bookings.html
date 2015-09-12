@@ -6,6 +6,16 @@
 {% endblock %}
 {% block content %}
     <div class="container text-content">
+        {% if messages %}
+            {% for message in messages %}
+              {% if "error" in message.tags %}
+                <div class="alert alert-danger" role="alert">
+              {% else %}
+                <div class="alert alert-success" role="alert">
+              {% endif %}
+              {{ message }}</div>
+            {% endfor %}
+        {% endif %}
         <table class="table">
         <thead><tr>
             <th>Event Name</th>
