@@ -1,155 +1,128 @@
-/**
- * Initialize the jquery ui and pre-populate the time and date fields
- */
-function populatePage() {
-    var day = new Date();
-    day.setDate(day.getDate() + 2);
-
-    $(function () {
-        $("#datepicker").datepicker();
-        $("#start_time").timepicker({'timeFormat': 'hh:mmtt'});
-        $("#end_time").timepicker({'timeFormat': 'hh:mmtt'});
-    });
-
-    $("#datepicker").val((day.getMonth() + 1).toString() + "/" + (day.getDay() + 1).toString() + "/" + (1900 + day.getYear()).toString());
-    $("#start_time").val((day.getHours() + 1).toString() + ":00");
-    $("#end_time").val((day.getHours() + 2).toString() + ":00");
+var calendar_codes = {
+    "cnd": "qppn4tv70id73d9ib9gj3t7iio@group.calendar.google.com",
+    "comfy": "uo9gqhdmiain37s82pa7n7dsck@group.calendar.google.com",
+    "hallway": "ccrmlglti2hug3dg7c732kflbs@group.calendar.google.com",
+    "new-proj": "t6jk1rnneup9pkg8kifs3ccl8k@group.calendar.google.com",
+    "karaoke": "k0ki15rfeu4sq4cpb9ion6npdo@group.calendar.google.com"
 }
 
 /**
  * Swap the calendar which is currently being viewed
  */
 function change_cal(cal) {
-    $(".calendars > iframe").removeClass("active-calendar");
-    $("#" + cal).addClass("active-calendar");
+    $("#calendar").attr('src', 'https://www.google.com/calendar/embed?src=' + 
+                                calendar_codes[cal] + '&ctz=America/Toronto');
 }
 
-/**
- * Alert the status of the booking
- * e.g. if the returned AJAX doesn't return a result then the booking failed, likely due to user action
- */
-function was_booking(data) {
-    if (data.result) {
-        alert("The booking has been made.");
+function parseTime(text) {
+    function pad_to_two_chars(number) {
+        return (number > 9) ? number : "0" + number;
+    }
+
+    var hour = 0;
+    var minutes = 0;
+
+    if (/\d{1,2}:\d{1,2}/.test(text)) {
+        var match = text.match(/(\d{1,2}):(\d{1,2})/);
+        if (!match) return false;
+        var hour = Number(match[1]);
+        var minutes = Number(match[2]);
+    } else if (/\d\d\d\d/.test(text)) {
+        var hour = Number(text[0] + text[1]);
+        var minutes = Number(text[2] + text[3]);
+    } else if (/\d\d\d/.test(text)) {
+        var hour = Number(text[0]);
+        var minutes = Number(text[1] + text[2]);
+    } else if (/\d\d/.test(text)) {
+        var hour = Number(text[0] + text[1]);
+    } else if (/\d/.test(text)) {
+        var hour = Number(text[0]);
+    }
+
+    if (/[pP][mM]/.test(text) || (!/[aA][mM]/.test(text) && (hour < 9))) {
+        if (hour != 12) hour += 12;
+    }
+
+    if (hour > 23 || hour < 0 || minutes < 0 || minutes > 59) return false;
+
+    if (hour > 11) {
+        if (hour != 12) hour -= 12;
+        return hour + ":" + pad_to_two_chars(minutes) + " PM";
+    } else if (hour === 0) {
+        return "12:" + pad_to_two_chars(minutes) + " AM";
     } else {
-        alert("The booking failed either because it was already taken, or because you booked an unavailable time.");
+        return hour + ":" + pad_to_two_chars(minutes) + " AM";
     }
 }
 
-/**
- * validate the user input and returned it once it's been cleaned
- *
- * returns:
- *      {Dict} of the form data, or False if invalid
- */
-function validate_input() {
-    var invalid_input = [];
-    var today = new Date();
-    var time_regex = '^[0-2]?[0-9](:[0-5][0-9])?( )?([pPaA][mM])?$';
+function check_input(input) {
+    var classes = input.classList;
+    if (input.type === 'submit') return true;
+    if (input.type === 'checkbox') {
+        if ($(input).is(":checked")) {
+            $(input).removeClass('invalid');
+            return true;
+        } else {
+            $(input).addClass('invalid');
+            return false;
+        }
+    }
 
-    var date_fields = $('#datepicker').val().split('/');
-    var start_time = $('#start_time').val();
-    var end_time = $('#end_time').val();
-
-    // if the date field is incorrect or the start/end time are incorrect formats, fail
-    if (date_fields.length !== 3 || !(Date.parse(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2])) || !start_time.match(time_regex) || !end_time.match(time_regex)) {
+    if (!input.value.length) {
+        $(input).addClass('invalid');
         return false;
     }
-    var day = new Date(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2]);
-    var end_day = new Date(date_fields[0] + "/" + date_fields[1] + "/" + date_fields[2]);
-
-    var start_time_suffix = start_time.substring(start_time.length - 2, start_time.length);
-    if (start_time_suffix.match('[pPaA][mM]')) {
-        start_time = start_time.substring(0, start_time.length - 2);
+    
+    if (classes.contains("timepicker")) {
+        var text = input.value;
+        if (/\d{1,2}:?\d{0,2} ?([pPaA][mM])?/.test(text)) {
+            var parsed = parseTime(text);
+            if (!parsed) {
+                $(input).addClass('invalid');
+                return false;
+            }
+            input.value = parsed;
+        } else {
+            $(input).addClass('invalid');
+            return false;
+        }
     }
-    var start_time_components = start_time.split(":").map(Number);
-    if (start_time_suffix.match('[pPaA][mM]') && start_time_components[0] === 12) {
-        start_time_components[0] = 0;
-    }
-    if (start_time_suffix.match('[pP][mM]')) {
-        start_time_components[0] += 12;
-    }
-    if (start_time_components[0] > 23) {
-        return false;
-    }
-
-    day.setHours(start_time_components[0]);
-    if (start_time_components[1]) day.setMinutes(start_time_components[1]);
-
-    if (day - today < 172800000) {
-        return false;
-    } // booking earlier in advance than 48 hours
-    var end_time_suffix = end_time.substring(end_time.length - 2, end_time.length);
-    if (end_time_suffix.match('[pPaA][mM]')) {
-        end_time = end_time.substring(0, end_time.length - 2);
-    }
-    var end_time_components = end_time.split(":").map(Number);
-    if (end_time_suffix.match('[pPaA][mM]') && end_time_components[0] === 12) {
-        end_time_components[0] = 0;
-    }
-    if (end_time_suffix.match('[pP][mM]')) {
-        end_time_components[0] += 12;
-    }
-
-    if (end_time_components[0] > 23) {
-        return false;
-    }
-
-    end_day.setHours(end_time_components[0]);
-    if (end_time_components[1]) end_day.setMinutes(end_time_components[1]);
-
-    if ((start_time_components[0] === end_time_components[0]) &&
-        ((start_time_components.length === 1 && end_time_components.length === 1) ||
-            ((start_time_components.length === 2 && end_time_components.length === 2) && (start_time_components[1] === end_time_components[1])))) {
-        return false;
-    }
-
-    // If end_time comes before start_time, end_day should be the next day
-    if ((start_time_components[0] > end_time_components[0]) ||
-        ((start_time_components[0] === end_time_components[0]) && ((start_time_components.length > end_time_components.length) ||
-            (start_time_components[1] > end_time_components[1])))) {
-        end_day.setDate(end_day.getDate() + 1);
-    }
-
-    var calendar_id = $("#calendar_id").val();
-    var calender_code;
-    if (calendar_id === "cnd") {
-        calender_code = "qppn4tv70id73d9ib9gj3t7iio@group.calendar.google.com";
-    }
-    else if (calender_id === "comfy") {
-        calender_code = "uo9gqhdmiain37s82pa7n7dsck@group.calendar.google.com";
-    }
-    else if (calender_id === "hallway") {
-        calender_code = "ccrmlglti2hug3dg7c732kflbs@group.calendar.google.com";
-    }
-    else if (calender_id === "new-proj") {
-        calender_code = "t6jk1rnneup9pkg8kifs3ccl8k@group.calendar.google.com";
-    }
-    else if (calender_id === "karaoke") {
-        calender_code = "k0ki15rfeu4sq4cpb9ion6npdo@group.calendar.google.com";
-    }
-
-    return {'start': day.toISOString(),
-        'end': end_day.toISOString(),
-        'calendar_id': calender_code,
-        'eventname': $("#eventname").val(),
-        'contactname': $("#contactname").val(),
-        'contactemail': $("#contactemail").val(),
-        'organisation': $("#organisation").val()
-    };
+    $(input).removeClass('invalid');
+    return true;
 }
 
-populatePage();
+$().ready(function () {
+    function toShortISO(date) {
+        function pad(num) { return (num < 10) ? '0' + num : num};
+        return date.getFullYear() + "-" + 
+                pad(date.getMonth() + 1) + "-" + 
+                pad(date.getDate());
+    }
 
-$("form").submit(function (event) {
-    var validated_input = validate_input();
-    if (validated_input !== false) {
+    var picker = new Pikaday({ 
+        field: $('#datepicker')[0],
+        onSelect: function() {
+            $("#datepicker").val(toShortISO(picker.getDate()));
+        },
+        minDate: new Date()
+    });
+
+    $("form").on('submit', function (event) {
+        var form = $(this);
         event.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: post_url,
-            data: validated_input,
-            success: was_booking
-        });
-    }
+        var inputs = $("form").find("input").toArray();
+        var all_inputs_validated = true;
+        for (var i = 0; i < inputs.length; i++) {
+            console.log(inputs[i], inputs[i].value)
+            if (!check_input(inputs[i])) all_inputs_validated = false;
+        }
+        if (all_inputs_validated) {
+            $("form").off('submit')
+            form.submit();
+        }
+    });
+
+    $("form input").on('change', function (event) {
+        check_input(event.target)
+    });
 });
