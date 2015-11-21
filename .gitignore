@@ -4,5 +4,6 @@ venv/
 /.idea
 db.sqlite3
 services/google_keys/
-keys_and_pws/
+keys_and_pws/*
+!keys_and_pws/README.md
 *.p12

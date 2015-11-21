@@ -137,10 +137,12 @@ def add_to_calendar(booking):
             event = {
                 'summary': booking.event_name + " - " + booking.organisation,
                 'start': {
-                    'dateTime': booking.start.strftime("%Y-%m-%dT%H:%M:00-04:00")
+                    'dateTime': booking.start.strftime("%Y-%m-%dT%H:%M:00"),
+                    'timeZone': "America/Toronto"
                 },
                 'end': {
-                    'dateTime': booking.end.strftime("%Y-%m-%dT%H:%M:00-04:00")
+                    'dateTime': booking.end.strftime("%Y-%m-%dT%H:%M:00"),
+                    'timeZone': "America/Toronto"
                 },
                 'attendees': [
                     {
