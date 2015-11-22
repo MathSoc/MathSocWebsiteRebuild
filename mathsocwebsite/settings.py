@@ -17,14 +17,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '08ot*-$rea13!r$u@bxrs-z&(e(&!qn-p5!nu44ib@t&2!%dz@'
+try:
+    with open(os.path.join('keys_and_pws', 'secret_key')) as f:
+        SECRET_KEY = f.read()
+except Exception as e:
+    print "No secret_key file found, using default"
+    SECRET_KEY = '08ot*-$rea13!r$u@bxrs-z&(e(&!qn-p5!nu44ib@t&2!%dz@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,11 +71,20 @@ WSGI_APPLICATION = 'mathsocwebsite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+try:
+    with open(os.path.join(BASE_DIR, 'keys_and_pws', 'database_pw')) as f:
+        DATABASE_PW = f.read()
+except Exception as e:
+    print "No database_pw file found, will fail"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mathsoc',
+        'USER': 'mathsoc',
+        'PASSWORD': DATABASE_PW,
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
 
@@ -91,12 +105,17 @@ CAS_SERVER_URL = "https://cas.uwaterloo.ca/cas/"
 CAS_LOGOUT_COMPLETELY = True
 CAS_PROVIDE_URL_TO_LOGOUT = True
 
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = '/var/www/mathsocwebsite/static' ## Used for collectstatic deployments with apache
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
@@ -120,7 +139,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mathsocbookings'
 try:
-    with open(os.path.join("keys_and_pws", "mathsocbookings-gmail-pw")) as f:
+    with open(os.path.join(BASE_DIR, "keys_and_pws", "mathsocbookings-gmail-pw")) as f:
         EMAIL_HOST_PASSWORD = f.read()
 except: 
     print "Missing password for bookings email, won't be able to send emails to people after approving or rejecting a booking"
