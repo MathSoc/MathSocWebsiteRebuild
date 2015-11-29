@@ -2,6 +2,22 @@ from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.models import User
 from tangent.models import Position, Member, Organization
 
+# ---------- HELPERS -----------------
+
+def get_all_orgs_from_positions(positions):
+    orgs = {}
+    for pos in positions:
+        org = pos.organization
+        if org.name in orgs:
+            orgs[org.name]['positions'].append(pos)
+        else:
+            orgs[org.name] = {
+                'description': org.description,
+                'positions': [pos]
+            }
+    return orgs
+
+# --------- View Functions ------------
 
 def index(request):
     return render(request, 'frontend/index.html')
@@ -37,10 +53,15 @@ def office(request):
 
 
 def volunteers(request):
-    free_positions = Position.objects.filter(occupied_by=None)
-    occupied_positions = Position.objects.exclude(occupied_by=None)
-    context_dict = {'free_positions': free_positions,
-                    'occupied_positions': occupied_positions}
+    free_positions = Position.objects.filter(
+        occupied_by=None,
+        want_applicaitons=True
+    ).select_related('organization__name', 'organization__description')
+    occupied_positions = Position.objects.exclude(
+        occupied_by=None
+    ).select_related('organization__name', 'organization__description')
+    context_dict = {'free_position_orgs': get_all_orgs_from_positions(free_positions),
+                    'occupied_position_orgs': get_all_orgs_from_positions(occupied_positions)}
     return render(request, 'frontend/volunteers.html', context_dict)
 
 def position(request, pos_id):

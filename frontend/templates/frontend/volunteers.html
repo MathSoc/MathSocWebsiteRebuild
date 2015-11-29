@@ -12,32 +12,40 @@
         <div class="row">
             <div class="col-xs-12">
                 <h3>
-                    {% if free_positions %}
+                    {% if free_position_orgs %}
                         <h2>Free Positions</h2>
                         We need you! If any unclaimed positions on this list interest you, click to apply!
                     {% else %}
                         Sorry, there are no free positions right now. If there is something you think we are missing,
-                        or a way you want to help out, please email us at admin@admin.admin.
+                        or a way you want to help out, please email us at mathsoc@mathsoc.uwaterloo.ca .
                     {% endif %}
                 </h3>
 
                 <ul>
-                    {% for pos in free_positions|dictsort:"organization" %}
-                        <h3>{{ pos.organization }}</h3>
-                        {{ pos.organization.description }}
-                        <li><a href="{% url "frontend_position" pos_id=pos.id %}"><div>{{ pos.title }}</div></a></li>
+                    {% for name, org in free_position_orgs.items %}
+                        <li><h3>{{ name }}</h3>
+                        {{ org.description }}
+                        <ul>
+                        {% for pos in org.positions %}
+                            <li><a href="{% url "frontend_position" pos_id=pos.id %}"><div>{{ pos.title }}</div></a></li>
+                        {% endfor %}
+                        </ul></li>
                     {% endfor %}
                 </ul>
 
                 <h2>Current Positions</h2>
 
                 <ul>
-                    {% for pos in occupied_positions %}
-
-                        <li>{{ pos.title }}:
-                            {{ pos.occupied_by.user.first_name }}
-                            {{ pos.occupied_by.user.last_name }}</li>
-
+                    {% for name, org in occupied_position_orgs.items %}
+                        <li><h3>{{ name }}</h3>
+                        {{ org.description }}
+                        <ul>
+                        {% for pos in org.positions %}
+                            <li>{{ pos.title }}:
+                                {{ pos.occupied_by.user.first_name }}
+                                {{ pos.occupied_by.user.last_name }}</li>
+                        {% endfor %}
+                        </ul></li>
                     {% endfor %}
                 </ul>
             </div>

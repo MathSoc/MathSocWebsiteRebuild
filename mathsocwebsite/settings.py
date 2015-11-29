@@ -25,7 +25,7 @@ except Exception as e:
     SECRET_KEY = '08ot*-$rea13!r$u@bxrs-z&(e(&!qn-p5!nu44ib@t&2!%dz@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = False
 

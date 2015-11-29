@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 import os
-
 
 def upload_file_to(self, filename):
     return os.path.join(
@@ -20,7 +20,6 @@ class Member(models.Model):
     user = models.OneToOneField(User)
 
     #Services
-    has_locker = models.BooleanField(default=False)  # redundant, repeated on Locker model (foreign key)
     requested_refund = models.BooleanField(default=False)
     used_resources = models.BooleanField(default=False)
 
@@ -28,8 +27,6 @@ class Member(models.Model):
     bio = models.TextField(default="", blank=True, null=True)
     picture = models.ImageField(blank=True, null=True, upload_to='profile_pictures')
     website = models.URLField(blank=True, null=True)
-    # the position title can be found by looking at the name on positions
-    is_volunteer = models.BooleanField(default=False)  # slightly redundant
 
     # Will indicate interest for the current term, which will forward resume and cover letter
     interested_in = models.ManyToManyField('Position', blank=True)
@@ -41,6 +38,11 @@ class Member(models.Model):
     def __unicode__(self):
         return self.user.username
 
+def create_member(sender, instance, created, **kwargs):  
+    if created:  
+       member, created = Member.objects.get_or_create(user=instance)  
+
+post_save.connect(create_member, sender=User) 
 
 class Announcement(models.Model):
     # determines what order posts appear on the page
@@ -74,15 +76,15 @@ class Organization(models.Model):
         ('MATH_GOV', 'MathSoc Governance'),
         ('COMM', 'MathSoc Committee')
     ), max_length=32)
-    positions = models.ManyToManyField('Position')
 
-    # of variable relevancy depending on classification
-    #TODO this should maybe be a list of members
-    member_count = models.IntegerField(default=0)
+    auto_position = models.ForeignKey('Position', blank=True, null=True, related_name='+') 
+    # Related name is + since we don't need backward links, and we would otherwise have duplicate names from Position's
+    # organization field
+
+    members = models.ManyToManyField('Member', blank=True)
     fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
-    documents = models.ManyToManyField('OrganizationDocument', blank=True)
 
     def __unicode__(self):
         return self.name
@@ -93,6 +95,7 @@ class OrganizationDocument(models.Model):
     description = models.TextField(default="")
     date_added = models.DateField(auto_now_add=True)
     last_modified = models.DateField(auto_now=True)
+    organization = models.ForeignKey('Organization', default=None)
 
     # TODO if document is .tex generate pdf
     file = models.FileField(upload_to=upload_file_to)
@@ -104,18 +107,21 @@ class OrganizationDocument(models.Model):
 class Position(models.Model):
     title = models.CharField(max_length=256)
     responsibilities = models.TextField(blank=True, null=True)
-    is_admin = models.BooleanField(default=False)
-
-    start_date = models.DateField(blank=True, null=True)
-    end_date = models.DateField(blank=True, null=True)
+    is_admin = models.BooleanField(default=False) # Can do anything (overrides all other permissions, only admins can manage members, organization info, etc)
+    can_post = models.BooleanField(default=False)
+    can_edit = models.BooleanField(default=False) # People who can post can only edit their own posts, these people can edit all org posts    
+    can_manage_bookings = models.BooleanField(default=False)
+    can_create_meetings =  models.BooleanField(default=False)
+    can_add_files_to_meetings = models.BooleanField(default=False)
+    organization = models.ForeignKey('Organization', default=None)
+    want_applications = models.BooleanField(default=False)
 
     key_holder = models.BooleanField(default=False)
-    has_key = models.BooleanField(default=False)
 
-    occupied_by = models.ForeignKey(Member, blank=True, null=True)
+    occupied_by = models.ManyToManyField(Member, blank=True, default=None)
 
     def __unicode__(self):
-        return self.title
+        return self.title + " - " + self.organization.name
 
 
 class Scholarship(models.Model):
