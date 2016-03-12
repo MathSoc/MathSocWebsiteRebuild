@@ -139,8 +139,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mathsocbookings'
 try:
-    with open(os.path.join(BASE_DIR, "keys_and_pws", "mathsocbookings-gmail-pw")) as f:
+    with open(os.path.join(BASE_DIR, "keys_and_pws", "mathsocbookings_gmail_pw")) as f:
         EMAIL_HOST_PASSWORD = f.read()
-except: 
+except:
     print "Missing password for bookings email, won't be able to send emails to people after approving or rejecting a booking"
 EMAIL_PORT = 587

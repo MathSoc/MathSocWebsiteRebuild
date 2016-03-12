@@ -19,19 +19,35 @@ import os
 # ---------- HELPERS -------------
 
 def email_booking(booking, was_accepted):
-    past_verb = "accepted"
-    if not was_accepted: past_verb = "rejected"
+    mail_template = """Hello {contact_name},
 
+    Your booking request for {event_name} at {date_time_range} has been {status}
+
+    If you require anymore information, please contact the VPO at vpo@mathsoc.uwaterloo.ca.
+
+    Thanks,
+    Vice President Operations,
+    Mathematics Society"""
+
+    past_verb = "accepted"
+    if not was_accepted:
+        past_verb = "rejected"
+    date_time_range = booking.start.strftime("%b %d %Y, %I:%M %p - ") + booking.end.strftime("%I:%M %p")
     try:
-        send_mail("MathSoc: Your Booking Request has been " + past_verb, 
-            "Hello " + booking.contact_name + ",\n\n" +
-            "Your booking request for " + booking.event_name + " at " +
-            booking.start.strftime("%b %d %Y, %I:%M %p - ") + booking.end.strftime("%I:%M %p") +
-            " has been " + past_verb + ". If you require anymore information, please contact the VPO" +
-            " at vpo@mathsoc.uwaterloo.ca.\n\nThank you & have a great day,\nVice President Operations, Mathematics Society",
+        send_mail(
+            "MathSoc: Your Booking Request has been {status}".format(
+                status=past_verb
+            ),
+            mail_template.format(
+                contact_name=booking.contact_name,
+                event_name=booking.event_name,
+                date_time_range=date_time_range,
+                status=past_verb
+            ),
             from_email="mathsocbookings@gmail.com",
-            recipient_list=[booking.contact_email], 
-            fail_silently=False)
+            recipient_list=[booking.contact_email],
+            fail_silently=False
+        )
         print "EMAIL SUCCESSFULLY SENT"
     except Exception as e:
         print "EMAIL SENT UNSUCCESSFULLY, error: " + str(e)
@@ -40,19 +56,26 @@ def add_to_calendar(booking):
     # Certificate Fingerprint: 8634ef128fc6289f0e961aede36ad69498b515a8
     client_email = '122929914589-8rdj6ad0k11ts3av26jb7u9jhe06i13f@developer.gserviceaccount.com'
     try:
-        with open(os.path.join('keys_and_pws', 'bookings-cert-8634ef128fc6.p12')) as f:
+        with open(os.path.join('keys_and_pws', 'bookings_calendar_cert.p12')) as f:
             private_key = f.read()
     except Exception as e:
         print "Failed getting calendar private key: " + str(e)
         return "No api key available"
-    credentials = SignedJwtAssertionCredentials(client_email, private_key,
-                                                'https://www.googleapis.com/auth/calendar')
+    credentials = SignedJwtAssertionCredentials(
+        client_email,
+        private_key,
+        'https://www.googleapis.com/auth/calendar'
+    )
     http_auth = credentials.authorize(Http())
 
     service = build('calendar', 'v3', http=http_auth)
 
-    events = service.events().list(calendarId=booking.calendar_id, timeMin=booking.start.strftime("%Y-%m-%dT%H:%M:00-04:00"),
-                                   timeMax=booking.end.strftime("%Y-%m-%dT%H:%M:00-04:00")).execute()
+    events = service.events().list(
+        calendarId=booking.calendar_id,
+        timeMin=booking.start.strftime("%Y-%m-%dT%H:%M:00-04:00"),
+        timeMax=booking.end.strftime("%Y-%m-%dT%H:%M:00-04:00")
+    ).execute()
+
     if not events[u'items']:
         try:
             event = {
@@ -131,7 +154,9 @@ def website(request):
 @login_required
 def bookings(request, show_all=False):
     if not show_all:
-        requests = BookingRequest.objects.filter(end__gte=datetime.datetime.today()).order_by('status', 'start')
+        requests = BookingRequest.objects.filter(
+            end__gte=datetime.datetime.today()
+        ).order_by('status', 'start')
     else:
         requests = BookingRequest.objects.order_by('-start')
     return render(request, 'tangent/bookings.html', {'requests': requests})
@@ -141,7 +166,7 @@ def booking(request, booking_id):
     booking = get_object_or_404(BookingRequest, id=booking_id)
     return render(request, 'tangent/booking.html', {'booking': booking})
 
-@login_required 
+@login_required
 @require_POST
 def reject_booking(request, booking_id):
     booking = get_object_or_404(BookingRequest, id=booking_id)
@@ -152,8 +177,8 @@ def reject_booking(request, booking_id):
     email_booking(booking, was_accepted=False)
     messages.success(request, "Booking was sucessfully rejected")
     return HttpResponseRedirect(reverse('tangent_bookings'))
-    
-@login_required 
+
+@login_required
 @require_POST
 def accept_booking(request, booking_id):
     booking = get_object_or_404(BookingRequest, id=booking_id)
@@ -164,7 +189,10 @@ def accept_booking(request, booking_id):
         booking.status = BookingRequest.ACCEPTED_STATUS
         booking.save()
         email_booking(booking, was_accepted=True)
-        messages.success(request, "Booking was sucessfully accepted, it should now appear in the appropriate calendar")
+        messages.success(
+            request,
+            "Booking was sucessfully accepted, it should now appear in the appropriate calendar"
+        )
     else:
         messages.error(request, "Booking did not succeed, " + result)
     return HttpResponseRedirect(reverse('tangent_bookings'))
