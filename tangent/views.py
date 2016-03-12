@@ -19,15 +19,8 @@ import os
 # ---------- HELPERS -------------
 
 def email_booking(booking, was_accepted):
-    mail_template = """Hello {contact_name},
-
-    Your booking request for {event_name} at {date_time_range} has been {status}
-
-    If you require anymore information, please contact the VPO at vpo@mathsoc.uwaterloo.ca.
-
-    Thanks,
-    Vice President Operations,
-    Mathematics Society"""
+    with open(os.path.join('tangent', 'templates', 'mail', 'booking_status.txt')) as f:
+        mail_template = f.read()
 
     past_verb = "accepted"
     if not was_accepted:

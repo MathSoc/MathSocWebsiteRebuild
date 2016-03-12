@@ -1,0 +1,9 @@
+Hello {contact_name},
+
+Your booking request for {event_name} on {date_time_range} has been {status}.
+
+If you require anymore information, please contact the VPO at vpo@mathsoc.uwaterloo.ca.
+
+Thanks,
+Vice President Operations,
+Mathematics Society
