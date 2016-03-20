@@ -8,6 +8,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
+from __future__ import unicode_literals
+
+import logging
+logger = logging.getLogger(__name__)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -21,11 +26,12 @@ try:
     with open(os.path.join('keys_and_pws', 'secret_key')) as f:
         SECRET_KEY = f.read()
 except Exception as e:
-    print "No secret_key file found, using default"
+    logger.info("No secret_key file found, using default")
     SECRET_KEY = '08ot*-$rea13!r$u@bxrs-z&(e(&!qn-p5!nu44ib@t&2!%dz@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+PORT = 8001
 
 TEMPLATE_DEBUG = False
 
@@ -68,6 +74,34 @@ ROOT_URLCONF = 'mathsocwebsite.urls'
 
 WSGI_APPLICATION = 'mathsocwebsite.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': [],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propogate': True
+        }
+    }
+}
+
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -75,7 +109,7 @@ try:
     with open(os.path.join(BASE_DIR, 'keys_and_pws', 'database_pw')) as f:
         DATABASE_PW = f.read()
 except Exception as e:
-    print "No database_pw file found, will fail"
+    logger.error("No database_pw file found, will fail")
 
 DATABASES = {
     'default': {
@@ -142,5 +176,9 @@ try:
     with open(os.path.join(BASE_DIR, "keys_and_pws", "mathsocbookings_gmail_pw")) as f:
         EMAIL_HOST_PASSWORD = f.read()
 except:
-    print "Missing password for bookings email, won't be able to send emails to people after approving or rejecting a booking"
+    logger.info(
+        "Missing password for bookings email, "
+        "won't be able to send emails to people "
+        "after approving or rejecting a booking"
+    )
 EMAIL_PORT = 587

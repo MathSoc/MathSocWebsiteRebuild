@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
@@ -8,13 +9,18 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from tangent.models import Organization, Position
 from services.models import BookingRequest
-from oauth2client.client import SignedJwtAssertionCredentials
+from oauth2client import tools
+from oauth2client.service_account import ServiceAccountCredentials
 from apiclient.discovery import build
 from django.core.urlresolvers import reverse
 from httplib2 import Http
+from io import open
 import datetime
+import logging
 import sys
 import os
+
+logger = logging.getLogger(__name__)
 
 # ---------- HELPERS -------------
 
@@ -41,24 +47,19 @@ def email_booking(booking, was_accepted):
             recipient_list=[booking.contact_email],
             fail_silently=False
         )
-        print "EMAIL SUCCESSFULLY SENT"
+        logger.info("EMAIL SUCCESSFULLY SENT")
     except Exception as e:
-        print "EMAIL SENT UNSUCCESSFULLY, error: " + str(e)
+        logger.error("EMAIL SENT UNSUCCESSFULLY, error: {}".format(e))
 
 def add_to_calendar(booking):
     # Certificate Fingerprint: 8634ef128fc6289f0e961aede36ad69498b515a8
     client_email = '122929914589-8rdj6ad0k11ts3av26jb7u9jhe06i13f@developer.gserviceaccount.com'
-    try:
-        with open(os.path.join('keys_and_pws', 'bookings_calendar_cert.p12')) as f:
-            private_key = f.read()
-    except Exception as e:
-        print "Failed getting calendar private key: " + str(e)
-        return "No api key available"
-    credentials = SignedJwtAssertionCredentials(
+    credentials = ServiceAccountCredentials.from_p12_keyfile(
         client_email,
-        private_key,
-        'https://www.googleapis.com/auth/calendar'
+        'keys_and_pws/bookings_calendar_cert.p12',
+        scopes=['https://www.googleapis.com/auth/calendar']
     )
+
     http_auth = credentials.authorize(Http())
 
     service = build('calendar', 'v3', http=http_auth)
@@ -91,7 +92,7 @@ def add_to_calendar(booking):
             created_event = service.events().insert(calendarId=booking.calendar_id, body=event).execute()
             return None
         except Exception as e:
-            print "Could not insert calendar event:", str(e)
+            logger.error("Could not insert calendar event: {}".format(e))
             return "Received an error from the Google Calendar API when trying to add event"
     else:
         return "Event overlaps with another"

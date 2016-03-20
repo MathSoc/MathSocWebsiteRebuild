@@ -1,6 +1,10 @@
+from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.models import User
 from tangent.models import Position, Member, Organization
+import logging
+
+logger = logging.getLogger(__name__)
 
 # ---------- HELPERS -----------------
 
@@ -44,7 +48,7 @@ def office(request):
     try:
         org = Organization.objects.get(name="MathSoc Office")
     except Organization.DoesNotExist:
-        print "org DNE"
+        logger.error("org DNE")
 
     context_dict = {
         'org': org
@@ -55,7 +59,7 @@ def office(request):
 def volunteers(request):
     free_positions = Position.objects.filter(
         occupied_by=None,
-        want_applicaitons=True
+        want_applications=True
     ).select_related('organization__name', 'organization__description')
     occupied_positions = Position.objects.exclude(
         occupied_by=None

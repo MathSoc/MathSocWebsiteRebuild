@@ -1,8 +1,11 @@
+from __future__ import unicode_literals
 from django.http import HttpResponse
 from external_api.models import Faculty, Student
 from django.shortcuts import render
+import logging
 import json
 
+logger = logging.getLogger(__name__)
 
 def students(request):
     if request.method == "POST":
@@ -55,7 +58,7 @@ def student(request, quest_id):
 
 def faculties(request):
     if request.method == "POST":
-        print request.POST
+        logger.info(request.POST)
         if 'faculty' not in request.POST:
             return HttpResponse(json.dumps({
                                 'error': "Improper format"}),
@@ -68,7 +71,6 @@ def faculties(request):
             return HttpResponse(json.dumps({'error': "A faculty with that description already exists"}),
                                 content_type='application/json')
         else:
-            print "MADE IT!"
             new_faculty = Faculty(desc=info['desc'])
             new_faculty.save()
             return HttpResponse(json.dumps({'success': "Faculty added to the school"}),

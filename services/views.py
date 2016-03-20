@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -179,7 +180,7 @@ def bookings(request):
 
         if request.POST['calendar_id'] not in calendar_ids:
             messages.error(request, "Invalid calendar selected")
-            return render(request, 'services/bookings.html')    
+            return render(request, 'services/bookings.html')
 
         if not re.match(r"\d{1,2}:\d\d [AP]M", request.POST['start-time']):
             messages.error(request, "Invalid format for starting time (correct example: 1:30 PM)")
@@ -218,11 +219,11 @@ def bookings(request):
             calendar_id=calendar_ids[request.POST['calendar_id']],
             calendar=request.POST['calendar_id'],
             requesting_id=request.user.username,
-            contact_name=request.POST['contact-name'],                                                                                                  
+            contact_name=request.POST['contact-name'],
             contact_email=request.POST['contact-email'],
             contact_phone=request.POST['contact-phone'],
             organisation=request.POST['organisation'],
-            event_name=request.POST['event-name'],                                                                                                          
+            event_name=request.POST['event-name'],
             start = start,
             end = end)
 

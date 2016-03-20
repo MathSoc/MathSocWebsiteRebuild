@@ -1,9 +1,14 @@
+from __future__ import unicode_literals
+
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 
 
 def populate():
     for i in range(10):
-        print i
+        logger.debug(i)
         add_locker(str(i*111111), 0)
 
 
