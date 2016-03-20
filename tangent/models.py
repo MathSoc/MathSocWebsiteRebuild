@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from oat.helpers import is_society_member
 import os
 
 def upload_file_to(self, filename):
@@ -38,11 +39,14 @@ class Member(models.Model):
     def __unicode__(self):
         return self.user.username
 
-def create_member(sender, instance, created, **kwargs):  
-    if created:  
-       member, created = Member.objects.get_or_create(user=instance)  
+    def is_society_member(self):
+        return is_society_member(self.user.username)
 
-post_save.connect(create_member, sender=User) 
+def create_member(sender, instance, created, **kwargs):
+    if created:
+       member, created = Member.objects.get_or_create(user=instance)
+
+post_save.connect(create_member, sender=User)
 
 class Announcement(models.Model):
     # determines what order posts appear on the page
@@ -77,7 +81,7 @@ class Organization(models.Model):
         ('COMM', 'MathSoc Committee')
     ), max_length=32)
 
-    auto_position = models.ForeignKey('Position', blank=True, null=True, related_name='+') 
+    auto_position = models.ForeignKey('Position', blank=True, null=True, related_name='+')
     # Related name is + since we don't need backward links, and we would otherwise have duplicate names from Position's
     # organization field
 
@@ -109,7 +113,7 @@ class Position(models.Model):
     responsibilities = models.TextField(blank=True, null=True)
     is_admin = models.BooleanField(default=False) # Can do anything (overrides all other permissions, only admins can manage members, organization info, etc)
     can_post = models.BooleanField(default=False)
-    can_edit = models.BooleanField(default=False) # People who can post can only edit their own posts, these people can edit all org posts    
+    can_edit = models.BooleanField(default=False) # People who can post can only edit their own posts, these people can edit all org posts
     can_manage_bookings = models.BooleanField(default=False)
     can_create_meetings =  models.BooleanField(default=False)
     can_add_files_to_meetings = models.BooleanField(default=False)

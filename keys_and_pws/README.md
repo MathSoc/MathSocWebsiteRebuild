@@ -9,3 +9,5 @@ database password: database_pw
 mathsocbookings gmail password: mathsocbookings_gmail_pw
 
 django secret key: secret_key
+
+oat private key: oat_pkey.pcks8

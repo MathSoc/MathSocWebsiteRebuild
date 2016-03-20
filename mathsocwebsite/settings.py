@@ -31,11 +31,12 @@ except Exception as e:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-PORT = 8001
 
 TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+CURRENT_TERM = 1161
 
 
 # Application definition
