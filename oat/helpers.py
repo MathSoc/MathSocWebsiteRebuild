@@ -14,16 +14,22 @@ api_user = "_mathsocmbrtest"
 
 def is_society_member(userid):
     oat = liboat.Session(api_user, api_key, oat_base_url)
-    r = oat.get("/api/v2/student/{userid}/societyMember/MAT.{term}".format(
-        userid=userid,
-        term=settings.CURRENT_TERM
-    ))
-    if r.status_code == 200:
-        return True
-    elif r.status_code != 404:
-        logger.error("Got unexpected status code on checking society membership: {}".format(
-            json.dumps(r.json())
+    try:
+        r = oat.get("/api/v2/student/{userid}/societyMember/MAT.{term}".format(
+            userid=userid,
+            term=settings.CURRENT_TERM
         ))
+        if r.status_code == 200:
+            logger.debug("{} is society member".format(userid))
+            return True
+    except Exception as e:
+        if len(e.args) and e.args[0]:
+            e_dict = json.loads(e.args[0])
+            if e_dict['error']['status'] == 404:
+                logger.debug("{} is not a society member".format(userid))
+            logger.error("Got unexpected response: {}".format(e_dict))
+        else:
+            raise e
 
     return False
 
