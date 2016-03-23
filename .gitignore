@@ -8,3 +8,4 @@ keys_and_pws/*
 !keys_and_pws/README.md
 *.p12
 .DS_STORE
+*.swp

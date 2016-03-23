@@ -31,8 +31,8 @@ class Locker(models.Model):
         else:  # num == 4 or more
             self.combo_number = self.combo4
 
-    def __unicode__(self):
-        owner = self.owner.__unicode__() if self.owner else ""
+    def __str__(self):
+        owner = self.owner.__str__() if self.owner else ""
         return str(self.locker_number) + "  " + owner
 
 
@@ -44,7 +44,7 @@ class Exam(models.Model):
 
     file = models.FileField(upload_to='exams')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -54,7 +54,7 @@ class CourseEvaluation(models.Model):
 
     file = models.FileField(upload_to='course_evaluations')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.semester
 
 class BookingRequest(models.Model):
@@ -79,5 +79,5 @@ class BookingRequest(models.Model):
     start         = models.DateTimeField()
     end           = models.DateTimeField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.event_name

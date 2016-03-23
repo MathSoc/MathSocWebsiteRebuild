@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -36,7 +38,7 @@ class Member(models.Model):
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
     cover_letter = models.TextField(default="", blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username
 
     def is_society_member(self):
@@ -62,7 +64,7 @@ class Announcement(models.Model):
     # TODO implement
     action = models.URLField(blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
@@ -81,16 +83,12 @@ class Organization(models.Model):
         ('COMM', 'MathSoc Committee')
     ), max_length=32)
 
-    auto_position = models.ForeignKey('Position', blank=True, null=True, related_name='+')
-    # Related name is + since we don't need backward links, and we would otherwise have duplicate names from Position's
-    # organization field
-
     members = models.ManyToManyField('Member', blank=True)
     fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -104,7 +102,7 @@ class OrganizationDocument(models.Model):
     # TODO if document is .tex generate pdf
     file = models.FileField(upload_to=upload_file_to)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -124,7 +122,7 @@ class Position(models.Model):
 
     occupied_by = models.ManyToManyField(Member, blank=True, default=None)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title + " - " + self.organization.name
 
 
@@ -136,7 +134,7 @@ class Scholarship(models.Model):
     description = models.TextField(default="")
     website = models.URLField(default="")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -159,7 +157,7 @@ class Meeting(models.Model):
     class Meta:
         ordering = ['-date']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.date.isoformat()
 
 
@@ -170,5 +168,5 @@ class Log(models.Model):
     body = models.TextField()
     user = models.ForeignKey(Member)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
