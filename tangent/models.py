@@ -44,6 +44,22 @@ class Member(models.Model):
     def is_society_member(self):
         return is_society_member(self.user.username)
 
+    def can_post(self):
+        return self.position_set.filter(
+            can_post=True
+        )
+
+    def can_edit(self):
+        return self.position_set.filter(
+            can_edit=True
+        )
+
+    def is_org_admin(self, org):
+        for position in org.position_set.filter(is_admin=True):
+            if position.occupied_by.filter(id=self.id):
+                return True
+        return False
+
 def create_member(sender, instance, created, **kwargs):
     if created:
        member, created = Member.objects.get_or_create(user=instance)
@@ -111,7 +127,7 @@ class Position(models.Model):
     responsibilities = models.TextField(blank=True, null=True)
     is_admin = models.BooleanField(default=False) # Can do anything (overrides all other permissions, only admins can manage members, organization info, etc)
     can_post = models.BooleanField(default=False)
-    can_edit = models.BooleanField(default=False) # People who can post can only edit their own posts, these people can edit all org posts
+    can_edit = models.BooleanField(default=False) # People who can post can only edit their own posts, these people can edit all announcements
     can_manage_bookings = models.BooleanField(default=False)
     can_create_meetings =  models.BooleanField(default=False)
     can_add_files_to_meetings = models.BooleanField(default=False)

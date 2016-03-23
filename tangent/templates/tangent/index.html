@@ -25,21 +25,29 @@
     </div>
 
     <div class="container">
+        {% if organizations.count or can_post %}
         <hr class="spacer">
         <h1>Manage:</h1>
-        {% for org in organizations %}
-            <a href="{% url 'tangent_organization' org_id=org.id %}" class="feed-item">
-                <div class="row">
-                    <div class="col-lg-12 content">
-                        <h2>{{ org.name }}</h2>
-                        <p>
-                           {{ org.description }}
-                        </p>
-                    </div>
-                    <hr class="spacer">
-                </div>
+        {% if can_post %}
+            <a href="#" class="feed-item">
+                <div class="row"><div class="col-lg-12 content"><h2>Announcements</h2></div></div>
             </a>
-        {% endfor %}
+            <hr class="spacer">
+        {% endif %}
+            {% for org in organizations %}
+                <a href="{% url 'tangent_organization' org_id=org.id %}" class="feed-item">
+                    <div class="row">
+                        <div class="col-lg-12 content">
+                            <h2>{{ org.name }}</h2>
+                            <p>
+                               {{ org.description }}
+                            </p>
+                        </div>
+                        <hr class="spacer">
+                    </div>
+                </a>
+            {% endfor %}
+        {% endif %}
     </div>
 
 {% endblock %}

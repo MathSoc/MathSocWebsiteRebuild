@@ -116,24 +116,15 @@ def home(request):
         ).select_related('organization')
     else:
         organizations = Organization.objects.all()
-    context_dict = {'organizations': organizations}
+    can_post = user.is_staff or user.member.can_post()
+    context_dict = {'organizations': organizations, 'can_post': can_post}
     return render(request, 'tangent/index.html', context_dict)
 
 
 def organization(request, org_id):
     user = None
-    is_org_admin = False
     org = Organization.objects.get(id=org_id)
-    positions = []
-    if request.user:
-        user = request.user
-        for position in org.position_set.filter(
-            is_admin=True
-        ):
-            result = position.occupied_by.filter(id=user.member.id)
-            if result:
-                is_org_admin = True
-                break
+    is_org_admin = request.user and request.user.member.is_org_admin(org)
     context_dict = {
         'org' : org,
         'is_org_admin': is_org_admin
