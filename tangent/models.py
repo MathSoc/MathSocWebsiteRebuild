@@ -58,7 +58,7 @@ class Member(models.Model):
         for position in org.position_set.filter(is_admin=True):
             if position.occupied_by.filter(id=self.id):
                 return True
-        return False
+        return self.user.is_staff
 
 def create_member(sender, instance, created, **kwargs):
     if created:
@@ -140,6 +140,14 @@ class Position(models.Model):
 
     def __str__(self):
         return self.title + " - " + self.organization.name
+
+    def members_list(self):
+        members = self.occupied_by.all()
+        if members:
+            return self.title + ": " + \
+                ', '.join([str(member) for member in members])
+        return self.title + ": Vacant"
+
 
 
 class Scholarship(models.Model):

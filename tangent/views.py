@@ -105,6 +105,21 @@ def is_staff(view_func):
         return view_func(request, *args, **kwargs)
     return inner
 
+
+# Decorator that verifies if a logged_in user is an organization's admin
+# and provides the view_function in question with that org
+def org_admin_interface(view_func):
+    def inner(request, org_id, *args, **kwargs):
+        org = get_object_or_404(Organization, id=org_id)
+        is_admin = request.user and request.user.member.is_org_admin(
+            org
+        )
+        if not is_admin:
+            raise PermissionDenied
+        return view_func(request, org, *args, **kwargs)
+    return inner
+
+
 # --------- VIEW FUNCTIONS -------------------
 
 @login_required
@@ -122,16 +137,31 @@ def home(request):
 
 
 def organization(request, org_id):
-    user = None
-    org = Organization.objects.get(id=org_id)
+    org = get_object_or_404(Organization, id=org_id)
     is_org_admin = request.user and request.user.member.is_org_admin(org)
     context_dict = {
         'org' : org,
         'is_org_admin': is_org_admin
     }
-    return render(request,
-                  'tangent/organization.html',
-                  context_dict)
+    return render(
+        request,
+        'tangent/organization.html',
+        context_dict
+    )
+
+@login_required
+@org_admin_interface
+def org_members(request, org):
+    positions = Position.objects.filter(organization=org)
+    return render(
+        request,
+        'tangent/org_members.html',
+        {
+            'org': org,
+            'positions': positions
+        }
+    )
+
 
 @login_required
 def log(request):

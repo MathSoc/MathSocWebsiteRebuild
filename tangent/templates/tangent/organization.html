@@ -11,10 +11,11 @@
                     <h2>Affiliated with: {{ org.affiliations }}</h2>
                 {% endif %}
                 <h2>Classification: {{ org.classification }}</h2>
-                <h2>Member Count: 
-                    {% if is_org_admin %}<a href="#">{% endif %}
+                <h2>Member Count
+                    {% if is_org_admin %}
+                        <a href="{% url 'tangent_org_members' org_id=org.id %}"> (+)
+                        </a>{% endif %}:
                         {{ org.members.count }}
-                        {% if is_org_admin %}</a>{% endif %}
                 </h2>
             </div>
         </div>

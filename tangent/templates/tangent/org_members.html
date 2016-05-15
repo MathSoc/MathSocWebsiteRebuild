@@ -1,0 +1,27 @@
+{% extends 'tangent/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>
+                <a href="{% url 'tangent_organization' org_id=org.id %}">
+                    {{ org.name }}
+                </a> Members</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul>
+                    {% for position in positions %}
+                        <li>
+                        {{ position.members_list }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
