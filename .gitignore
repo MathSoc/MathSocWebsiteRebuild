@@ -9,3 +9,4 @@ keys_and_pws/*
 *.p12
 .DS_STORE
 *.swp
+.env

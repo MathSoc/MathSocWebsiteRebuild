@@ -22,17 +22,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-try:
-    with open(os.path.join('keys_and_pws', 'secret_key')) as f:
-        SECRET_KEY = f.read()
-except Exception as e:
-    logger.info("No secret_key file found, using default")
-    SECRET_KEY = '08ot*-$rea13!r$u@bxrs-z&(e(&!qn-p5!nu44ib@t&2!%dz@'
+SECRET_KEY = os.environ.get('MATHSOCSECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = False
 TEMPLATE_DEBUG = False
+if os.environ['DEBUG']:
+    DEBUG = True
+    TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cas',
     'elections',
     'external_api',
     'frontend',
@@ -106,20 +104,14 @@ LOGGING = {
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-try:
-    with open(os.path.join(BASE_DIR, 'keys_and_pws', 'database_pw')) as f:
-        DATABASE_PW = f.read()
-except Exception as e:
-    logger.error("No database_pw file found, will fail")
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mathsoc',
-        'USER': 'mathsoc',
-        'PASSWORD': DATABASE_PW,
-        'HOST': 'localhost',
-        'PORT': ''
+        'NAME': 'postgres',
+        'USER': os.environ['POSTGRES_USER'],
+        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+        'HOST': 'db',
+        'PORT': 5432
     }
 }
 
@@ -172,14 +164,6 @@ LOGIN_URL = '/login/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mathsocbookings'
-try:
-    with open(os.path.join(BASE_DIR, "keys_and_pws", "mathsocbookings_gmail_pw")) as f:
-        EMAIL_HOST_PASSWORD = f.read()
-except:
-    logger.info(
-        "Missing password for bookings email, "
-        "won't be able to send emails to people "
-        "after approving or rejecting a booking"
-    )
+EMAIL_HOST_USER = os.environ['EMAILUSER']
+EMAIL_HOST_PASSWORD = os.environ['EMAILPW']
 EMAIL_PORT = 587

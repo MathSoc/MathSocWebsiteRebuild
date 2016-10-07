@@ -1,0 +1,17 @@
+version: '2'
+services:
+    db:
+        image: postgres
+        env_file:
+            - .env
+    web: 
+        env_file:
+            - .env
+        build: .
+        command: ./docker_entrypoint.sh
+        volumes:
+            - .:/code
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
