@@ -10,4 +10,3 @@ keys_and_pws/*
 .DS_STORE
 *.swp
 .env
-/static/
