@@ -9,5 +9,4 @@ urlpatterns = patterns('frontend.views',
                        url(r'^position/(?P<pos_id>\d+)/', 'position', name='frontend_position'),
                        url(r'^clubs/', 'clubs', name='frontend_clubs'),
                        url(r'^contact/', 'contact', name='frontend_contact'),
-                       url(r'external_api/', include('external_api.urls'))
 )
