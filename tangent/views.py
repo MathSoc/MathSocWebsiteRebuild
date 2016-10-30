@@ -8,7 +8,7 @@ from django.http import HttpResponseBadRequest, HttpResponseRedirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from tangent.models import Organization, Position
-from services.models import BookingRequest
+from bookings.models import BookingRequest
 from oauth2client import tools
 from oauth2client.service_account import ServiceAccountCredentials
 from apiclient.discovery import build
