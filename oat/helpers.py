@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from io import open
 import logging
+import os
 
 from django.conf import settings
 from oat import liboat
@@ -10,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 oat_base_url = "https://oat.uwaterloo.ca"
 api_key = open("./keys_and_pws/oat_pkey.pcks8").read()
-api_user = "_mathsocmbrtest"
+api_user = os.environ['OAT_USER']
 
 def is_society_member(userid):
     oat = liboat.Session(api_user, api_key, oat_base_url)

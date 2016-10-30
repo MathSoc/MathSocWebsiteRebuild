@@ -57,7 +57,7 @@ function displayExams(subject, course) {
         exam_data.forEach(function(exam) {
             var term = "<td>" + exam.semester + "</td>";
             var name = "<td>" + exam.name + "</td>";
-            var download = "<td><a href='/resources/exambank/exam/" + current_subject + "/" + current_course + "?name=" + exam.name + "'>Download</a></td>";
+            var download = "<td><a href='/exambank/exam/" + current_subject + "/" + current_course + "?name=" + exam.name + "'>Download</a></td>";
             table_select.append("<tr>" + term + name + download + "</tr>");
         });
         // do stuff to display exam here
@@ -66,7 +66,7 @@ function displayExams(subject, course) {
 
 function fetchExams(subject, course) {
     var promise = $.ajax({
-        'url': '/resources/exambank/exams',
+        'url': '/exambank/exams',
         'method': 'GET',
         'data': {
             'subject': subject,
@@ -85,7 +85,7 @@ function getCodes(subject) {
 
 function fetchCourseList() {
     var promise = $.ajax({
-        'url': '/resources/exambank/courses',
+        'url': '/exambank/courses',
         'method': 'GET'
     });
 

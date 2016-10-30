@@ -1,5 +1,7 @@
-MATHSOCSECRET=*************
-DBPW=***************
+MATHSOCSECRET=**********************
 EMAILUSER=mathsocbookings
-EMAILPW=****************
-DEBUG=0
+EMAILPW=***************
+DEBUG=1
+POSTGRES_USER=***************
+POSTGRES_PASSWORD=*************
+OAT_USER=****************
