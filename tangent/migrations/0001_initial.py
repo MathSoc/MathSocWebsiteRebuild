@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-from django.conf import settings
 import tangent.models
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
@@ -16,35 +16,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Announcement',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('order_key', models.IntegerField(unique=True)),
                 ('title', models.CharField(max_length=256)),
                 ('date', models.DateTimeField(auto_now_add=True)),
                 ('body', models.TextField()),
-                ('image', models.ImageField(null=True, upload_to=b'', blank=True)),
+                ('image', models.ImageField(null=True, upload_to='', blank=True)),
+                ('action', models.URLField(null=True, blank=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Log',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=128)),
                 ('datetime', models.DateTimeField(auto_now_add=True)),
                 ('body', models.TextField()),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Meeting',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('date', models.DateField()),
-                ('location', models.CharField(default=b'Comfy Lounge', max_length=256)),
-                ('term', models.CharField(max_length=2, choices=[(b'W', b'Winter'), (b'S', b'Spring'), (b'F', b'Fall')])),
+                ('location', models.CharField(default='Comfy Lounge', max_length=256)),
+                ('term', models.CharField(choices=[('W', 'Winter'), ('S', 'Spring'), ('F', 'Fall')], max_length=2)),
                 ('general', models.BooleanField(default=False)),
                 ('budget', models.BooleanField(default=False)),
                 ('agenda', models.FileField(null=True, upload_to=tangent.models.meeting_upload_file_path, blank=True)),
@@ -54,135 +50,103 @@ class Migration(migrations.Migration):
             options={
                 'ordering': ['-date'],
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Member',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('has_locker', models.BooleanField(default=False)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('requested_refund', models.BooleanField(default=False)),
-                ('is_volunteer', models.BooleanField(default=False)),
-                ('bio', models.TextField(default=b'')),
+                ('used_resources', models.BooleanField(default=False)),
+                ('bio', models.TextField(null=True, default='', blank=True)),
+                ('picture', models.ImageField(null=True, upload_to='profile_pictures', blank=True)),
                 ('website', models.URLField(null=True, blank=True)),
-                ('resume', models.FileField(upload_to=b'resumes')),
+                ('resume', models.FileField(null=True, upload_to='resumes', blank=True)),
+                ('cover_letter', models.TextField(null=True, default='', blank=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Organization',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('name', models.CharField(unique=True, max_length=256)),
-                ('description', models.TextField(default=b'', null=True, blank=True)),
-                ('affiliations', models.CharField(max_length=256, null=True, blank=True)),
-                ('classification', models.CharField(max_length=32, choices=[(b'Club', b'Club'), (b'Special Interest Coordinator', b'Special Interest Coordinator'), (b'Affiliate', b'Affiliate'), (b'Faculty', b'Faculty'), (b'External', b'External'), (b'Mathematics Society', b'Mathematics Society'), (b'MathSoc Council', b'MathSoc Council'), (b'MathSoc Office', b'MathSoc Office')])),
-                ('member_count', models.IntegerField(default=0)),
+                ('description', models.TextField(null=True, default='', blank=True)),
+                ('affiliations', models.CharField(null=True, max_length=256, blank=True)),
+                ('classification', models.CharField(choices=[('CLUB', 'Club'), ('SIC', 'Special Interest Coordinator'), ('AFFL', 'Affiliate'), ('FACL', 'Faculty'), ('EXTL', 'External'), ('MATH_MISC', 'Mathematics Society'), ('MATH_GOV', 'MathSoc Governance'), ('COMM', 'MathSoc Committee')], max_length=32)),
                 ('fee', models.IntegerField(default=0)),
-                ('office', models.CharField(default=b'MC 3038', max_length=32)),
-                ('website', models.URLField(default=b'http://mathsoc.uwaterloo.ca')),
+                ('office', models.CharField(default='MC 3038', max_length=32)),
+                ('website', models.URLField(default='http://mathsoc.uwaterloo.ca')),
+                ('members', models.ManyToManyField(to='tangent.Member', blank=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='OrganizationDocument',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=256)),
-                ('description', models.TextField(default=b'')),
+                ('description', models.TextField(default='')),
                 ('date_added', models.DateField(auto_now_add=True)),
                 ('last_modified', models.DateField(auto_now=True)),
                 ('file', models.FileField(upload_to=tangent.models.upload_file_to)),
+                ('organization', models.ForeignKey(default=None, to='tangent.Organization')),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Position',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=256)),
-                ('start_date', models.DateField()),
-                ('end_date', models.DateField()),
+                ('responsibilities', models.TextField(null=True, blank=True)),
+                ('is_admin', models.BooleanField(default=False)),
+                ('can_post', models.BooleanField(default=False)),
+                ('can_edit', models.BooleanField(default=False)),
+                ('can_manage_bookings', models.BooleanField(default=False)),
+                ('can_create_meetings', models.BooleanField(default=False)),
+                ('can_add_files_to_meetings', models.BooleanField(default=False)),
+                ('want_applications', models.BooleanField(default=False)),
                 ('key_holder', models.BooleanField(default=False)),
-                ('has_key', models.BooleanField(default=False)),
-                ('occupied_by', models.ForeignKey(to='tangent.Member')),
+                ('occupied_by', models.ManyToManyField(to='tangent.Member', default=None, blank=True)),
+                ('organization', models.ForeignKey(default=None, to='tangent.Organization')),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Scholarship',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=256)),
                 ('organization', models.CharField(max_length=256)),
                 ('amount', models.IntegerField()),
-                ('description', models.TextField(default=b'')),
-                ('website', models.URLField(default=b'')),
+                ('description', models.TextField(default='')),
+                ('website', models.URLField(default='')),
             ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='organization',
-            name='admin',
-            field=models.ManyToManyField(related_name='admin', to='tangent.Position'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='organization',
-            name='documents',
-            field=models.ManyToManyField(to='tangent.OrganizationDocument', null=True, blank=True),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='organization',
-            name='meetings',
-            field=models.ManyToManyField(to='tangent.Meeting', null=True, blank=True),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='organization',
-            name='positions',
-            field=models.ManyToManyField(related_name='position', to='tangent.Position'),
-            preserve_default=True,
         ),
         migrations.AddField(
             model_name='member',
             name='interested_in',
-            field=models.ManyToManyField(to='tangent.Position'),
-            preserve_default=True,
+            field=models.ManyToManyField(to='tangent.Position', blank=True),
         ),
         migrations.AddField(
             model_name='member',
             name='user',
             field=models.OneToOneField(to=settings.AUTH_USER_MODEL),
-            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='meeting',
+            name='organization',
+            field=models.ForeignKey(to='tangent.Organization'),
         ),
         migrations.AddField(
             model_name='log',
             name='user',
             field=models.ForeignKey(to='tangent.Member'),
-            preserve_default=True,
         ),
         migrations.AddField(
             model_name='announcement',
             name='author',
             field=models.ForeignKey(to='tangent.Member'),
-            preserve_default=True,
         ),
         migrations.AddField(
             model_name='announcement',
             name='author_position',
             field=models.ForeignKey(to='tangent.Position'),
-            preserve_default=True,
         ),
     ]

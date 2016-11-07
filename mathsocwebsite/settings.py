@@ -23,11 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('MATHSOCSECRET')
+if not SECRET_KEY:
+    SECRET_KEY = "default_secret_never_use"
+    print("WARNING: USING DEFAULT SECRET KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 TEMPLATE_DEBUG = False
-if os.environ['DEBUG']:
+if os.environ.get('DEBUG'):
     DEBUG = True
     TEMPLATE_DEBUG = True
 
@@ -110,8 +114,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'USER': os.environ['POSTGRES_USER'],
-        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': 'db',
         'PORT': 5432
     }
@@ -164,6 +168,6 @@ LOGIN_URL = '/login/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ['EMAILUSER']
-EMAIL_HOST_PASSWORD = os.environ['EMAILPW']
+EMAIL_HOST_USER = os.environ.get('EMAILUSER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAILPW')
 EMAIL_PORT = 587

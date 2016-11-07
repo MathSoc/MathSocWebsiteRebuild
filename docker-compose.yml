@@ -4,6 +4,8 @@ services:
         image: postgres
         env_file:
             - .env
+        volumes:
+            - postgres-db-volume:/data/postgres
     web: 
         env_file:
             - .env
@@ -15,3 +17,6 @@ services:
             - "8000:8000"
         depends_on:
             - db
+
+volumes:
+    postgres-db-volume:
