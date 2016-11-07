@@ -87,20 +87,8 @@ class Announcement(models.Model):
 class Organization(models.Model):
     name = models.CharField(max_length=256, unique=True)
     description = models.TextField(default="", blank=True, null=True)
-    affiliations = models.CharField(max_length=256, blank=True, null=True)
-    classification = models.CharField(choices=(
-        ('CLUB', 'Club'),
-        ('SIC', 'Special Interest Coordinator'),
-        ('AFFL', 'Affiliate'),
-        ('FACL', 'Faculty'),
-        ('EXTL', 'External'),
-        ('MATH_MISC', 'Mathematics Society'),
-        ('MATH_GOV', 'MathSoc Governance'),
-        ('COMM', 'MathSoc Committee')
-    ), max_length=32)
 
     members = models.ManyToManyField('Member', blank=True)
-    fee = models.IntegerField(default=0)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
 
