@@ -66,9 +66,10 @@ def add_to_calendar(booking):
 
     events = service.events().list(
         calendarId=booking.calendar_id,
-        timeMin=booking.start.strftime("%Y-%m-%dT%H:%M:00-04:00"),
-        timeMax=booking.end.strftime("%Y-%m-%dT%H:%M:00-04:00")
+        timeMin=booking.start.isoformat(),
+        timeMax=booking.end.isoformat()
     ).execute()
+    logger.info("{}".format(events))
 
     if not events[u'items']:
         try:
@@ -76,11 +77,11 @@ def add_to_calendar(booking):
                 'summary': booking.event_name + " - " + booking.organisation,
                 'start': {
                     'dateTime': booking.start.strftime("%Y-%m-%dT%H:%M:00"),
-                    'timeZone': "America/Toronto"
+                    'timeZone': booking.start.tzinfo._tzname
                 },
                 'end': {
                     'dateTime': booking.end.strftime("%Y-%m-%dT%H:%M:00"),
-                    'timeZone': "America/Toronto"
+                    'timeZone': booking.end.tzinfo._tzname
                 },
                 'attendees': [
                     {
@@ -193,6 +194,8 @@ def bookings(request, show_all=False):
 @login_required
 def booking(request, booking_id):
     booking = get_object_or_404(BookingRequest, id=booking_id)
+    print(booking.start)
+    print(booking.end)
     return render(request, 'tangent/booking.html', {'booking': booking})
 
 @login_required

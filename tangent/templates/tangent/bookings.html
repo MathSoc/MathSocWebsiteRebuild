@@ -1,6 +1,6 @@
 {% extends 'tangent/base.html' %}
 {% load staticfiles %}
-
+{% load tz %}
 {% block header_files %}
     <link rel="stylesheet" href="{% static 'tangent/css/index.css' %}">
 {% endblock %}
@@ -26,16 +26,18 @@
             <th>Status</th>
         </tr></thead>
         <tbody>
+        {% timezone "US/Eastern" %}
         {% for request in requests %}
             <tr>
                 <td><a href="{% url 'tangent_booking' request.id %}">{{ request.event_name }}</a></td>
                 <td>{{ request.organisation }}</td>
                 <td>{{ request.contact_name }}</td>
-                <td>{{ request.start.date }}, {{ request.start.time }} - {{ request.end.time }}</td>
+                <td>{{ request.start }} - {{ request.end }}</td>
                 <td>{{ request.calendar }}</td>
                 <td>{{ request.get_status_display }}</td>
             </tr>
         {% endfor %}
+        {% endtimezone %}
         </tbody>
         </table>
     </div>

@@ -1,6 +1,6 @@
 {% extends 'tangent/base.html' %}
 {% load staticfiles %}
-
+{% load tz %}
 {% block header_files %}
     <link rel="stylesheet" href="{% static 'tangent/css/index.css' %}">
 {% endblock %}
@@ -11,7 +11,9 @@
         <strong>WatID: </strong>{{ booking.requesting_id }}<br>
         <strong>Contact Email: </strong>{{ booking.contact_email }}<br>
         <strong>Contact Phone: </strong>{{ booking.contact_phone }}<br>
-        <strong>Time: </strong>{{ booking.start.date }}, {{ booking.start.time }} - {{ booking.end.time }}<br>
+        {% timezone "US/Eastern" %}
+        <strong>Time: </strong>{{ booking.start }} - {{ booking.end }}<br>
+        {% endtimezone %}
         <strong>Status: </strong>{{ booking.get_status_display }}<br><br>
 
         <iframe src="https://www.google.com/calendar/embed?src={{ booking.calendar_id }}&ctz=America/Toronto" width="800" height="600" frameborder="0" scrolling="no" id="calendar" class="active-calendar"></iframe>

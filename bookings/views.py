@@ -2,12 +2,17 @@ from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render
+import logging
 import datetime
-import re 
+import re
+import pytz
 import dateutil.parser
 
 # Create your views here
 from bookings.models import BookingRequest
+
+logger = logging.getLogger(__name__)
+EST = pytz.timezone('US/Eastern')
 
 def get_time_from_string(request, timestr):
     start_time = re.split(' |:', timestr);
@@ -80,8 +85,9 @@ def bookings(request):
         start_time = get_time_from_string(request, request.POST['start-time'])
 
         start = datetime.datetime.combine(start.date(), start_time)
+        start = EST.localize(start)
 
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(pytz.UTC)
         if start < now:
             messages.error(request, "Please select a start time in the future")
             return render(request, 'bookings/bookings.html')
@@ -92,6 +98,7 @@ def bookings(request):
             end += datetime.timedelta(days=1)
 
         end = datetime.datetime.combine(end.date(), end_time)
+        end = EST.localize(end)
 
         new_request = BookingRequest(
             calendar_id=calendar_ids[request.POST['calendar_id']],
@@ -108,7 +115,7 @@ def bookings(request):
         new_request.save()
         messages.success(request, "Booking request has been sucessfully submitted, you will be contacted (by e-mail) once it has been accepted.")
 
-        return render(request, 'bookinbs/bookings.html')
+        return render(request, 'bookings/bookings.html')
     else:
         return render(request, 'bookings/bookings.html')
 
