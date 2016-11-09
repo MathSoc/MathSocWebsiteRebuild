@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.models import User
-from tangent.models import Position, Member, Organization
+from tangent.models import Position, Member, Organization, Club
 import logging
 
 logger = logging.getLogger(__name__)
@@ -28,7 +28,7 @@ def index(request):
 
 
 def governance(request):
-    gov = Organization.objects.filter(classification="MATH_GOV")
+    gov = Organization.objects.all() 
     context_dict = {'orgs': gov}
     return render(request, 'frontend/governance.html', context_dict)
 
@@ -77,7 +77,7 @@ def position(request, pos_id):
 
 
 def clubs(request):
-    c = Organization.objects.filter(classification__icontains="club")
+    c = Club.objects.all() 
     context_dict = {'clubs': c}
     return render(request, 'frontend/clubs.html', context_dict)
 

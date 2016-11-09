@@ -4,6 +4,7 @@ from tangent.models import *
 # Register your models here.
 admin.site.register(Announcement)
 admin.site.register(Organization)
+admin.site.register(Club)
 admin.site.register(OrganizationDocument)
 admin.site.register(Position)
 admin.site.register(Scholarship)

@@ -26,6 +26,9 @@ class Member(models.Model):
     requested_refund = models.BooleanField(default=False)
     used_resources = models.BooleanField(default=False)
 
+    # TODO we need to determine how to handle this field properly
+    do_not_email = models.BooleanField(default=False)
+
     # information about the member
     bio = models.TextField(default="", blank=True, null=True)
     picture = models.ImageField(blank=True, null=True, upload_to='profile_pictures')
@@ -85,12 +88,40 @@ class Announcement(models.Model):
 
 
 class Organization(models.Model):
+    # Council, boards, commitees, etc.
+    name = models.CharField(max_length=256, unique=True)
+    description = models.TextField(default="", blank=True, null=True)
+
+    positions = models.ManyToManyField('Position', blank=True, null=True)
+    office = models.CharField(max_length=32, default="MC 3038")
+    website = models.URLField(default='http://mathsoc.uwaterloo.ca')
+
+    # Governance
+    documents = models.ManyToManyField('OrganizationDocument', default=None, blank=True)
+
+    # Allows us to add affiliates and sponsors and such
+    external = models.BooleanField(default=False)
+    affiliate = models.BooleanField(default=False)
+    sponsor = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+
+class Club(models.Model):
     name = models.CharField(max_length=256, unique=True)
     description = models.TextField(default="", blank=True, null=True)
 
     members = models.ManyToManyField('Member', blank=True)
+    positions = models.ManyToManyField('Position', blank=True)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
+
+    # club fee in cents
+    fee = models.IntegerField(default=200)
+
+    # Governance
+    documents = models.ManyToManyField('OrganizationDocument', default=None, blank=True)
 
     def __str__(self):
         return self.name
@@ -101,7 +132,6 @@ class OrganizationDocument(models.Model):
     description = models.TextField(default="")
     date_added = models.DateField(auto_now_add=True)
     last_modified = models.DateField(auto_now=True)
-    organization = models.ForeignKey('Organization', default=None)
 
     # TODO if document is .tex generate pdf
     file = models.FileField(upload_to=upload_file_to)
@@ -113,21 +143,25 @@ class OrganizationDocument(models.Model):
 class Position(models.Model):
     title = models.CharField(max_length=256)
     responsibilities = models.TextField(blank=True, null=True)
+    occupied_by = models.ForeignKey(Member, blank=True, default=None, null=True)
+    # some positions belong to multiple organizations, but they mostly have a home org
+    # this is just to differentiate and determine ex-officio positions
+    primary_organization = models.ForeignKey(Organization, default=None, blank=True, null=True)
+
+    # permissions
     is_admin = models.BooleanField(default=False) # Can do anything (overrides all other permissions, only admins can manage members, organization info, etc)
     can_post = models.BooleanField(default=False)
     can_edit = models.BooleanField(default=False) # People who can post can only edit their own posts, these people can edit all announcements
     can_manage_bookings = models.BooleanField(default=False)
     can_create_meetings =  models.BooleanField(default=False)
     can_add_files_to_meetings = models.BooleanField(default=False)
-    organization = models.ForeignKey('Organization', default=None)
-    want_applications = models.BooleanField(default=False)
-
     key_holder = models.BooleanField(default=False)
 
-    occupied_by = models.ManyToManyField(Member, blank=True, default=None)
+    # do we want to hire this position 
+    want_applications = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title + " - " + self.organization.name
+        return self.title + " - " + self.primary_organization.name
 
     def members_list(self):
         members = self.occupied_by.all()
@@ -135,7 +169,6 @@ class Position(models.Model):
             return self.title + ": " + \
                 ', '.join([str(member) for member in members])
         return self.title + ": Vacant"
-
 
 
 class Scholarship(models.Model):
@@ -165,6 +198,8 @@ class Meeting(models.Model):
     agenda = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
     minutes = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
     budget_file = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
+
+    attendance = models.ManyToManyField('Member', blank=True, null=True)
 
     class Meta:
         ordering = ['-date']
