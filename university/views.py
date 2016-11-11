@@ -1,11 +1,16 @@
 from __future__ import unicode_literals
+import json
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
-import json
 
-# Create your views here.
-from exambank.models import Exam
+from university.models import Exam
+
+
+@login_required()
+def evaluations(request):
+    return render(request, 'evaluations/evaluations.html')
 
 # @login_required()
 def exambank(request):
