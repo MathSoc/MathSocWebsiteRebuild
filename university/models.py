@@ -16,7 +16,7 @@ class Professor(models.Model):
     website = models.CharField(max_length=256)
     picture = models.ImageField(blank=True, null=True, upload_to='profile_pictures')
 
-    previous_courses = models.ManyToManyField(Course, blank=True, null=True)
+    previous_courses = models.ManyToManyField(Course, blank=True)
 
 
 class Exam(models.Model):

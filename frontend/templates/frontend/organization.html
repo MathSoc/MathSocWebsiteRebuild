@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <p>{{ org.description }}</p>
+                <p>{{ org.description|linebreaks }}</p>
             </div>
         </div>
         <div class="row">
@@ -53,7 +53,7 @@
                                 <h4>{{ doc.name }}</h4>
                                 <h5>
                                     {{ doc.date_added }} - {{ doc.date_modified }}<br>
-                                    {{ doc.description }}
+                                    {{ doc.description|linebreaks }}
                                 </h5>
                             </div>
                         </a>

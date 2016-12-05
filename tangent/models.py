@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -87,45 +88,26 @@ class Announcement(models.Model):
         return self.title
 
 
-class Organization(models.Model):
-    # Council, boards, commitees, etc.
+class BaseOrg(models.Model):
     name = models.CharField(max_length=256, unique=True)
     description = models.TextField(default="", blank=True, null=True)
-
-    positions = models.ManyToManyField('Position', blank=True, null=True)
     office = models.CharField(max_length=32, default="MC 3038")
     website = models.URLField(default='http://mathsoc.uwaterloo.ca')
-
-    # Governance
     documents = models.ManyToManyField('OrganizationDocument', default=None, blank=True)
 
+    def __str__(self):
+        return self.name
+
+class Organization(BaseOrg):
     # Allows us to add affiliates and sponsors and such
     external = models.BooleanField(default=False)
     affiliate = models.BooleanField(default=False)
     sponsor = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
-
-
-class Club(models.Model):
-    name = models.CharField(max_length=256, unique=True)
-    description = models.TextField(default="", blank=True, null=True)
-
+   
+class Club(BaseOrg):
     members = models.ManyToManyField('Member', blank=True)
-    positions = models.ManyToManyField('Position', blank=True)
-    office = models.CharField(max_length=32, default="MC 3038")
-    website = models.URLField(default='http://mathsoc.uwaterloo.ca')
-
     # club fee in cents
     fee = models.IntegerField(default=200)
-
-    # Governance
-    documents = models.ManyToManyField('OrganizationDocument', default=None, blank=True)
-
-    def __str__(self):
-        return self.name
-
 
 class OrganizationDocument(models.Model):
     name = models.CharField(max_length=256)
@@ -139,14 +121,12 @@ class OrganizationDocument(models.Model):
     def __str__(self):
         return self.name
 
-
 class Position(models.Model):
     title = models.CharField(max_length=256)
     responsibilities = models.TextField(blank=True, null=True)
-    occupied_by = models.ForeignKey(Member, blank=True, default=None, null=True)
     # some positions belong to multiple organizations, but they mostly have a home org
     # this is just to differentiate and determine ex-officio positions
-    primary_organization = models.ForeignKey(Organization, default=None, blank=True, null=True)
+    primary_organization = models.ForeignKey(BaseOrg, default=None, blank=True, null=True)
 
     # permissions
     is_admin = models.BooleanField(default=False) # Can do anything (overrides all other permissions, only admins can manage members, organization info, etc)
@@ -163,13 +143,10 @@ class Position(models.Model):
     def __str__(self):
         return self.title + " - " + self.primary_organization.name
 
-    def members_list(self):
-        members = self.occupied_by.all()
-        if members:
-            return self.title + ": " + \
-                ', '.join([str(member) for member in members])
-        return self.title + ": Vacant"
-
+class PositionHolder(models.Model):
+    term = models.IntegerField(default=settings.CURRENT_TERM)
+    position = models.ForeignKey(Position)
+    occupied_by = models.ForeignKey(Member)
 
 class Scholarship(models.Model):
     name = models.CharField(max_length=256)
@@ -199,7 +176,7 @@ class Meeting(models.Model):
     minutes = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
     budget_file = models.FileField(upload_to=meeting_upload_file_path, blank=True, null=True)
 
-    attendance = models.ManyToManyField('Member', blank=True, null=True)
+    attendance = models.ManyToManyField('Member', blank=True)
 
     class Meta:
         ordering = ['-date']

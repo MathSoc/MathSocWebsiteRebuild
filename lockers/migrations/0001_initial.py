@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Locker',
             fields=[
-                ('locker_number', models.IntegerField(serialize=False, primary_key=True, unique=True)),
+                ('locker_number', models.IntegerField(primary_key=True, unique=True, serialize=False)),
                 ('current_combo', models.CharField(max_length=6)),
                 ('combo_number', models.IntegerField()),
                 ('combo0', models.CharField(max_length=6)),
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('combo2', models.CharField(max_length=6)),
                 ('combo3', models.CharField(max_length=6)),
                 ('combo4', models.CharField(max_length=6)),
-                ('owner', models.ForeignKey(null=True, blank=True, to='tangent.Member')),
+                ('owner', models.ForeignKey(to='tangent.Member', null=True, blank=True)),
             ],
         ),
     ]

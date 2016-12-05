@@ -60,7 +60,7 @@
                             <div class="col-xs-12">
                                 <h2><a href="{% url 'frontend_organization' org_id=org.id %}">{{ org.name }}</a></h2>
 
-                                <h3>{{ org.description }}</h3>
+                                <h3>{{ org.description|linebreaks }}</h3>
                             </div>
                             <div class="col-xs-12">
                                 <h2>Members</h2>
@@ -74,7 +74,7 @@
                                                 {{ pos.occupied_by.user.first_name }}
                                                 {{ pos.occupied_by.user.last_name }}</h3>
 
-                                            <p>{{ pos.description }}</p>
+                                            <p>{{ pos.description|linebreaks }}</p>
                                         </div>
                                     </div>
                                 {% endfor %}
