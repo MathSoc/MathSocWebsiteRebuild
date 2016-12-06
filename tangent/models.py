@@ -109,6 +109,9 @@ class Club(BaseOrg):
     # club fee in cents
     fee = models.IntegerField(default=200)
 
+    def fee_in_dollars(self):
+        return '{:,.2f}'.format(self.fee / 100)
+
 class OrganizationDocument(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField(default="")
@@ -142,6 +145,13 @@ class Position(models.Model):
 
     def __str__(self):
         return self.title + " - " + self.primary_organization.name
+
+    def occupied_by(self, term=settings.CURRENT_TERM):
+        return PositionHolder.objects.filter(
+            term=term,
+            position_id=self.id
+        ).occupied_by.all()
+
 
 class PositionHolder(models.Model):
     term = models.IntegerField(default=settings.CURRENT_TERM)
