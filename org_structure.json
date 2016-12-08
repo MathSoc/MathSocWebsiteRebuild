@@ -1,0 +1,2064 @@
+[
+  {
+    "fields": {
+      "website": "http://mathsoc.uwaterloo.ca",
+      "documents": [],
+      "description": "MathSoc offers many handy services, both academic and recreational, out of our office in MC 3038. Some things you may find important for classes:\r\n\r\n\t•\t5¢ photocopies for those lectures you missed\r\n\t•\tPens and pencils for 25¢/each\r\n\t•\tPaper (lined and graph) for 10¢/10 sheets\r\n\t•\tTransparencies for presentations\r\n\t•\tCalculators with pink tie stickers for the cheapest on campus\r\n\t•\tStaplers to staple your assignment together\r\n\t•\tHole punches\r\n\t•\tWork report binding for only 75¢!\r\n\t•\tComputers with printing for 10¢ a page\r\n\t•\tLocker Signup so you don't have to carry around those heavy books all day\r\n\t•\tTextbook library so you have access to material when you don't have your books with you. This selection includes most first/second-year core courses.\r\n\r\nOn the recreational side, we have a selection of mathNEWS, frisbees, cool math novelties and board games (full list found here: LINK_TO_BG_INVENTORY)",
+      "name": "MathSoc Office",
+      "office": "MC 3038"
+    },
+    "model": "tangent.baseorg",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "website": "http://mathsoc.uwaterloo.ca",
+      "documents": [],
+      "description": "MathSoc Council is the main decision-making body of the Society.\r\n\r\nMathSoc Council is made up of up to 30 program representatives and the 5 executives. Each program representative and executive is elected per term.\r\n\r\nCouncil makes important decisions about budgeting, academic and operational policies and many other decisions.",
+      "name": "MathSoc Council",
+      "office": "MC 3039"
+    },
+    "model": "tangent.baseorg",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "website": "http://uwactsciclub.com/",
+      "documents": [],
+      "description": "The UW ActSci Club is the official student organization serving UW's actuarial science undergraduate students. It's an organization for students with the common interest of pursuing an actuarial career to come together, network, learn, and improve their UW experience! The club hosts social events and informative sessions, lends out SOA study manuals, operates a mentorship program, produces newsletters, and is your hub for all actuarial-related news and events. Come by our office (M3 1003) to borrow study manuals, learn more about the club, or ask our friendly execs for some advice. We hope to make your time here at UW a little easier and a little more enjoyable.",
+      "name": "Actuarial Sciences Club",
+      "office": "MC 1003"
+    },
+    "model": "tangent.baseorg",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "website": "http://bic.uwaterloo.ca/",
+      "documents": [],
+      "description": "Welcome to the Undergraduate Bioinformatics Club of the University of Waterloo, Fall 2016 term. Bioinformatics is a program here at the University that encompasses courses in math, biology, computer science, chemistry and, of course, bioinformatics. It also offers a great co-op program where students have a chance to learn bioinformatics hands-on at many different labs.\r\n\r\nAs the program is one of the smaller programs at Waterloo, one of our main goals is try to connect students of the bioinformatics program as well as students from related programs and faculties. Some of the popular events BIC holds are professor talks and trips to Toronto for lab tours. This year, we’re looking to start up a seminar series where we’ll have our very own club members give talks about work they’ve done during their work terms and summers. We also hold social events like Board Game Nights and Science Movie Nights (some of our favourites are X-Men and The Island). We’re always looking for new members, so please don’t hesitate and come check our club out!",
+      "name": "Bioinformatics Club",
+      "office": "MC 3028"
+    },
+    "model": "tangent.baseorg",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "website": "http://csclub.uwaterloo.ca/",
+      "documents": [],
+      "description": "We exist to promote knowledge of and interest in computer science as well as allowing those interested in computer science to talk to each other. We have an office where members get together, a library of computer science books available to our members, computer accounts on our various machines and much more. Frequently we host events related to computing, including talks, tutorials and demonstrations.",
+      "name": "Computer Science Club",
+      "office": "MC 3036"
+    },
+    "model": "tangent.baseorg",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "website": "http://www.ddclub.uwaterloo.ca/",
+      "documents": [],
+      "description": "The DDC is an official, UW and WLU registered, student-run organization that aims to enhance the experience of Double Degree students during their university career. Thanks to the support of members like yourself, the club hosts several social events, networking/mentorship opportunities, and academic resources in an effort to enrich your education at UW and WLU. We also work closely with administration at both universities to increase the presence of our members at the two schools, to foster an atmosphere in which our students can develop both socially and professionally.",
+      "name": "Double Degree Club",
+      "office": "M3 1001"
+    },
+    "model": "tangent.baseorg",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "website": "http://uwfarmsa.uwaterloo.ca/index.html",
+      "documents": [],
+      "description": "FARMSA is a non-profit student club open to all Math students at the UW, even those not in the Math/FARM program.\r\n\r\nThe goals of the club:\r\n\r\nTo encourage academic pursuits and interests of the Math/FARM program internally and externally.\r\nTo provide services that will benefit Math/FARM students and other interested individuals academically and professionally.\r\nTo improve the cohesiveness between individuals of the Math/FARM program.\r\nProvide a framework to build, improve and promote the reputation and quality of the Math/FARM program.\r\n",
+      "name": "Financial Analysis or Risk Management Student Association",
+      "office": "MC 3038"
+    },
+    "model": "tangent.baseorg",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "website": "http://mathsoc.uwaterloo.ca",
+      "documents": [],
+      "description": "Description coming soon",
+      "name": "Pure Math, Applied Math and Combinatorial Optimization Club",
+      "office": "MC 3038"
+    },
+    "model": "tangent.baseorg",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "website": "http://csclub.uwaterloo.ca/~statsclub/",
+      "documents": [],
+      "description": "The University of Waterloo's Statistics Club is the official student run club serving UW's statistics undergraduate students. The Stats Club is dedicated to bringing together the statistics undergraduate community on campus by providing friendly and welcoming environment, as well as supplying resources for the academic pursuit of Statistics.",
+      "name": "Statistics Club",
+      "office": "M3 1004"
+    },
+    "model": "tangent.baseorg",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "website": "http://csclub.uwaterloo.ca/~tsa/",
+      "documents": [],
+      "description": "The objective of the TSA shall be to promote interaction amongst University of Waterloo Undergraduate Students interested in a career in teaching. Throughout the academic year, a collection of social, athletic, cultural, and academic activities shall be organized to foster positive networking between potential teaching candidates. Furthermore, the TSA will explore and encourage professional development activities with the goal of improving club members' teaching qualifications.",
+      "name": "Teaching Students' Association",
+      "office": "MC 3031"
+    },
+    "model": "tangent.baseorg",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "website": "http://csclub.uwaterloo.ca/~uwmfsa/",
+      "documents": [],
+      "description": "The goal of MFSA is to provide services that encourage academic pursuits of quantitative finance and improve the reputation of the Mathematical Finance program.",
+      "name": "Mathematical Finance Student Association",
+      "office": "MC 3034"
+    },
+    "model": "tangent.baseorg",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "website": "http://mathsoc.uwaterloo.ca",
+      "documents": [],
+      "description": "Description coming soon",
+      "name": "MathSoc Directors",
+      "office": "MC 3038"
+    },
+    "model": "tangent.baseorg",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "documents": [],
+      "sponsor": false,
+      "affiliate": false,
+      "external": false
+    },
+    "model": "tangent.organization",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "documents": [],
+      "sponsor": false,
+      "affiliate": false,
+      "external": false
+    },
+    "model": "tangent.organization",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "documents": [],
+      "sponsor": false,
+      "affiliate": false,
+      "external": false
+    },
+    "model": "tangent.organization",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "members": [],
+      "fee": 200,
+      "documents": []
+    },
+    "model": "tangent.club",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "The President is the chief executive of the Society. They oversee all the affairs of the Society, represent the Society at official functions and public occasions and works with affiliated organizations on behalf of the Society.\r\n\r\nThey also work with the other executives and ensure things are running smoothly. They are also in charge of liaising with the many Mathsoc clubs.",
+      "can_manage_bookings": true,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Operations",
+      "can_create_meetings": true,
+      "responsibilities": "The Vice President, Operations is responsible for the day-to-day operations of the Society. They oversee the main Society office and its operation.\r\n\r\nThey oversee all of the technical infrastructure for the Society including the website and the MathSoc server. Lastly, they oversee the Society's space such as bookings as room allocation.",
+      "can_manage_bookings": true,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Academic",
+      "can_create_meetings": true,
+      "responsibilities": "The Vice President, Academic is responsible for academic operations of the Society. They represent the Society and its members to the Faculty, to the University, and to the Federation of Students on academic issues.\r\n\r\nThey also organize events and manage services of an academic nature such as resume critiques and mock interviews.",
+      "can_manage_bookings": true,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Finances",
+      "can_create_meetings": true,
+      "responsibilities": "The Vice President, Finances is responsible for the financial affairs of the Society. They keep accurate and complete records of the finances and manage the accounts and funds of the Society.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Internal",
+      "can_create_meetings": true,
+      "responsibilities": "The Vice-President, Internal is responsible for overseeing clubs and Society events. They encourage members to become more involved in the Society and ensure that the opportunity exists for them to do so. They also ensure clubs and affiliates are support in their endeavours and remain compliant with MathSoc policy.",
+      "can_manage_bookings": true,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Website Director",
+      "can_create_meetings": true,
+      "responsibilities": "The website director is responsible for maintaining, troubleshooting, and updating the Society's website. \r\n\r\nPlease direct any questions or concerns to website at mathsoc.uwaterloo.ca. Also feel free to e-mail any suggestions or wishes that you have for the website.",
+      "can_manage_bookings": true,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Valentine's Day Director",
+      "can_create_meetings": false,
+      "responsibilities": "Organize Valentine's Day activities",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Pi Day Director",
+      "can_create_meetings": false,
+      "responsibilities": "Plans and organizes volunteers for Pi Day.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Novelties Director",
+      "can_create_meetings": false,
+      "responsibilities": "The novelties director is in charge of the ordering, inventory and creation of novelties for sale from MathSoc in the office. The director is always interested in hearing ideas for new math novelties so be sure to send any ideas you have to novelties@mathsoc.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Marketing Director",
+      "can_create_meetings": false,
+      "responsibilities": "Responsible for postings and designing marketing materials.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Games Director",
+      "can_create_meetings": false,
+      "responsibilities": "The Games Director organizes games night on the 3rd floor of MC every week. This includes creating/putting up posters, selecting games from the MathSoc Office, purchasing food, and setting up in the C&D on a weekly basis. They are also responsible for organizing game tournaments.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "First Year Affairs Director",
+      "can_create_meetings": false,
+      "responsibilities": "The CFYA Director coordinates, mentors, and provides frosh with focal point to express their concerns to the Math Society. The CFYA director is also responsible for planning, organizing, and implementing social and academic events for first year students.\r\nIf you are interested in this position, please email prez@mathsoc.uwaterloo.ca. Working with the first year reps is a great opportunity.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "External Affairs Director",
+      "can_create_meetings": false,
+      "responsibilities": "Assists in maintaining relations with other Societies and the Federation of Students. This may include attending other society meetings and organizing cross-faculty events.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Computing Director",
+      "can_create_meetings": true,
+      "responsibilities": "The Computing Director is tasked with providing a useful computing environment for MathSoc council and members (read: everyone!). Whether it's maintaining servers or beating up fried processors, it's Computing's job.",
+      "can_manage_bookings": true,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "can_post": false,
+      "is_admin": false,
+      "title": "Clubs Director",
+      "can_create_meetings": false,
+      "responsibilities": "The Clubs Director helps the VPI liaison with Society clubs and executives.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Charity Ball Director",
+      "can_create_meetings": false,
+      "responsibilities": "The Charity Ball Director organizes one of the most fun events of the fall term. A semi-formal event with a banquet dinner and dance, as well as live and silent auctions with the proceeds going to a designated charity, it's fun for the whole group.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Canada Day Coordinator",
+      "can_create_meetings": false,
+      "responsibilities": "MathSoc runs the Kids Fun Fest at UW's Canada Day celebrations every July 1st. It's a bunch of fun activities for small children, and we can always use more help. If you want to help out, please sign up on the office door!!",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Executive Assistant",
+      "can_create_meetings": true,
+      "responsibilities": "An Executive Assistant is either someone formally appointed to help the executive with their duties.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 12
+    },
+    "model": "tangent.position",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, Events",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, Finances",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Communication",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Administration",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "can_post": false,
+      "is_admin": false,
+      "title": "Office Manager",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Events Coordinator",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Mentorship Coordinator",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Newsletter Editor",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Publicity Director",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Website Manager",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 3
+    },
+    "model": "tangent.position",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Operations",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Finances",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, External Operations",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Webmaster",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Off-Stream Representative",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Promotional Coordinator",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Media Coordinator",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "First Year Representative",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 4
+    },
+    "model": "tangent.position",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Treasurer",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Secretary",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Systems Administrator",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Office Manager",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Librarian",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Imapd",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 5
+    },
+    "model": "tangent.position",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, UW Affairs",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, WLU Affairs",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Director of Finance",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Director of Marketing",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Director of Internal Affairs",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Director of External Affairs",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "can_post": false,
+      "is_admin": true,
+      "title": "Webmaster",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "UW First Year Representative",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "WLU First Year Representative",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Chief Returning Officer",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 6
+    },
+    "model": "tangent.position",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Events",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, Marketing",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, Internal",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, Finances",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, IT",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Editor",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "External Analyst",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Internal Analyst",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Finance Analyst",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "IT Analyst",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 69
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Senior Advisor",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 7
+    },
+    "model": "tangent.position",
+    "pk": 70
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 9
+    },
+    "model": "tangent.position",
+    "pk": 71
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Treasurer",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 9
+    },
+    "model": "tangent.position",
+    "pk": 72
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Secretary",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 9
+    },
+    "model": "tangent.position",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Technology",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 9
+    },
+    "model": "tangent.position",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, Events",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 9
+    },
+    "model": "tangent.position",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Treasurer",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 78
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Secretary",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 79
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "T1 Representative",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 80
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Office Manager",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 81
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Social Committee Head",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 82
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Social Committee Member",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 83
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Website Developer",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 10
+    },
+    "model": "tangent.position",
+    "pk": 84
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "President",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 85
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Events",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 86
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Academic",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 87
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Marketing",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 88
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Vice President, Technology",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 89
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Vice President, Finances",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 90
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Office Manager",
+      "can_create_meetings": false,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 91
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Event Coordinator",
+      "can_create_meetings": true,
+      "responsibilities": "",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 11
+    },
+    "model": "tangent.position",
+    "pk": 92
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Actuarial Science Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Actuarial Science Representatives are voting members of Council, elected by Actuarial Science students to represent their interests. Actuarial Science students include those in Honours or Joint Honours Actuarial Science programs, including Mathematical Finance. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 93
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Computer Science Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Computer Science Representatives are voting members of Council, elected by Computer Science students to represent their interests. Computer Science students include all students in Honours or Joint Honours programs offered by the David R. Cheriton School of Computer Science, including Computer Science, Bioinformatics, the Computer Science and Business Double Degree, and Computational Mathematics.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 94
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Computing and Financial Management Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Computing and Financial Management Representatives are voting members of Council, elected by CFM students to represent their interests. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 95
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "First Year Representative",
+      "can_create_meetings": false,
+      "responsibilities": "First Year Representatives are voting members of Council, elected by first-year students of all programs to represent their interests. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 96
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Mathematical Studies and Other Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Mathematical Studies and Other Representatives are voting members of Council. They are elected by students in the Mathematical Studies program, as well as students not represented in other constituencies (including undeclared students), and serve on Council to represent those students' interests. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 97
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Mathematics/Business Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Mathematics/Business Representatives are voting members of Council, elected by Mathematics/Business students to represent their interests. Mathematics/Business students include those in Honours or Joint Honours Mathematics/Business programs, including FARM, Math/Chartered Accountancy, Information Technology Management, Mathematical Economics, and the Math and CS Double Degree programs. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 98
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Pure Mathematics, Applied Mathematics and Combinatorics and Optimization Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Pure Mathematics, Applied Mathematics, and Combinatorics and Optimization Representatives are voting members of Council, elected by PM, AM, and CO students to represent their interests. PM, AM, and CO students include those in Honours or Joint Honours PM, AM, or CO programs, including Mathematical Optimization, Mathematical Finance, Mathematical Physics offered by the Faculty of Math, and Computational Mathematics ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 99
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Software Engineering Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Software Engineering Representatives are voting members of Council, elected by SE students to represent their interests. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 100
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Statistics Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Statistics Representatives are voting members of Council, elected by Statistics students to represent their interests.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 101
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Teaching Option Representative",
+      "can_create_meetings": false,
+      "responsibilities": "Teaching Option Representatives are voting members of Council, elected by Teaching Option students to represent their interests. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 102
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Chief Returning Officer",
+      "can_create_meetings": true,
+      "responsibilities": "CRO stands for Chief Returning Officer, and this is the person in charge of elections.\r\nThe CRO works with other members of the Election committee to publicize elections, verify nominees, run polling stations and most importantly to ensure that elections are fair and problem-free.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 103
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Executive Assistant",
+      "can_create_meetings": true,
+      "responsibilities": "An Executive Assistant is someone formally appointed to help the executive with their duties.",
+      "can_manage_bookings": true,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 104
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Secretary",
+      "can_create_meetings": true,
+      "responsibilities": "The secretary is responsible for taking minutes at council meetings, sending the minutes out to Council to approve, and for posting the minutes on the webpage, as well as being the person in charge of maintaining the Council list on the website. ",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 105
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": true,
+      "title": "Speaker",
+      "can_create_meetings": true,
+      "responsibilities": "The Speaker of the Mathematics Society Council is charged with running the meetings of Council according to Robert's Rules of Orders and the Bylaws of the Society.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": true,
+      "can_edit": true,
+      "key_holder": false,
+      "want_applications": true,
+      "primary_organization": 2
+    },
+    "model": "tangent.position",
+    "pk": 106
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Office Manager",
+      "can_create_meetings": false,
+      "responsibilities": "The office manager is in charge of the office in shifts, helping members with printing, novelty sales, checkouts, etc.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": true,
+      "want_applications": false,
+      "primary_organization": 1
+    },
+    "model": "tangent.position",
+    "pk": 107
+  },
+  {
+    "fields": {
+      "can_post": true,
+      "is_admin": false,
+      "title": "Office Worker",
+      "can_create_meetings": false,
+      "responsibilities": "The office worker works under the office manager to help run the day-to-day operations of the office.",
+      "can_manage_bookings": false,
+      "can_add_files_to_meetings": false,
+      "can_edit": false,
+      "key_holder": false,
+      "want_applications": false,
+      "primary_organization": 1
+    },
+    "model": "tangent.position",
+    "pk": 108
+  }
+]

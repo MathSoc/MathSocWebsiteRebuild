@@ -12,7 +12,7 @@
         {% for club in clubs %}
             <div class="row">
                 <div class="col-xs-12">
-                    <h2><a href="{% url 'frontend_organization' org_id=club.id %}">{{ club.name }}</a></h2>
+                    <h2><a href="{% url 'frontend_club' club_id=club.id %}">{{ club.name }}</a></h2>
 
                     <h3>{{ club.description }}</h3>
                 </div>
