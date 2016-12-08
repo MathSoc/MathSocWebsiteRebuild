@@ -147,11 +147,7 @@ class Position(models.Model):
         return self.title + " - " + self.primary_organization.name
 
     def occupied_by(self, term=settings.CURRENT_TERM):
-        return PositionHolder.objects.filter(
-            term=term,
-            position_id=self.id
-        ).occupied_by.all()
-
+        return self.positionholder_set.filter(term=term)
 
 class PositionHolder(models.Model):
     term = models.IntegerField(default=settings.CURRENT_TERM)

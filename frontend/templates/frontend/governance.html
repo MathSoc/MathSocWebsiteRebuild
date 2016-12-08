@@ -70,10 +70,11 @@
                                             <img src="{% static 'img/mathsoclogo.png' %}" height="200px">
                                         </div>
                                         <div class="col-xs-10">
-                                            <h3>{{ pos.title }}:
-                                                {{ pos.occupied_by.user.first_name }}
-                                                {{ pos.occupied_by.user.last_name }}</h3>
-
+                                            <h3>{{ pos.title }}:</h3>
+                                            {% for holder in pos.occupied_by %}
+                                                {{ holder.user.first_name }}
+                                                {{ holder.user.last_name }}
+                                            {% endfor %}
                                             <p>{{ pos.description|linebreaks }}</p>
                                         </div>
                                     </div>
