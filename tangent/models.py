@@ -20,6 +20,11 @@ def meeting_upload_file_path(self, filename, classification='unknown'):
                         filename)
 
 
+class MemberManager(models.Manager):
+    def create_member(self, username):
+        user = User.objects.get_or_create(username=username)[0]
+        return user.member
+
 class Member(models.Model):
     user = models.OneToOneField(User)
 
@@ -41,6 +46,8 @@ class Member(models.Model):
     # for applications, and also so they have a place to host this stuff
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
     cover_letter = models.TextField(default="", blank=True, null=True)
+
+    objects = MemberManager()
 
     def __str__(self):
         return self.user.username
@@ -64,12 +71,12 @@ class Member(models.Model):
                 return True
         return self.user.is_staff
 
-def create_member(sender, instance, created, **kwargs):
+def attach_member(sender, instance, created, **kwargs):
     if created:
-       member, created = Member.objects.get_or_create(user=instance)
+        member, created = Member.objects.get_or_create(user=instance)
 
-post_save.connect(create_member, sender=User)
-
+post_save.connect(attach_member, sender=User)
+    
 class Announcement(models.Model):
     # determines what order posts appear on the page
     # TODO order 0 means the header
