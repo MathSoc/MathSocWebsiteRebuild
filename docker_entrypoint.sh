@@ -1,4 +1,3 @@
 #!/bin/bash
 sleep 5
-python manage.py migrate
-python manage.py runserver 0.0.0.0:8000
+/usr/local/bin/gunicorn mathsocwebsite.wsgi:application -w 2 -b :8000

@@ -8,17 +8,33 @@ services:
             - postgres-db-volume:/data/postgres
         ports:
              - "5432:5432"
+
     web: 
         env_file:
             - .env
         build: .
         command: ./docker_entrypoint.sh
         volumes:
+        volumes:
+            - ./dockerstatic:/var/www/static
             - .:/code
         ports:
             - "8000:8000"
         depends_on:
             - db
+
+    nginx:
+        restart: always
+        build: ./nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./dockerstatic:/var/www/static
+        volumes_from:
+            - web
+        links:
+            - web:web
 
 volumes:
     postgres-db-volume:
