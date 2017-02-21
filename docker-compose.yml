@@ -16,7 +16,7 @@ services:
         command: ./docker_entrypoint.sh
         volumes:
         volumes:
-            - ./dockerstatic:/var/www/static
+            - ./dockerstatic:/var/www/mathsoc/
             - .:/code
         ports:
             - "8000:8000"
@@ -30,11 +30,13 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - ./dockerstatic:/var/www/static
+            - ./dockerstatic:/var/www/mathsoc/
         volumes_from:
             - web
         links:
             - web:web
+        depends_on:
+            - web
 
 volumes:
     postgres-db-volume:

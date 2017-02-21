@@ -20,7 +20,7 @@ server {
     error_log /var/log/nginx/elog.log;
 
     location /static {
-        alias /var/www/static;
+        alias /var/www/mathsoc/static;
     }
 
     location / {

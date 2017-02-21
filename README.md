@@ -2,7 +2,7 @@
 
 A remake of the MathSoc website (mathsoc.uwaterloo.ca)
 
-To run:
+To setup:
 
 - Change .envexample to .env and modify the variables as neededA
 - Get the keys needed in keys_and_pws(see its README.md)
@@ -10,3 +10,6 @@ To run:
 - run `docker-compose run web python manage.py migrate`
 - run `docker-compose run web python manage.py collectstatic` 
 - run `docker-compose run web python manage.py loaddata org_structure.json` 
+
+To run:
+- run `docker-compose up`

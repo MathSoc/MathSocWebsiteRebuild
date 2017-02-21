@@ -53,7 +53,7 @@ class Session:
 
     def get(self, api):
         '''
-        Preform a http get. Recreate session if needed 
+        Perform a http get. Recreate session if needed
         '''
         r = None
         url = self.api_url + api
@@ -70,7 +70,7 @@ class Session:
 
 
 if __name__ == "__main__":
-    oat = Session('_demo', open('../keys/private/demo.pcks8').read())
+    oat = Session('_mathsocmbrtest', open('keys_and_pws/oat_pkey.pcks8').read())
     import time
     import json
     t = time.time()
