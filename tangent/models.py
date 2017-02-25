@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.db.models.signals import post_save
 from oat.helpers import is_society_member
 import os
@@ -78,6 +78,10 @@ def attach_member(sender, instance, created, **kwargs):
 post_save.connect(attach_member, sender=User)
     
 class Announcement(models.Model):
+    class Meta:
+        permissions = (
+                ("can_promote", "Can promote announcements to reach all MathSoc members (rather than members of org)"),
+        )
     # determines what order posts appear on the page
     # TODO order 0 means the header
     order_key = models.IntegerField(unique=True)
@@ -106,12 +110,32 @@ class BaseOrg(models.Model):
         return self.name
 
 class Organization(BaseOrg):
+    class Meta:
+        permissions = (
+                ("add_announcements", "Can post announcements belonging to org"),
+                ("manage_announcement", "Can edit announcements belonging to org"),
+                ("attach_positions", "Can attach members to positions/add members in the org"),
+                ("add_meetings", "Can add meetings to the org"),
+                ("manage_meetings", "Can manage meetings (not created by themselves) within the org"),
+                ("add_documents", "Can add documents beloging to the org"),
+                ("manage_documents", "Can manage documents belonging to the org"),
+        )
     # Allows us to add affiliates and sponsors and such
     external = models.BooleanField(default=False)
     affiliate = models.BooleanField(default=False)
     sponsor = models.BooleanField(default=False)
    
 class Club(BaseOrg):
+    class Meta:
+        permissions = (
+                ("add_announcements", "Can post announcements belonging to org"),
+                ("manage_announcement", "Can edit announcements belonging to org"),
+                ("attach_positions", "Can attach members to positions/add members in the org"),
+                ("add_meetings", "Can add meetings to the org"),
+                ("manage_meetings", "Can manage meetings (not created by themselves) within the org"),
+                ("add_documents", "Can add documents beloging to the org"),
+                ("manage_documents", "Can manage documents belonging to the org"),
+        )
     members = models.ManyToManyField('Member', blank=True)
     # club fee in cents
     fee = models.IntegerField(default=200)
@@ -139,12 +163,9 @@ class Position(models.Model):
     primary_organization = models.ForeignKey(BaseOrg, default=None, blank=True, null=True)
 
     # permissions
-    is_admin = models.BooleanField(default=False) # Can do anything (overrides all other permissions, only admins can manage members, organization info, etc)
-    can_post = models.BooleanField(default=False)
-    can_edit = models.BooleanField(default=False) # People who can post can only edit their own posts, these people can edit all announcements
-    can_manage_bookings = models.BooleanField(default=False)
-    can_create_meetings =  models.BooleanField(default=False)
-    can_add_files_to_meetings = models.BooleanField(default=False)
+    permissions_group = models.ForeignKey(Group, default=None, blank=True, null=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     key_holder = models.BooleanField(default=False)
 
     # do we want to hire this position 
@@ -160,6 +181,19 @@ class PositionHolder(models.Model):
     term = models.IntegerField(default=settings.CURRENT_TERM)
     position = models.ForeignKey(Position)
     occupied_by = models.ForeignKey(Member)
+
+def attach_position(sender, instance, created, **kwargs):
+    if created:
+        group = instance.position.permissions_group
+        if group and instance.term == settings.CURRENT_TERM:
+            user = instance.occupied_by.user
+            group.user_set.add(user)
+            if instance.position.is_staff or instance.position.is_superuser:
+                user.is_staff = instance.position.is_staff or user.is_staff
+                user.is_superuser = instance.position.is_superuser or user.is_superuser
+                user.save()
+
+post_save.connect(attach_position, sender=PositionHolder)
 
 class Scholarship(models.Model):
     name = models.CharField(max_length=256)

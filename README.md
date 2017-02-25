@@ -9,7 +9,7 @@ To setup:
 - run `docker-compose up` (first time will take a while, but after that it should be  much faster)
 - run `docker-compose run web python manage.py migrate`
 - run `docker-compose run web python manage.py collectstatic` 
-- run `docker-compose run web python manage.py loaddata org_structure.json` 
+- run `docker-compose run web python manage.py loaddata db_basedata.json` 
 
 To run:
 - run `docker-compose up`

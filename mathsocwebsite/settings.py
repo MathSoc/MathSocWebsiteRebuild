@@ -55,7 +55,8 @@ INSTALLED_APPS = (
     'frontend',
     'lockers',
     'services',
-    'tangent'
+    'tangent',
+    'guardian'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,6 +73,7 @@ MIDDLEWARE_CLASSES = (
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'cas.backends.CASBackend',
+    'guardian.backends.ObjectPermissionBackend'
 )
 
 ROOT_URLCONF = 'mathsocwebsite.urls'

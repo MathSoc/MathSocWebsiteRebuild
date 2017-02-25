@@ -1,0 +1,3050 @@
+[
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "codename": "add_logentry",
+    "content_type": 1
+  },
+  "pk": 1
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "codename": "change_logentry",
+    "content_type": 1
+  },
+  "pk": 2
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "codename": "delete_logentry",
+    "content_type": 1
+  },
+  "pk": 3
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "codename": "add_permission",
+    "content_type": 2
+  },
+  "pk": 4
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "codename": "change_permission",
+    "content_type": 2
+  },
+  "pk": 5
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "codename": "delete_permission",
+    "content_type": 2
+  },
+  "pk": 6
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "codename": "add_group",
+    "content_type": 3
+  },
+  "pk": 7
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "codename": "change_group",
+    "content_type": 3
+  },
+  "pk": 8
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "codename": "delete_group",
+    "content_type": 3
+  },
+  "pk": 9
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "codename": "add_user",
+    "content_type": 4
+  },
+  "pk": 10
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "codename": "change_user",
+    "content_type": 4
+  },
+  "pk": 11
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "codename": "delete_user",
+    "content_type": 4
+  },
+  "pk": 12
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "codename": "add_contenttype",
+    "content_type": 5
+  },
+  "pk": 13
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "codename": "change_contenttype",
+    "content_type": 5
+  },
+  "pk": 14
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "codename": "delete_contenttype",
+    "content_type": 5
+  },
+  "pk": 15
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "codename": "add_session",
+    "content_type": 6
+  },
+  "pk": 16
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "codename": "change_session",
+    "content_type": 6
+  },
+  "pk": 17
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "codename": "delete_session",
+    "content_type": 6
+  },
+  "pk": 18
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add tgt",
+    "codename": "add_tgt",
+    "content_type": 7
+  },
+  "pk": 19
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change tgt",
+    "codename": "change_tgt",
+    "content_type": 7
+  },
+  "pk": 20
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete tgt",
+    "codename": "delete_tgt",
+    "content_type": 7
+  },
+  "pk": 21
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add pgt iou",
+    "codename": "add_pgtiou",
+    "content_type": 8
+  },
+  "pk": 22
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change pgt iou",
+    "codename": "change_pgtiou",
+    "content_type": 8
+  },
+  "pk": 23
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete pgt iou",
+    "codename": "delete_pgtiou",
+    "content_type": 8
+  },
+  "pk": 24
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add booking request",
+    "codename": "add_bookingrequest",
+    "content_type": 9
+  },
+  "pk": 25
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change booking request",
+    "codename": "change_bookingrequest",
+    "content_type": 9
+  },
+  "pk": 26
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete booking request",
+    "codename": "delete_bookingrequest",
+    "content_type": 9
+  },
+  "pk": 27
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add course",
+    "codename": "add_course",
+    "content_type": 10
+  },
+  "pk": 28
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change course",
+    "codename": "change_course",
+    "content_type": 10
+  },
+  "pk": 29
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete course",
+    "codename": "delete_course",
+    "content_type": 10
+  },
+  "pk": 30
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add professor",
+    "codename": "add_professor",
+    "content_type": 11
+  },
+  "pk": 31
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change professor",
+    "codename": "change_professor",
+    "content_type": 11
+  },
+  "pk": 32
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete professor",
+    "codename": "delete_professor",
+    "content_type": 11
+  },
+  "pk": 33
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add exam",
+    "codename": "add_exam",
+    "content_type": 12
+  },
+  "pk": 34
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change exam",
+    "codename": "change_exam",
+    "content_type": 12
+  },
+  "pk": 35
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete exam",
+    "codename": "delete_exam",
+    "content_type": 12
+  },
+  "pk": 36
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add course evaluation",
+    "codename": "add_courseevaluation",
+    "content_type": 13
+  },
+  "pk": 37
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change course evaluation",
+    "codename": "change_courseevaluation",
+    "content_type": 13
+  },
+  "pk": 38
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete course evaluation",
+    "codename": "delete_courseevaluation",
+    "content_type": 13
+  },
+  "pk": 39
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add comment",
+    "codename": "add_comment",
+    "content_type": 14
+  },
+  "pk": 40
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change comment",
+    "codename": "change_comment",
+    "content_type": 14
+  },
+  "pk": 41
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete comment",
+    "codename": "delete_comment",
+    "content_type": 14
+  },
+  "pk": 42
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add locker",
+    "codename": "add_locker",
+    "content_type": 15
+  },
+  "pk": 43
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change locker",
+    "codename": "change_locker",
+    "content_type": 15
+  },
+  "pk": 44
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete locker",
+    "codename": "delete_locker",
+    "content_type": 15
+  },
+  "pk": 45
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add member",
+    "codename": "add_member",
+    "content_type": 16
+  },
+  "pk": 46
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change member",
+    "codename": "change_member",
+    "content_type": 16
+  },
+  "pk": 47
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete member",
+    "codename": "delete_member",
+    "content_type": 16
+  },
+  "pk": 48
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add announcement",
+    "codename": "add_announcement",
+    "content_type": 17
+  },
+  "pk": 49
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change announcement",
+    "codename": "change_announcement",
+    "content_type": 17
+  },
+  "pk": 50
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete announcement",
+    "codename": "delete_announcement",
+    "content_type": 17
+  },
+  "pk": 51
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add base org",
+    "codename": "add_baseorg",
+    "content_type": 18
+  },
+  "pk": 52
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change base org",
+    "codename": "change_baseorg",
+    "content_type": 18
+  },
+  "pk": 53
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete base org",
+    "codename": "delete_baseorg",
+    "content_type": 18
+  },
+  "pk": 54
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add organization",
+    "codename": "add_organization",
+    "content_type": 19
+  },
+  "pk": 55
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change organization",
+    "codename": "change_organization",
+    "content_type": 19
+  },
+  "pk": 56
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete organization",
+    "codename": "delete_organization",
+    "content_type": 19
+  },
+  "pk": 57
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add club",
+    "codename": "add_club",
+    "content_type": 20
+  },
+  "pk": 58
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change club",
+    "codename": "change_club",
+    "content_type": 20
+  },
+  "pk": 59
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete club",
+    "codename": "delete_club",
+    "content_type": 20
+  },
+  "pk": 60
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add organization document",
+    "codename": "add_organizationdocument",
+    "content_type": 21
+  },
+  "pk": 61
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change organization document",
+    "codename": "change_organizationdocument",
+    "content_type": 21
+  },
+  "pk": 62
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete organization document",
+    "codename": "delete_organizationdocument",
+    "content_type": 21
+  },
+  "pk": 63
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add position",
+    "codename": "add_position",
+    "content_type": 22
+  },
+  "pk": 64
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change position",
+    "codename": "change_position",
+    "content_type": 22
+  },
+  "pk": 65
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete position",
+    "codename": "delete_position",
+    "content_type": 22
+  },
+  "pk": 66
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add position holder",
+    "codename": "add_positionholder",
+    "content_type": 23
+  },
+  "pk": 67
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change position holder",
+    "codename": "change_positionholder",
+    "content_type": 23
+  },
+  "pk": 68
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete position holder",
+    "codename": "delete_positionholder",
+    "content_type": 23
+  },
+  "pk": 69
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add scholarship",
+    "codename": "add_scholarship",
+    "content_type": 24
+  },
+  "pk": 70
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change scholarship",
+    "codename": "change_scholarship",
+    "content_type": 24
+  },
+  "pk": 71
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete scholarship",
+    "codename": "delete_scholarship",
+    "content_type": 24
+  },
+  "pk": 72
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add meeting",
+    "codename": "add_meeting",
+    "content_type": 25
+  },
+  "pk": 73
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change meeting",
+    "codename": "change_meeting",
+    "content_type": 25
+  },
+  "pk": 74
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete meeting",
+    "codename": "delete_meeting",
+    "content_type": 25
+  },
+  "pk": 75
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log",
+    "codename": "add_log",
+    "content_type": 26
+  },
+  "pk": 76
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log",
+    "codename": "change_log",
+    "content_type": 26
+  },
+  "pk": 77
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log",
+    "codename": "delete_log",
+    "content_type": 26
+  },
+  "pk": 78
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user object permission",
+    "codename": "add_userobjectpermission",
+    "content_type": 27
+  },
+  "pk": 79
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user object permission",
+    "codename": "change_userobjectpermission",
+    "content_type": 27
+  },
+  "pk": 80
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user object permission",
+    "codename": "delete_userobjectpermission",
+    "content_type": 27
+  },
+  "pk": 81
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group object permission",
+    "codename": "add_groupobjectpermission",
+    "content_type": 28
+  },
+  "pk": 82
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group object permission",
+    "codename": "change_groupobjectpermission",
+    "content_type": 28
+  },
+  "pk": 83
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group object permission",
+    "codename": "delete_groupobjectpermission",
+    "content_type": 28
+  },
+  "pk": 84
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can promote announcements to reach all MathSoc members (rather than members of org)",
+    "codename": "can_promote",
+    "content_type": 17
+  },
+  "pk": 85
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can post announcements belonging to org",
+    "codename": "add_announcements",
+    "content_type": 18
+  },
+  "pk": 86
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can edit announcements belonging to org",
+    "codename": "manage_announcement",
+    "content_type": 18
+  },
+  "pk": 87
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can attach members to positions/add members in the org",
+    "codename": "attach_positions",
+    "content_type": 18
+  },
+  "pk": 88
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add meetings to the org",
+    "codename": "add_meetings",
+    "content_type": 18
+  },
+  "pk": 89
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can manage meetings (not created by themselves) within the org",
+    "codename": "manage_meetings",
+    "content_type": 18
+  },
+  "pk": 90
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add documents beloging to the org",
+    "codename": "add_documents",
+    "content_type": 18
+  },
+  "pk": 91
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can manage documents belonging to the org",
+    "codename": "manage_documents",
+    "content_type": 18
+  },
+  "pk": 92
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can post announcements belonging to org",
+    "codename": "add_announcements",
+    "content_type": 19
+  },
+  "pk": 93
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can edit announcements belonging to org",
+    "codename": "manage_announcement",
+    "content_type": 19
+  },
+  "pk": 94
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can attach members to positions/add members in the org",
+    "codename": "attach_positions",
+    "content_type": 19
+  },
+  "pk": 95
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add meetings to the org",
+    "codename": "add_meetings",
+    "content_type": 19
+  },
+  "pk": 96
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can manage meetings (not created by themselves) within the org",
+    "codename": "manage_meetings",
+    "content_type": 19
+  },
+  "pk": 97
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add documents beloging to the org",
+    "codename": "add_documents",
+    "content_type": 19
+  },
+  "pk": 98
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can manage documents belonging to the org",
+    "codename": "manage_documents",
+    "content_type": 19
+  },
+  "pk": 99
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can post announcements belonging to org",
+    "codename": "add_announcements",
+    "content_type": 20
+  },
+  "pk": 100
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can edit announcements belonging to org",
+    "codename": "manage_announcement",
+    "content_type": 20
+  },
+  "pk": 101
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can attach members to positions/add members in the org",
+    "codename": "attach_positions",
+    "content_type": 20
+  },
+  "pk": 102
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add meetings to the org",
+    "codename": "add_meetings",
+    "content_type": 20
+  },
+  "pk": 103
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can manage meetings (not created by themselves) within the org",
+    "codename": "manage_meetings",
+    "content_type": 20
+  },
+  "pk": 104
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add documents beloging to the org",
+    "codename": "add_documents",
+    "content_type": 20
+  },
+  "pk": 105
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can manage documents belonging to the org",
+    "codename": "manage_documents",
+    "content_type": 20
+  },
+  "pk": 106
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Office Manager"
+  },
+  "pk": 1
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Council Organizer"
+  },
+  "pk": 2
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Actuarial Sciences Club Directors"
+  },
+  "pk": 5
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Actuarial Sciences Club Exec"
+  },
+  "pk": 6
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Bioinformatics Club Directors"
+  },
+  "pk": 7
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Bioinformatics Club Exec"
+  },
+  "pk": 8
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Computer Science Club Directors"
+  },
+  "pk": 9
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Computer Science Club Exec"
+  },
+  "pk": 10
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Double Degree Club Directors"
+  },
+  "pk": 11
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Double Degree Club Exec"
+  },
+  "pk": 12
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Financial Analysis or Risk Management Student Association Directors"
+  },
+  "pk": 13
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Financial Analysis or Risk Management Student Association Exec"
+  },
+  "pk": 14
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Pure Math, Applied Math and Combinatorial Optimization Club Directors"
+  },
+  "pk": 15
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Pure Math, Applied Math and Combinatorial Optimization Club Exec"
+  },
+  "pk": 16
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Statistics Club Directors"
+  },
+  "pk": 17
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Statistics Club Exec"
+  },
+  "pk": 18
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Teaching Students' Association Directors"
+  },
+  "pk": 19
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Teaching Students' Association Exec"
+  },
+  "pk": 20
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Mathematical Finance Student Association Directors"
+  },
+  "pk": 21
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Mathematical Finance Student Association Exec"
+  },
+  "pk": 22
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [
+      26,
+      49,
+      85,
+      50,
+      51,
+      100,
+      105,
+      103,
+      102,
+      101,
+      106,
+      104,
+      73,
+      74,
+      75,
+      93,
+      98,
+      96,
+      95,
+      94,
+      99,
+      97,
+      61,
+      62,
+      63,
+      70,
+      71,
+      72,
+      40,
+      41,
+      42,
+      28,
+      29,
+      30,
+      37,
+      38,
+      39,
+      34,
+      35,
+      36,
+      31,
+      32,
+      33
+    ],
+    "name": "Exec Assistant"
+  },
+  "pk": 23
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [
+      85
+    ],
+    "name": "Elections Director"
+  },
+  "pk": 24
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [],
+    "name": "Council Representative"
+  },
+  "pk": 25
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [
+      85
+    ],
+    "name": "MathSoc Directors"
+  },
+  "pk": 26
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [
+      85,
+      93,
+      98,
+      96,
+      95,
+      94,
+      99,
+      97,
+      61,
+      62,
+      63,
+      70,
+      71,
+      72,
+      40,
+      41,
+      42,
+      28,
+      29,
+      30,
+      37,
+      38,
+      39,
+      34,
+      35,
+      36,
+      31,
+      32,
+      33
+    ],
+    "name": "Vice President Academic"
+  },
+  "pk": 27
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [
+      26,
+      49,
+      85,
+      50,
+      51,
+      100,
+      105,
+      103,
+      102,
+      101,
+      106,
+      104,
+      73,
+      74,
+      75,
+      93,
+      98,
+      96,
+      95,
+      94,
+      99,
+      97,
+      61,
+      62,
+      63
+    ],
+    "name": "Vice President Internal"
+  },
+  "pk": 28
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "permissions": [
+      85,
+      73,
+      74,
+      75,
+      93,
+      98,
+      96,
+      95,
+      94,
+      99,
+      97,
+      61,
+      62,
+      63
+    ],
+    "name": "Vice President Finance"
+  },
+  "pk": 29
+},
+{
+  "model": "tangent.member",
+  "fields": {
+    "used_resources": false,
+    "do_not_email": false,
+    "picture": "",
+    "interested_in": [],
+    "cover_letter": "",
+    "requested_refund": false,
+    "bio": "",
+    "website": null,
+    "user": 1,
+    "resume": ""
+  },
+  "pk": 1
+},
+{
+  "model": "tangent.member",
+  "fields": {
+    "used_resources": false,
+    "do_not_email": false,
+    "picture": "",
+    "interested_in": [],
+    "cover_letter": "",
+    "requested_refund": false,
+    "bio": "",
+    "website": null,
+    "user": 2,
+    "resume": ""
+  },
+  "pk": 2
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "MathSoc Office",
+    "office": "MC 3038",
+    "description": "MathSoc offers many handy services, both academic and recreational, out of our office in MC 3038. Some things you may find important for classes:\r\n\r\n\t\u2022\t5\u00a2 photocopies for those lectures you missed\r\n\t\u2022\tPens and pencils for 25\u00a2/each\r\n\t\u2022\tPaper (lined and graph) for 10\u00a2/10 sheets\r\n\t\u2022\tTransparencies for presentations\r\n\t\u2022\tCalculators with pink tie stickers for the cheapest on campus\r\n\t\u2022\tStaplers to staple your assignment together\r\n\t\u2022\tHole punches\r\n\t\u2022\tWork report binding for only 75\u00a2!\r\n\t\u2022\tComputers with printing for 10\u00a2 a page\r\n\t\u2022\tLocker Signup so you don't have to carry around those heavy books all day\r\n\t\u2022\tTextbook library so you have access to material when you don't have your books with you. This selection includes most first/second-year core courses.\r\n\r\nOn the recreational side, we have a selection of mathNEWS, frisbees, cool math novelties and board games (full list found here: LINK_TO_BG_INVENTORY)",
+    "website": "http://mathsoc.uwaterloo.ca"
+  },
+  "pk": 1
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "MathSoc Council",
+    "office": "MC 3039",
+    "description": "MathSoc Council is the main decision-making body of the Society.\r\n\r\nMathSoc Council is made up of up to 30 program representatives and the 5 executives. Each program representative and executive is elected per term.\r\n\r\nCouncil makes important decisions about budgeting, academic and operational policies and many other decisions.",
+    "website": "http://mathsoc.uwaterloo.ca"
+  },
+  "pk": 2
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Actuarial Sciences Club",
+    "office": "MC 1003",
+    "description": "The UW ActSci Club is the official student organization serving UW's actuarial science undergraduate students. It's an organization for students with the common interest of pursuing an actuarial career to come together, network, learn, and improve their UW experience! The club hosts social events and informative sessions, lends out SOA study manuals, operates a mentorship program, produces newsletters, and is your hub for all actuarial-related news and events. Come by our office (M3 1003) to borrow study manuals, learn more about the club, or ask our friendly execs for some advice. We hope to make your time here at UW a little easier and a little more enjoyable.",
+    "website": "http://uwactsciclub.com/"
+  },
+  "pk": 3
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Bioinformatics Club",
+    "office": "MC 3028",
+    "description": "Welcome to the Undergraduate Bioinformatics Club of the University of Waterloo, Fall 2016 term. Bioinformatics is a program here at the University that encompasses courses in math, biology, computer science, chemistry and, of course, bioinformatics. It also offers a great co-op program where students have a chance to learn bioinformatics hands-on at many different labs.\r\n\r\nAs the program is one of the smaller programs at Waterloo, one of our main goals is try to connect students of the bioinformatics program as well as students from related programs and faculties. Some of the popular events BIC holds are professor talks and trips to Toronto for lab tours. This year, we\u2019re looking to start up a seminar series where we\u2019ll have our very own club members give talks about work they\u2019ve done during their work terms and summers. We also hold social events like Board Game Nights and Science Movie Nights (some of our favourites are X-Men and The Island). We\u2019re always looking for new members, so please don\u2019t hesitate and come check our club out!",
+    "website": "http://bic.uwaterloo.ca/"
+  },
+  "pk": 4
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Computer Science Club",
+    "office": "MC 3036",
+    "description": "We exist to promote knowledge of and interest in computer science as well as allowing those interested in computer science to talk to each other. We have an office where members get together, a library of computer science books available to our members, computer accounts on our various machines and much more. Frequently we host events related to computing, including talks, tutorials and demonstrations.",
+    "website": "http://csclub.uwaterloo.ca/"
+  },
+  "pk": 5
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Double Degree Club",
+    "office": "M3 1001",
+    "description": "The DDC is an official, UW and WLU registered, student-run organization that aims to enhance the experience of Double Degree students during their university career. Thanks to the support of members like yourself, the club hosts several social events, networking/mentorship opportunities, and academic resources in an effort to enrich your education at UW and WLU. We also work closely with administration at both universities to increase the presence of our members at the two schools, to foster an atmosphere in which our students can develop both socially and professionally.",
+    "website": "http://www.ddclub.uwaterloo.ca/"
+  },
+  "pk": 6
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Financial Analysis or Risk Management Student Association",
+    "office": "MC 3038",
+    "description": "FARMSA is a non-profit student club open to all Math students at the UW, even those not in the Math/FARM program.\r\n\r\nThe goals of the club:\r\n\r\nTo encourage academic pursuits and interests of the Math/FARM program internally and externally.\r\nTo provide services that will benefit Math/FARM students and other interested individuals academically and professionally.\r\nTo improve the cohesiveness between individuals of the Math/FARM program.\r\nProvide a framework to build, improve and promote the reputation and quality of the Math/FARM program.\r\n",
+    "website": "http://uwfarmsa.uwaterloo.ca/index.html"
+  },
+  "pk": 7
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Pure Math, Applied Math and Combinatorial Optimization Club",
+    "office": "MC 3038",
+    "description": "Description coming soon",
+    "website": "http://mathsoc.uwaterloo.ca"
+  },
+  "pk": 8
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Statistics Club",
+    "office": "M3 1004",
+    "description": "The University of Waterloo's Statistics Club is the official student run club serving UW's statistics undergraduate students. The Stats Club is dedicated to bringing together the statistics undergraduate community on campus by providing friendly and welcoming environment, as well as supplying resources for the academic pursuit of Statistics.",
+    "website": "http://csclub.uwaterloo.ca/~statsclub/"
+  },
+  "pk": 9
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Teaching Students' Association",
+    "office": "MC 3031",
+    "description": "The objective of the TSA shall be to promote interaction amongst University of Waterloo Undergraduate Students interested in a career in teaching. Throughout the academic year, a collection of social, athletic, cultural, and academic activities shall be organized to foster positive networking between potential teaching candidates. Furthermore, the TSA will explore and encourage professional development activities with the goal of improving club members' teaching qualifications.",
+    "website": "http://csclub.uwaterloo.ca/~tsa/"
+  },
+  "pk": 10
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "Mathematical Finance Student Association",
+    "office": "MC 3034",
+    "description": "The goal of MFSA is to provide services that encourage academic pursuits of quantitative finance and improve the reputation of the Mathematical Finance program.",
+    "website": "http://csclub.uwaterloo.ca/~uwmfsa/"
+  },
+  "pk": 11
+},
+{
+  "model": "tangent.baseorg",
+  "fields": {
+    "documents": [],
+    "name": "MathSoc Directors",
+    "office": "MC 3038",
+    "description": "Description coming soon",
+    "website": "http://mathsoc.uwaterloo.ca"
+  },
+  "pk": 12
+},
+{
+  "model": "tangent.organization",
+  "fields": {
+    "documents": [],
+    "external": false,
+    "sponsor": false,
+    "affiliate": false
+  },
+  "pk": 1
+},
+{
+  "model": "tangent.organization",
+  "fields": {
+    "documents": [],
+    "external": false,
+    "sponsor": false,
+    "affiliate": false
+  },
+  "pk": 2
+},
+{
+  "model": "tangent.organization",
+  "fields": {
+    "documents": [],
+    "external": false,
+    "sponsor": false,
+    "affiliate": false
+  },
+  "pk": 12
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 3
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 4
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 5
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 6
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 7
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 8
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 9
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 10
+},
+{
+  "model": "tangent.club",
+  "fields": {
+    "documents": [],
+    "fee": 200,
+    "members": []
+  },
+  "pk": 11
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The President is the chief executive of the Society. They oversee all the affairs of the Society, represent the Society at official functions and public occasions and works with affiliated organizations on behalf of the Society.\r\n\r\nThey also work with the other executives and ensure things are running smoothly. They are also in charge of liaising with the many Mathsoc clubs.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": true,
+    "primary_organization": 2,
+    "permissions_group": null
+  },
+  "pk": 1
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Vice President, Operations is responsible for the day-to-day operations of the Society. They oversee the main Society office and its operation.\r\n\r\nThey oversee all of the technical infrastructure for the Society including the website and the MathSoc server. Lastly, they oversee the Society's space such as bookings as room allocation.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Operations",
+    "is_superuser": true,
+    "primary_organization": 2,
+    "permissions_group": null
+  },
+  "pk": 2
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Vice President, Academic is responsible for academic operations of the Society. They represent the Society and its members to the Faculty, to the University, and to the Federation of Students on academic issues.\r\n\r\nThey also organize events and manage services of an academic nature such as resume critiques and mock interviews.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Academic",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 27
+  },
+  "pk": 3
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Vice President, Finances is responsible for the financial affairs of the Society. They keep accurate and complete records of the finances and manage the accounts and funds of the Society.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Finances",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 29
+  },
+  "pk": 4
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Vice-President, Internal is responsible for overseeing clubs and Society events. They encourage members to become more involved in the Society and ensure that the opportunity exists for them to do so. They also ensure clubs and affiliates are support in their endeavours and remain compliant with MathSoc policy.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Internal",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 28
+  },
+  "pk": 5
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The website director is responsible for maintaining, troubleshooting, and updating the Society's website. \r\n\r\nPlease direct any questions or concerns to website at mathsoc.uwaterloo.ca. Also feel free to e-mail any suggestions or wishes that you have for the website.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Website Director",
+    "is_superuser": true,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 6
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Organize Valentine's Day activities",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Valentine's Day Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 7
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Plans and organizes volunteers for Pi Day.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Pi Day Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 8
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The novelties director is in charge of the ordering, inventory and creation of novelties for sale from MathSoc in the office. The director is always interested in hearing ideas for new math novelties so be sure to send any ideas you have to novelties@mathsoc.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Novelties Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 9
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Responsible for postings and designing marketing materials.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Marketing Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 10
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Games Director organizes games night on the 3rd floor of MC every week. This includes creating/putting up posters, selecting games from the MathSoc Office, purchasing food, and setting up in the C&D on a weekly basis. They are also responsible for organizing game tournaments.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Games Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 11
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The CFYA Director coordinates, mentors, and provides frosh with focal point to express their concerns to the Math Society. The CFYA director is also responsible for planning, organizing, and implementing social and academic events for first year students.\r\nIf you are interested in this position, please email prez@mathsoc.uwaterloo.ca. Working with the first year reps is a great opportunity.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "First Year Affairs Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 12
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Assists in maintaining relations with other Societies and the Federation of Students. This may include attending other society meetings and organizing cross-faculty events.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "External Affairs Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 13
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Computing Director is tasked with providing a useful computing environment for MathSoc council and members (read: everyone!). Whether it's maintaining servers or beating up fried processors, it's Computing's job.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Computing Director",
+    "is_superuser": true,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 14
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Clubs Director helps the VPI liaison with Society clubs and executives.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Clubs Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 15
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Charity Ball Director organizes one of the most fun events of the fall term. A semi-formal event with a banquet dinner and dance, as well as live and silent auctions with the proceeds going to a designated charity, it's fun for the whole group.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Charity Ball Director",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 16
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "MathSoc runs the Kids Fun Fest at UW's Canada Day celebrations every July 1st. It's a bunch of fun activities for small children, and we can always use more help. If you want to help out, please sign up on the office door!!",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Canada Day Coordinator",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 26
+  },
+  "pk": 17
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "An Executive Assistant is either someone formally appointed to help the executive with their duties.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Executive Assistant",
+    "is_superuser": false,
+    "primary_organization": 12,
+    "permissions_group": 23
+  },
+  "pk": 18
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 6
+  },
+  "pk": 19
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Events",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 6
+  },
+  "pk": 20
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Finances",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 6
+  },
+  "pk": 21
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Communication",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 6
+  },
+  "pk": 22
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Administration",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 6
+  },
+  "pk": 23
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Office Manager",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 5
+  },
+  "pk": 24
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Events Coordinator",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 5
+  },
+  "pk": 25
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Mentorship Coordinator",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 5
+  },
+  "pk": 26
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Newsletter Editor",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 5
+  },
+  "pk": 27
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Publicity Director",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 5
+  },
+  "pk": 28
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Website Manager",
+    "is_superuser": false,
+    "primary_organization": 3,
+    "permissions_group": 5
+  },
+  "pk": 29
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 8
+  },
+  "pk": 30
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Operations",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 8
+  },
+  "pk": 31
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Finances",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 8
+  },
+  "pk": 32
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, External Operations",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 8
+  },
+  "pk": 33
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Webmaster",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 7
+  },
+  "pk": 34
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Off-Stream Representative",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 7
+  },
+  "pk": 35
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Promotional Coordinator",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 7
+  },
+  "pk": 36
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Media Coordinator",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 7
+  },
+  "pk": 37
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "First Year Representative",
+    "is_superuser": false,
+    "primary_organization": 4,
+    "permissions_group": 7
+  },
+  "pk": 39
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 10
+  },
+  "pk": 40
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 10
+  },
+  "pk": 41
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Treasurer",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 9
+  },
+  "pk": 42
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Secretary",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 9
+  },
+  "pk": 43
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Systems Administrator",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 9
+  },
+  "pk": 44
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Office Manager",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 9
+  },
+  "pk": 45
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Librarian",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 9
+  },
+  "pk": 46
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Imapd",
+    "is_superuser": false,
+    "primary_organization": 5,
+    "permissions_group": 9
+  },
+  "pk": 47
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 12
+  },
+  "pk": 48
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, UW Affairs",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 12
+  },
+  "pk": 49
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, WLU Affairs",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 12
+  },
+  "pk": 50
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Director of Finance",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 51
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Director of Marketing",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 52
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Director of Internal Affairs",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 53
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Director of External Affairs",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 54
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Webmaster",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 55
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "UW First Year Representative",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 56
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "WLU First Year Representative",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 57
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Chief Returning Officer",
+    "is_superuser": false,
+    "primary_organization": 6,
+    "permissions_group": 11
+  },
+  "pk": 58
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 14
+  },
+  "pk": 59
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Events",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 14
+  },
+  "pk": 60
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Marketing",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 14
+  },
+  "pk": 61
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Internal",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 14
+  },
+  "pk": 62
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Finances",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 14
+  },
+  "pk": 63
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Vice President, IT",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 14
+  },
+  "pk": 64
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Editor",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 13
+  },
+  "pk": 65
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "External Analyst",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 13
+  },
+  "pk": 66
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Internal Analyst",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 13
+  },
+  "pk": 67
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Finance Analyst",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 13
+  },
+  "pk": 68
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "IT Analyst",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 13
+  },
+  "pk": 69
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Senior Advisor",
+    "is_superuser": false,
+    "primary_organization": 7,
+    "permissions_group": 13
+  },
+  "pk": 70
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 9,
+    "permissions_group": 18
+  },
+  "pk": 71
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Treasurer",
+    "is_superuser": false,
+    "primary_organization": 9,
+    "permissions_group": 17
+  },
+  "pk": 72
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Secretary",
+    "is_superuser": false,
+    "primary_organization": 9,
+    "permissions_group": 17
+  },
+  "pk": 73
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Vice President, Technology",
+    "is_superuser": false,
+    "primary_organization": 9,
+    "permissions_group": 18
+  },
+  "pk": 74
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Vice President, Events",
+    "is_superuser": false,
+    "primary_organization": 9,
+    "permissions_group": 18
+  },
+  "pk": 75
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 20
+  },
+  "pk": 76
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 20
+  },
+  "pk": 77
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Treasurer",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 19
+  },
+  "pk": 78
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Secretary",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 19
+  },
+  "pk": 79
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "T1 Representative",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 19
+  },
+  "pk": 80
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Office Manager",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 19
+  },
+  "pk": 81
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Social Committee Head",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 19
+  },
+  "pk": 82
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Social Committee Member",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 19
+  },
+  "pk": 83
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Website Developer",
+    "is_superuser": false,
+    "primary_organization": 10,
+    "permissions_group": 19
+  },
+  "pk": 84
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "President",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 22
+  },
+  "pk": 85
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Events",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 22
+  },
+  "pk": 86
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Academic",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 22
+  },
+  "pk": 87
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Vice President, Marketing",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 22
+  },
+  "pk": 88
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Vice President, Technology",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 22
+  },
+  "pk": 89
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Vice President, Finances",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 22
+  },
+  "pk": 90
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Office Manager",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 21
+  },
+  "pk": 91
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Event Coordinator",
+    "is_superuser": false,
+    "primary_organization": 11,
+    "permissions_group": 21
+  },
+  "pk": 92
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Actuarial Science Representatives are voting members of Council, elected by Actuarial Science students to represent their interests. Actuarial Science students include those in Honours or Joint Honours Actuarial Science programs, including Mathematical Finance. ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Actuarial Science Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 93
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Computer Science Representatives are voting members of Council, elected by Computer Science students to represent their interests. Computer Science students include all students in Honours or Joint Honours programs offered by the David R. Cheriton School of Computer Science, including Computer Science, Bioinformatics, the Computer Science and Business Double Degree, and Computational Mathematics.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Computer Science Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 94
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Computing and Financial Management Representatives are voting members of Council, elected by CFM students to represent their interests. ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Computing and Financial Management Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 95
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "First Year Representatives are voting members of Council, elected by first-year students of all programs to represent their interests. ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "First Year Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 96
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Mathematical Studies and Other Representatives are voting members of Council. They are elected by students in the Mathematical Studies program, as well as students not represented in other constituencies (including undeclared students), and serve on Council to represent those students' interests. ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Mathematical Studies and Other Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 97
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Mathematics/Business Representatives are voting members of Council, elected by Mathematics/Business students to represent their interests. Mathematics/Business students include those in Honours or Joint Honours Mathematics/Business programs, including FARM, Math/Chartered Accountancy, Information Technology Management, Mathematical Economics, and the Math and CS Double Degree programs. ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Mathematics/Business Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 98
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Pure Mathematics, Applied Mathematics, and Combinatorics and Optimization Representatives are voting members of Council, elected by PM, AM, and CO students to represent their interests. PM, AM, and CO students include those in Honours or Joint Honours PM, AM, or CO programs, including Mathematical Optimization, Mathematical Finance, Mathematical Physics offered by the Faculty of Math, and Computational Mathematics ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Pure Mathematics, Applied Mathematics and Combinatorics and Optimization Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 99
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Software Engineering Representatives are voting members of Council, elected by SE students to represent their interests. ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Software Engineering Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 100
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Statistics Representatives are voting members of Council, elected by Statistics students to represent their interests.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Statistics Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 101
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "Teaching Option Representatives are voting members of Council, elected by Teaching Option students to represent their interests. ",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Teaching Option Representative",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 25
+  },
+  "pk": 102
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "CRO stands for Chief Returning Officer, and this is the person in charge of elections.\r\nThe CRO works with other members of the Election committee to publicize elections, verify nominees, run polling stations and most importantly to ensure that elections are fair and problem-free.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Chief Returning Officer",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 24
+  },
+  "pk": 103
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The secretary is responsible for taking minutes at council meetings, sending the minutes out to Council to approve, and for posting the minutes on the webpage, as well as being the person in charge of maintaining the Council list on the website. ",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Secretary",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 2
+  },
+  "pk": 105
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The Speaker of the Mathematics Society Council is charged with running the meetings of Council according to Robert's Rules of Orders and the Bylaws of the Society.",
+    "want_applications": true,
+    "is_staff": true,
+    "key_holder": false,
+    "title": "Speaker",
+    "is_superuser": false,
+    "primary_organization": 2,
+    "permissions_group": 2
+  },
+  "pk": 106
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The office manager is in charge of the office in shifts, helping members with printing, novelty sales, checkouts, etc.",
+    "want_applications": false,
+    "is_staff": true,
+    "key_holder": true,
+    "title": "Office Manager",
+    "is_superuser": false,
+    "primary_organization": 1,
+    "permissions_group": 1
+  },
+  "pk": 107
+},
+{
+  "model": "tangent.position",
+  "fields": {
+    "responsibilities": "The office worker works under the office manager to help run the day-to-day operations of the office.",
+    "want_applications": false,
+    "is_staff": false,
+    "key_holder": false,
+    "title": "Office Worker",
+    "is_superuser": false,
+    "primary_organization": 1,
+    "permissions_group": null
+  },
+  "pk": 108
+}
+]
