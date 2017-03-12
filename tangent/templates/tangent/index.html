@@ -25,29 +25,51 @@
     </div>
 
     <div class="container">
-        {% if organizations.count or can_post %}
         <hr class="spacer">
         <h1>Manage:</h1>
-        {% if can_post %}
-            <a href="#" class="feed-item">
                 <div class="row"><div class="col-lg-12 content"><h2>Announcements</h2></div></div>
-            </a>
-            <hr class="spacer">
-        {% endif %}
-            {% for org in organizations %}
-                <a href="{% url 'tangent_organization' org_id=org.id %}" class="feed-item">
+            {% for org in post_orgs %}
+                <hr class="spacer">
+                <a href="{% url 'tangent_org_announcements' org_id=org.id %}" class="feed-item">
                     <div class="row">
                         <div class="col-lg-12 content">
                             <h2>{{ org.name }}</h2>
-                            <p>
-                               {{ org.description }}
-                            </p>
                         </div>
-                        <hr class="spacer">
                     </div>
                 </a>
             {% endfor %}
-        {% endif %}
+            {% for club in post_clubs %}
+                <hr class="spacer">
+                <a href="{% url 'tangent_club_announcements' org_id=club.id %}" class="feed-item">
+                    <div class="row">
+                        <div class="col-lg-12 content">
+                            <h2>{{ club.name }}</h2>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            <hr class="spacer">
+                <div class="row"><div class="col-lg-12 content"><h2>Membership/Positions</h2></div></div>
+            {% for org in membership_orgs %}
+                <hr class="spacer">
+                <a href="{% url 'tangent_org_members' org_id=org.id %}" class="feed-item">
+                    <div class="row">
+                        <div class="col-lg-12 content">
+                            <h2>{{ org.name }}</h2>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            {% for club in membership_clubs %}
+                <hr class="spacer">
+                <a href="{% url 'tangent_club_members' org_id=club.id %}" class="feed-item">
+                    <div class="row">
+                        <div class="col-lg-12 content">
+                            <h2>{{ club.name }}</h2>
+                        </div> 
+                    </div>
+                </a>
+            {% endfor %}
     </div>
 
 {% endblock %}

@@ -14,12 +14,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{% url 'tangent_profile' %}">Profile</a></li>
-                    <li><a href="{% url 'tangent_log' %}">Log</a></li>
+                    </li>
                     {% if user.is_staff %}
                         <li><a href="{% url 'admin:index' %}">Website Management</a></li>
                     {% endif %}
                     <li><a href="{% url 'tangent_bookings' %}">Bookings</a></li>
-                    <li><a href="{% url 'tangent_help' %}">HELP</a></li>
                 </ul>
             </div>
         </div>

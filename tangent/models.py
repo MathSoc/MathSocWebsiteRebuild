@@ -55,21 +55,8 @@ class Member(models.Model):
     def is_society_member(self):
         return is_society_member(self.user.username)
 
-    def can_post(self):
-        return self.position_set.filter(
-            can_post=True
-        )
-
-    def can_edit(self):
-        return self.position_set.filter(
-            can_edit=True
-        )
-
     def is_org_admin(self, org):
-        for position in org.position_set.filter(is_admin=True):
-            if position.occupied_by.filter(id=self.id):
-                return True
-        return self.user.is_staff
+        return self.user.has_perm('attach_positions', org)
 
 def attach_member(sender, instance, created, **kwargs):
     if created:

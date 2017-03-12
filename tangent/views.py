@@ -7,7 +7,7 @@ from django.views.decorators.http import require_POST
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
 from django.contrib import messages
 from django.core.mail import send_mail
-from tangent.models import Organization, Position
+from tangent.models import BaseOrg, Club, Organization, Position
 from bookings.models import BookingRequest
 from oauth2client import tools
 from oauth2client.service_account import ServiceAccountCredentials
@@ -15,6 +15,8 @@ from apiclient.discovery import build
 from django.core.urlresolvers import reverse
 from httplib2 import Http
 from io import open
+from guardian.core import ObjectPermissionChecker
+from itertools import chain
 import datetime
 import logging
 import sys
@@ -109,51 +111,54 @@ def is_staff(view_func):
 
 # Decorator that verifies if a logged_in user is an organization's admin
 # and provides the view_function in question with that org
-def org_admin_interface(view_func):
-    def inner(request, org_id, *args, **kwargs):
-        org = get_object_or_404(Organization, id=org_id)
-        is_admin = request.user and request.user.member.is_org_admin(
-            org
-        )
-        if not is_admin:
-            raise PermissionDenied
-        return view_func(request, org, *args, **kwargs)
-    return inner
-
+def org_admin_interface(cls, perm):
+    def decorator(view_func):
+        def inner(request, org_id, *args, **kwargs):
+            org = get_object_or_404(cls, id=org_id)
+            has_perm = request.user and request.user.has_perm(perm, org)
+            if not has_perm:
+                raise PermissionDenied
+            return view_func(request, org, *args, **kwargs)
+        return inner
+    return decorator
 
 # --------- VIEW FUNCTIONS -------------------
 
 @login_required
 def home(request):
     user = request.user
-    if not user.is_staff:
-        organizations = Position.objects.filter(
-            occupied_by = user.member
-        ).select_related('organization')
-    else:
-        organizations = Organization.objects.all()
-    can_post = user.is_staff or user.member.can_post()
-    context_dict = {'organizations': organizations, 'can_post': can_post}
+    clubs = Club.objects.all()
+    orgs = Organization.objects.all()
+    checker = ObjectPermissionChecker(user)
+    checker.prefetch_perms(orgs)
+    post_orgs = []
+    membership_orgs = []
+    post_clubs = []
+    membership_clubs = []
+    for org in orgs:
+        if checker.has_perm('add_announcements', org):
+            post_orgs.append(org)
+        if checker.has_perm('attach_positions', org):
+            membership_orgs.append(org)
+    for club in clubs:
+        if checker.has_perm('add_announcements', club):
+            post_clubs.append(club)
+        if checker.has_perm('attach_positions', club):
+            membership_clubs.append(club)
+    context_dict = {
+        'post_orgs': post_orgs, 
+        'membership_orgs': membership_orgs,
+        'post_clubs': post_clubs,
+        'membership_clubs': membership_clubs
+    }
     return render(request, 'tangent/index.html', context_dict)
 
-
-def organization(request, org_id):
-    org = get_object_or_404(Organization, id=org_id)
-    is_org_admin = request.user and request.user.member.is_org_admin(org)
-    context_dict = {
-        'org' : org,
-        'is_org_admin': is_org_admin
-    }
-    return render(
-        request,
-        'tangent/organization.html',
-        context_dict
-    )
-
 @login_required
-@org_admin_interface
+@org_admin_interface(Organization, perm='attach_positions')
 def org_members(request, org):
-    positions = Position.objects.filter(organization=org)
+    positions = Position.objects.filter(
+        primary_organization=org
+    )
     return render(
         request,
         'tangent/org_members.html',
@@ -163,22 +168,53 @@ def org_members(request, org):
         }
     )
 
+@login_required
+@org_admin_interface(Club, perm='attach_positions')
+def club_members(request, club):
+    positions = Position.objects.filter(
+        primary_organization=club
+    )
+    return render(
+        request,
+        'tangent/org_members.html',
+        {
+            'org': club,
+            'positions': positions
+        }
+    )
 
 @login_required
-def log(request):
-    return render(request, 'tangent/log.html')
+@org_admin_interface(Organization, perm='attach_positions')
+def org_announcements(request, org):
+    positions = Position.objects.filter(
+        primary_organization=org
+    )
+    return render(
+        request,
+        'tangent/org_members.html',
+        {
+            'org': org,
+            'positions': positions
+        }
+    )
+
+@login_required
+@org_admin_interface(Club, perm='add_announcements')
+def club_announcements(request, club):
+    positions = Position.objects.filter(
+        primary_organization=club
+    )
+    return render(
+        request,
+        'tangent/org_members.html',
+        {
+            'org': club,
+            'positions': positions
+        }
+    )
 
 @login_required
 def profile(request):
-    return render(request, 'tangent/index.html')
-
-@login_required
-def help(request):
-    return render(request, 'tangent/index.html')
-
-@login_required
-@is_staff
-def website(request):
     return render(request, 'tangent/index.html')
 
 @login_required
