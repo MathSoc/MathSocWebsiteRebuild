@@ -1,13 +1,14 @@
 from __future__ import unicode_literals
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
-from django.http import HttpResponseBadRequest, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.contrib import messages
 from django.core.mail import send_mail
-from tangent.models import BaseOrg, Club, Organization, Position
+from tangent.models import BaseOrg, Club, Member, Organization, Position, PositionHolder
 from bookings.models import BookingRequest
 from oauth2client import tools
 from oauth2client.service_account import ServiceAccountCredentials
@@ -153,35 +154,85 @@ def home(request):
     }
     return render(request, 'tangent/index.html', context_dict)
 
-@login_required
-@org_admin_interface(Organization, perm='attach_positions')
-def org_members(request, org):
-    positions = Position.objects.filter(
-        primary_organization=org
-    )
+def render_members(request, org, is_club):
+    positions = org.position_set.all()
+    position_holders = PositionHolder.get_position_and_holders_list(positions)
     return render(
         request,
         'tangent/org_members.html',
         {
+            'is_club': is_club,
             'org': org,
-            'positions': positions
+            'position_holders': position_holders
         }
     )
 
 @login_required
+@org_admin_interface(Organization, perm='attach_positions')
+def org_members(request, org):
+    return render_members(request, org, is_club=False)
+
+@login_required
 @org_admin_interface(Club, perm='attach_positions')
 def club_members(request, club):
-    positions = Position.objects.filter(
-        primary_organization=club
-    )
-    return render(
-        request,
-        'tangent/org_members.html',
-        {
-            'org': club,
-            'positions': positions
-        }
-    )
+    if request.method == "POST":
+        return add_club_members(request, club)
+    return render_members(request, club, is_club=True)
+
+def add_club_members(request, club):
+    old_count = club.members.count()
+    members = []
+    if request.POST['add_member_list']:
+        watids = request.POST['add_member_list'].split()
+        for watid in watids:
+            member, created = Member.objects.get_or_create_from_username(watid)
+            members.append(member)
+        club.members.add(*members)
+        messages.success(
+            request,
+            "{} members have been added.".format(club.members.count() - old_count)
+        )
+    return redirect('tangent_club_members', club.id) 
+
+def attach_positions(request, org):    
+    if request.POST['position_title'] and request.POST['attach_positions_list']:
+        position = org.position_set.get(
+            title=request.POST['position_title']
+        )
+        watids = request.POST['attach_positions_list'].split()
+        for watid in watids:
+            member, created = Member.objects.get_or_create_from_username(watid)
+            ph = PositionHolder.objects.get_or_create(
+                term=settings.CURRENT_TERM, position=position, occupied_by=member
+            )
+        messages.success(
+            request,
+            "Positions have been attached to the users for the current term."
+        )
+
+@login_required
+@require_POST
+@org_admin_interface(Club, perm='attach_positions')
+def club_attach_positions(request, club):
+    attach_positions(request, club)
+    return redirect('tangent_club_members', club.id)
+
+@login_required
+@require_POST
+@org_admin_interface(Organization, perm='attach_positions')
+def org_attach_positions(request, org):
+    attach_positions(request, org)
+    return redirect('tangent_org_members', org.id)
+
+@login_required
+@org_admin_interface(Club, perm='attach_positions')
+def club_society_members(request, club):
+    count = 0
+    for member in club.members.all():
+        if member.is_society_member():
+            count += 1
+    return HttpResponse(count)
+
 
 @login_required
 @org_admin_interface(Organization, perm='attach_positions')

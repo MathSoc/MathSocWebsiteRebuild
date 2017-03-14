@@ -64,21 +64,14 @@
                             </div>
                             <div class="col-xs-12">
                                 <h2>Members</h2>
-                                {% for pos in org.position_set.all %}
-                                    <div class="row">
-                                        <div class="col-xs-2">
-                                            <img src="{% static 'img/mathsoclogo.png' %}" height="200px">
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <h3>{{ pos.title }}:</h3>
-                                            {% for holder in pos.occupied_by %}
-                                                {{ holder.user.first_name }}
-                                                {{ holder.user.last_name }}
-                                            {% endfor %}
-                                            <p>{{ pos.description|linebreaks }}</p>
-                                        </div>
-                                    </div>
-                                {% endfor %}
+                                {% for position_holder in position_holders %}
+                        <li>{{ position_holder.position.title }} (
+                        {% for holder in position_holder.holders %}
+                        {{ holder.user.username }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        )
+                        </li>
+                    {% endfor %}
 
                             </div>
                         </div>

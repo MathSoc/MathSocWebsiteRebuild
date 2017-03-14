@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.models import User
-from tangent.models import Position, Member, Organization, Club
+from tangent.models import Position, Member, Organization, Club, PositionHolder
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,14 +29,21 @@ def index(request):
 
 def governance(request):
     gov = Organization.objects.all() 
-    context_dict = {'orgs': gov}
+    positions = []
+    for org in gov:
+        positions += org.position_set.all()
+    position_holders = PositionHolder.get_position_and_holders_list(positions)
+    context_dict = {'orgs': gov, 'position_holders': position_holders}
     return render(request, 'frontend/governance.html', context_dict)
 
 
 def organization(request, org_id):
     org = Organization.objects.get(id=org_id)
+    positions = org.position_set.all()
+    position_holders = PositionHolder.get_position_and_holders_list(positions)
     context_dict = {
-        'org' : org
+        'org' : org,
+        'position_holders': position_holders
     }
     return render(request,
                   'frontend/organization.html',
@@ -83,8 +90,11 @@ def clubs(request):
 
 def club(request, club_id):
     club = Club.objects.get(id=club_id)
+    positions = club.position_set.all()
+    position_holders = PositionHolder.get_position_and_holders_list(positions)
     context_dict = {
-        'club': club
+        'club': club,
+        'position_holders': position_holders
     }
     return render(request, 'frontend/club.html', context_dict)
 

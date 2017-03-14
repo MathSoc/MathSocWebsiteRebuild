@@ -18,8 +18,12 @@
             <div class="col-md-12">
                 Positions:
                 <ul>
-                    {% for pos in club.position_set.all %}
-                        <li>{{ pos.title }} ({{ pos.occupied_by.user.first_name }} {{ pos.occupied_by.user.last_name }})
+                    {% for position_holder in position_holders %}
+                        <li>{{ position_holder.position.title }} (
+                        {% for holder in position_holder.holders %}
+                        {{ holder.user.username }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        )
                         </li>
                     {% endfor %}
                 </ul>

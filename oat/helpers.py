@@ -28,9 +28,9 @@ def is_society_member(userid):
             e_dict = json.loads(e.args[0])
             if e_dict['error']['status'] == 404:
                 logger.debug("{} is not a society member".format(userid))
-            logger.error("Got unexpected response: {}".format(e_dict))
+            else:
+                raise e
         else:
             raise e
 
     return False
-

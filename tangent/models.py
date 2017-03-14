@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from collections import namedtuple
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User, Group
@@ -21,16 +22,32 @@ def meeting_upload_file_path(self, filename, classification='unknown'):
 
 
 class MemberManager(models.Manager):
-    def create_member(self, username):
+    def create_from_username(self, username):
         user = User.objects.get_or_create(username=username)[0]
         return user.member
 
+    def get_or_create_from_username(self, username):
+        user, created = User.objects.get_or_create(username=username)
+        return user.member, created
+
 class Member(models.Model):
+    NOT_DETERMINED_STATUS = 1
+    IS_MEMBER_STATUS = 2
+    NOT_MEMBER_STATUS = 3
+    STATUS_CHOICES = (
+        (NOT_DETERMINED_STATUS, "Have not cached answer"),
+        (IS_MEMBER_STATUS,      "Society Member"),
+        (NOT_MEMBER_STATUS,         "Not Society Member")
+    )
+
     user = models.OneToOneField(User)
 
     #Services
     requested_refund = models.BooleanField(default=False)
     used_resources = models.BooleanField(default=False)
+    society_status = models.IntegerField(
+        choices=STATUS_CHOICES, default=NOT_DETERMINED_STATUS
+    )
 
     # TODO we need to determine how to handle this field properly
     do_not_email = models.BooleanField(default=False)
@@ -53,8 +70,15 @@ class Member(models.Model):
         return self.user.username
 
     def is_society_member(self):
-        return is_society_member(self.user.username)
+        if self.society_status == self.NOT_DETERMINED_STATUS:
+            if is_society_member(self.user.username):
+                self.society_status = self.IS_MEMBER_STATUS
+            else:
+                self.society_status = self.NOT_MEMBER_STATUS
+            self.save()
 
+        return self.society_status == self.IS_MEMBER_STATUS
+            
     def is_org_admin(self, org):
         return self.user.has_perm('attach_positions', org)
 
@@ -168,6 +192,21 @@ class PositionHolder(models.Model):
     term = models.IntegerField(default=settings.CURRENT_TERM)
     position = models.ForeignKey(Position)
     occupied_by = models.ForeignKey(Member)
+
+    @classmethod
+    def get_position_and_holders_list(cls, positions, term=settings.CURRENT_TERM):
+        PositionAndHolders = namedtuple('PositionAndHolders', ['position', 'holders'])
+        position_and_holders_list = []
+        for position in positions:
+            holders = []
+            phs = cls.objects.filter(
+                term=term,
+                position=position
+            )
+            for ph in phs:
+                holders.append(ph.occupied_by)
+            position_and_holders_list.append(PositionAndHolders(position, holders))
+        return position_and_holders_list
 
 def attach_position(sender, instance, created, **kwargs):
     if created:

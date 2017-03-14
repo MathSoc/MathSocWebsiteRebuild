@@ -37,7 +37,7 @@ if os.environ.get('DEBUG'):
 
 ALLOWED_HOSTS = ['*']
 
-CURRENT_TERM = os.environ.get('CURRENT_TERM', 1169)
+CURRENT_TERM = os.environ.get('CURRENT_TERM', 1171)
 
 
 # Application definition

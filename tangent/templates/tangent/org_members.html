@@ -1,9 +1,19 @@
 {% extends 'tangent/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
-    <div class="container">
-
+    <div class="container text-content">
+        {% if messages %}
+            {% for message in messages %}
+            {% if "error" in message.tags %}
+                <div class="alert alert-danger" role="alert">
+            {% else %}
+                <div class="alert alert-success" role="alert">
+            {% endif %}
+            {{ message }}</div>
+            {% endfor %}
+        {% endif %}
         <div class="row">
             <div class="col-xs-12">
                 <h1>
@@ -11,16 +21,63 @@
                 </h1>
             </div>
         </div>
+        {% if is_club %}
         <div class="row">
             <div class="col-md-12">
+                Member Count: {{ org.members.count }}
+            </div>
+            <div class="col-md-12">
+                MathSoc Member Count: 
+                <span id="socCount">
+                <button id="socCountButton" type="button" data-ajax-target="{% url 'tangent_club_society_members' org_id=org.id %}" onclick="loadSocMemberCount()">
+                Determine Society Member Count
+                </button>
+                </span>
+            </div>
+            <div class="col-md-12">
+                Add Members (separate names with space or newline):
+                <form id="add_members_form" method="post" action="{% url 'tangent_club_members' org_id=org.id %}">
+                    {% csrf_token %}
+                    <textarea class="form-control" rows="5" name="add_member_list" id="add_member_list"></textarea>
+                    <input type="submit" class='btn btn-default' id="add_members" />
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+            Positions:
                 <ul>
-                    {% for position in positions %}
-                        <li>
-                        {{ position.members_list }}
+                    {% for position_holder in position_holders %}
+                        <li>{{ position_holder.position.title }} (
+                        {% for holder in position_holder.holders %}
+                        {{ holder.user.username }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        )
                         </li>
                     {% endfor %}
                 </ul>
-            </div>
+                Attach Positions (separate names with space or newline):
+                <form id="attach_positions_form" method="post" 
+        {% if is_club %}
+        action="{% url 'tangent_club_attach_positions' org_id=org.id %}">
+        {% else %}
+        action="{% url 'tangent_org_attach_positions' org_id=org.id %}">
+        {% endif %}  
+                    {% csrf_token %}
+                    <select id="position_title" name="position_title" class="form-control">
+                        {% for position in org.position_set.all %}
+                            <option value="{{ position.title }}" name="{{ position.title }}">{{ position.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <textarea class="form-control" rows="2" name="attach_position_list" id="attach_positions_list"></textarea>
+                    <input type="submit" class='btn btn-default' id="attach_positions" />
+                </form>
         </div>
     </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static  'tangent/js/membercount.js' %}"></script>
 {% endblock %}
