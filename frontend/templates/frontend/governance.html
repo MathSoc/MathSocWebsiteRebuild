@@ -64,13 +64,15 @@
                             </div>
                             <div class="col-xs-12">
                                 <h2>Members</h2>
-                                {% for position_holder in position_holders %}
+                        {% for position_holder in position_holders %}
+                        {% if position_holder.position.primary_organization == org %}
                         <li>{{ position_holder.position.title }} (
                         {% for holder in position_holder.holders %}
                         {{ holder.user.username }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                         )
                         </li>
+                        {% endif %}
                     {% endfor %}
 
                             </div>
