@@ -1,0 +1,29 @@
+{% extends 'tangent/base.html' %}
+
+{% block content %}
+
+    <div class="container text-content">
+        {% if messages %}
+            {% for message in messages %}
+            {% if "error" in message.tags %}
+                <div class="alert alert-danger" role="alert">
+            {% else %}
+                <div class="alert alert-success" role="alert">
+            {% endif %}
+            {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% if can_post %}
+            <form id="create_announcement_form" method="post" 
+                {% if is_club %}
+                action="{% url 'tangent_club_announcements' org_id=org.id %}"
+                {% else %}
+                action="{% url 'tangent_org_announcements' org_id=org.id %}"
+                {% endif %}
+            >
+                {% csrf_token %}
+                <input type="submit" class='bn btn-default' id="add_announcement" /> 
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

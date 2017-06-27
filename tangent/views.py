@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedire
 from django.contrib import messages
 from django.core.mail import send_mail
 from tangent.models import BaseOrg, Club, Member, Organization, Position, PositionHolder
+from tangent.forms import AddMembersForm
 from bookings.models import BookingRequest
 from oauth2client import tools
 from oauth2client.service_account import ServiceAccountCredentials
@@ -163,7 +164,8 @@ def render_members(request, org, is_club):
         {
             'is_club': is_club,
             'org': org,
-            'position_holders': position_holders
+            'position_holders': position_holders,
+            'add_members_form': AddMembersForm()
         }
     )
 
@@ -233,36 +235,31 @@ def club_society_members(request, club):
             count += 1
     return HttpResponse(count)
 
-
-@login_required
-@org_admin_interface(Organization, perm='attach_positions')
-def org_announcements(request, org):
-    positions = Position.objects.filter(
-        primary_organization=org
-    )
+def render_announcements(request, org, is_club):
+    can_post = request.user.has_perm('add_announcements', org)
+    can_manage = request.user.has_perm('manage_announcement', org)
+    can_promote = request.user.has_perm('can_promote')
     return render(
-        request,
-        'tangent/org_members.html',
+        request, 
+        'tangent/announcements.html', 
         {
-            'org': org,
-            'positions': positions
+            'is_club': is_club,
+            'can_post': can_post,
+            'can_manage': can_manage,
+            'can_promote': can_promote,
+            'org': org
         }
     )
+
+@login_required
+@org_admin_interface(Organization, perm='add_announcements')
+def org_announcements(request, org):
+    return render_announcements(request, org, is_club=False)
 
 @login_required
 @org_admin_interface(Club, perm='add_announcements')
 def club_announcements(request, club):
-    positions = Position.objects.filter(
-        primary_organization=club
-    )
-    return render(
-        request,
-        'tangent/org_members.html',
-        {
-            'org': club,
-            'positions': positions
-        }
-    )
+    return render_announcements(request, club, is_club=True)
 
 @login_required
 def profile(request):
